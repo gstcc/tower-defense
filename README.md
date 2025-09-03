@@ -3,4 +3,4 @@
 - [ ] Life bar, level status
 - [ ] Coins, shop, spawn in weapons
 - [ ] Bot movement/pathfinding
-- [ ] Menu/inventory/between levels
+- [ ] Menu/inventory/between levels 
