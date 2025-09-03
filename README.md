@@ -1,0 +1,6 @@
+- [ ] Player animations, bot animations, weapon animations, trap animations, damage
+- [ ] Create map
+- [ ] Life bar, level status
+- [ ] Coins, shop, spawn in weapons
+- [ ] Bot movement/pathfinding
+- [ ] Menu/inventory/between levels
