@@ -1,3 +1,96 @@
-[gd_scene format=3 uid="uid://bx2svmuu5fx3m"]
+[gd_scene load_steps=13 format=3 uid="uid://bx2svmuu5fx3m"]
+
+[ext_resource type="PackedScene" uid="uid://dlqdo1oug81wn" path="res://art/Town/wall-door.glb" id="1_w6qop"]
+[ext_resource type="PackedScene" uid="uid://ce766x30owo3n" path="res://art/Town/wall-window-glass.glb" id="2_56sd1"]
+[ext_resource type="PackedScene" uid="uid://b4a5wjd6a5ula" path="res://art/Town/wall-window-shutters.glb" id="3_gm11r"]
+[ext_resource type="PackedScene" uid="uid://dq7w12ddjfdb3" path="res://art/Town/wall-detail-cross.glb" id="4_am74j"]
+[ext_resource type="PackedScene" uid="uid://duelnc3l7eh7r" path="res://art/Town/wall.glb" id="5_vpct2"]
+[ext_resource type="PackedScene" uid="uid://d3gs1gwa160up" path="res://art/Town/roof-high.glb" id="6_vpct2"]
+[ext_resource type="PackedScene" uid="uid://dot0pevklo2kj" path="res://art/Town/roof-high-left.glb" id="7_v3g4s"]
+[ext_resource type="PackedScene" uid="uid://d2u5857uhhrqw" path="res://art/Town/roof-high-right.glb" id="8_qv0ax"]
+[ext_resource type="PackedScene" uid="uid://fwrwt025almh" path="res://art/Town/roof-high-gable.glb" id="9_04j3j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v3g4s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qv0ax"]
+size = Vector3(2, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v3dnx"]
+size = Vector3(2, 1, 3)
 
 [node name="FirstHouse" type="Node3D"]
+
+[node name="Base" type="StaticBody3D" parent="."]
+
+[node name="door" parent="Base" instance=ExtResource("1_w6qop")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="hallwayLeft" parent="Base" instance=ExtResource("2_56sd1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 0)
+
+[node name="hallwayRight" parent="Base" instance=ExtResource("2_56sd1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, -0.9)
+
+[node name="hallwayCollision" type="CollisionShape3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
+shape = SubResource("BoxShape3D_v3g4s")
+debug_color = Color(0.74625, 0.462309, 0, 0.42)
+
+[node name="frontWindowLeft" parent="Base" instance=ExtResource("3_gm11r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="frontWindowRight" parent="Base" instance=ExtResource("3_gm11r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="sideWallRight" parent="Base" instance=ExtResource("4_am74j")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1)
+
+[node name="sideWallRight" parent="Base/sideWallRight" instance=ExtResource("4_am74j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="sideWallLeft" parent="Base" instance=ExtResource("4_am74j")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 1)
+
+[node name="sideWallLeft" parent="Base/sideWallLeft" instance=ExtResource("4_am74j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="backWall1" parent="Base" instance=ExtResource("5_vpct2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+
+[node name="backWall2" parent="Base" instance=ExtResource("5_vpct2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="backWall3" parent="Base" instance=ExtResource("5_vpct2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
+shape = SubResource("BoxShape3D_qv0ax")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="roofMidF" parent="StaticBody3D" instance=ExtResource("6_vpct2")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="roofHighLeftrb" parent="StaticBody3D" instance=ExtResource("7_v3g4s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="roofHighRightrf" parent="StaticBody3D" instance=ExtResource("8_qv0ax")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -1)
+
+[node name="roofHighLeftlf" parent="StaticBody3D" instance=ExtResource("7_v3g4s")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1)
+
+[node name="roofHighRighlb" parent="StaticBody3D" instance=ExtResource("8_qv0ax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+
+[node name="roofMidB" parent="StaticBody3D" instance=ExtResource("6_vpct2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="roofFront" parent="StaticBody3D" instance=ExtResource("9_04j3j")]
+transform = Transform3D(1.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.75, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
+shape = SubResource("BoxShape3D_v3dnx")
