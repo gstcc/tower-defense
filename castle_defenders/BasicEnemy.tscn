@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0ys4dh5sk46x"]
+[gd_scene load_steps=4 format=3 uid="uid://d0ys4dh5sk46x"]
+
+[ext_resource type="Script" uid="uid://dv3i0koxx5cyv" path="res://BasicEnemy.cs" id="1_6njx4"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1mh3o"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_6njx4"]
 
 [node name="BasicEnemy" type="CharacterBody3D"]
+script = ExtResource("1_6njx4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_1mh3o")
@@ -13,3 +16,5 @@ shape = SubResource("CylinderShape3D_1mh3o")
 mesh = SubResource("CylinderMesh_6njx4")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_max_distance = 2.01
+radius = 1.0
