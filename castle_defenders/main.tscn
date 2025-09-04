@@ -1,10 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfo7j11et57my"]
+[gd_scene load_steps=8 format=3 uid="uid://cfo7j11et57my"]
 
 [ext_resource type="PackedScene" uid="uid://c4l4dgchg6d64" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bx2svmuu5fx3m" path="res://FirstHouse.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dyps24aneq1lp" path="res://SmallStoneHouse.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dvis8ujb17t35" path="res://chest.tscn" id="4_1bvp3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xowi"]
 size = Vector3(60, 2, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+albedo_color = Color(0.352941, 0.298039, 0.501961, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_a202f"]
 size = Vector3(60, 2, 60)
@@ -18,19 +23,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 shape = SubResource("BoxShape3D_4xowi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+material_override = SubResource("StandardMaterial3D_lquwl")
 mesh = SubResource("BoxMesh_a202f")
+
+[node name="FirstHouse" parent="Ground/MeshInstance3D" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, 0.967713, 0, 5.00734)
+
+[node name="SmallStoneHouse" parent="Ground/MeshInstance3D" instance=ExtResource("2_h2yge")]
+transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, 3, 0.0347552, -1)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.5, 0.866026, 0, -0.866026, -0.5, 0, 17, 0)
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="CameraPivot" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 6, 0)
-
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
 
 [node name="FirstHouse" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6, 0, 0)
+
+[node name="SmallStoneHouse" parent="." instance=ExtResource("2_h2yge")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8.03229, 0.0347552, 6.00734)
+
+[node name="Chest" parent="." instance=ExtResource("4_1bvp3")]
+transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -1.55011, -0.965245, 10)
