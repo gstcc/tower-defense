@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqe5linlpx8l"]
+
+[ext_resource type="PackedScene" uid="uid://dmqgbgl01u4po" path="res://addons/kaykit_character_pack_adventures/Characters/gltf/Knight.glb" id="1_pyel5"]
+[ext_resource type="PackedScene" uid="uid://cwpydxrdhu5fc" path="res://addons/kaykit_character_pack_adventures/Characters/gltf/characters3d.com - Walk Forward.glb" id="2_cllws"]
+
+[node name="Animations" type="Node3D"]
+
+[node name="Knight" parent="." instance=ExtResource("1_pyel5")]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Knight"]
+root_node = NodePath("../..")
+
+[node name="WalkForward" parent="Knight" instance=ExtResource("2_cllws")]
