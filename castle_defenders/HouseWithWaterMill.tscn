@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://cvqqqd4ojmc4v"]
+
+[ext_resource type="PackedScene" uid="uid://iulwsyehm37q" path="res://art/Town/watermill.glb" id="1_stc1q"]
+[ext_resource type="PackedScene" uid="uid://dlqdo1oug81wn" path="res://art/Town/wall-door.glb" id="2_1vxyp"]
+[ext_resource type="PackedScene" uid="uid://ce766x30owo3n" path="res://art/Town/wall-window-glass.glb" id="3_ps7gd"]
+[ext_resource type="PackedScene" uid="uid://b4a5wjd6a5ula" path="res://art/Town/wall-window-shutters.glb" id="4_lr4ds"]
+[ext_resource type="PackedScene" uid="uid://duelnc3l7eh7r" path="res://art/Town/wall.glb" id="5_xtpv4"]
+[ext_resource type="PackedScene" uid="uid://exv1en8g28uv" path="res://art/Town/wall-wood-window-shutters.glb" id="6_oebgk"]
+[ext_resource type="PackedScene" uid="uid://o33bd7j5s706" path="res://art/Town/wall-wood-detail-horizontal.glb" id="7_7tofd"]
+[ext_resource type="PackedScene" uid="uid://dse66c5yuuey5" path="res://art/Town/roof-window.glb" id="8_rfvtp"]
+[ext_resource type="PackedScene" uid="uid://c1dmg1hlmgsyl" path="res://art/Town/roof-right.glb" id="9_1jjvw"]
+[ext_resource type="PackedScene" uid="uid://bj4ndc0f6ce25" path="res://art/Town/roof-left.glb" id="10_cw6sv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4y1bj"]
+size = Vector3(2, 2, 3.7)
+
+[node name="Node3D" type="StaticBody3D"]
+
+[node name="watermill2" parent="." instance=ExtResource("1_stc1q")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.5, 1, -2)
+
+[node name="wall-door2" parent="." instance=ExtResource("2_1vxyp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="wall-window-glass2" parent="." instance=ExtResource("3_ps7gd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="wall-window-glass3" parent="." instance=ExtResource("3_ps7gd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, 1)
+
+[node name="wall-window-glass4" parent="." instance=ExtResource("3_ps7gd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, -1)
+
+[node name="wall-window-glass5" parent="." instance=ExtResource("3_ps7gd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+
+[node name="wall-window-glass6" parent="." instance=ExtResource("3_ps7gd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1.9)
+
+[node name="wall-window-glass7" parent="." instance=ExtResource("3_ps7gd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 1.9)
+
+[node name="wall-window-shutters2" parent="." instance=ExtResource("4_lr4ds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, 0)
+
+[node name="wall2" parent="." instance=ExtResource("5_xtpv4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1)
+
+[node name="wall3" parent="." instance=ExtResource("5_xtpv4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, -1)
+
+[node name="wall-wood-window-shutters2" parent="." instance=ExtResource("6_oebgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
+
+[node name="wall-wood-window-shutters3" parent="." instance=ExtResource("6_oebgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+
+[node name="wall-wood-window-shutters4" parent="." instance=ExtResource("6_oebgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
+
+[node name="wall-wood-window-shutters5" parent="." instance=ExtResource("6_oebgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 1, 0)
+
+[node name="wall-wood-window-shutters6" parent="." instance=ExtResource("6_oebgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 1, -1)
+
+[node name="wall-wood-window-shutters7" parent="." instance=ExtResource("6_oebgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 1, 1)
+
+[node name="wall-wood-detail-horizontal2" parent="." instance=ExtResource("7_7tofd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 1, 1)
+
+[node name="wall-wood-detail-horizontal3" parent="." instance=ExtResource("7_7tofd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 1)
+
+[node name="wall-wood-detail-horizontal4" parent="." instance=ExtResource("7_7tofd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, -1)
+
+[node name="wall-wood-detail-horizontal5" parent="." instance=ExtResource("7_7tofd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 1, -1)
+
+[node name="roof-window2" parent="." instance=ExtResource("8_rfvtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="roof-window3" parent="." instance=ExtResource("8_rfvtp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 2, 0)
+
+[node name="roof-right2" parent="." instance=ExtResource("9_1jjvw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1)
+
+[node name="roof-right3" parent="." instance=ExtResource("9_1jjvw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 2, -1)
+
+[node name="roof-left2" parent="." instance=ExtResource("10_cw6sv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1)
+
+[node name="roof-left3" parent="." instance=ExtResource("10_cw6sv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 2, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.3)
+shape = SubResource("BoxShape3D_4y1bj")
