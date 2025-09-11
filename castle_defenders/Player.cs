@@ -4,15 +4,18 @@ using System;
 public partial class Player : CharacterBody3D
 {
 	public const float Speed = 5.0f;
+	public const float Acceleration = 0.5f;
 	public const float JumpVelocity = 4.5f;
 	public const float MouseSensitivity = 0.25f;
 	Vector2 CameraInputDirection;
-	private SpringArm3D _springArm;
+	private Node3D _CameraPivot;
+	private Camera3D _Camera;
 	
-	// https://www.youtube.com/watch?v=JlgZtOFMdfc&t=493sf
-	
-	public override void _UnhandledInput(InputEvent ev) {
+	// https://www.youtube.com/watch?v=JlgZtOFMdfc 24.10
+	public override void _UnhandledInput(InputEvent ev) 
+	{
 		// Add check for MouseModeCaptured
+		GD.Print(Input.GetMouseMode());
 		if (ev is InputEventMouseMotion mouseMotion
 		 && Input.GetMouseMode() == Godot.Input.MouseModeEnum.Captured)
 		{
@@ -22,11 +25,27 @@ public partial class Player : CharacterBody3D
 		
 	public override void _Ready()
 	{
-		_springArm = GetNode<SpringArm3D>("SpringArm3D");
+		_CameraPivot = GetNode<Node3D>("%CameraPivot");
+		_Camera = GetNode<Camera3D>("%Camera3D");
+	}
+	
+	public override void _Input(InputEvent ev) 
+	{
+		if (ev.IsActionPressed("left_click")) {
+			Input.MouseMode = Input.MouseModeEnum.Captured;
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
+		Vector3 rotation = _CameraPivot.Rotation;
+		rotation.X += (float)(CameraInputDirection.Y * delta);
+		rotation.X = Mathf.Clamp(rotation.X, -Mathf.Pi / 6.0f, Mathf.Pi / 3.0f);
+		rotation.Y -= (float)(CameraInputDirection.X * delta);
+		_CameraPivot.Rotation = rotation;
+		CameraInputDirection = Vector2.Zero;
+		
+		// Character movement
 		Vector3 velocity = Velocity;
 
 		// Apply gravity
@@ -39,28 +58,17 @@ public partial class Player : CharacterBody3D
 
 		// Camera-relative movement
 		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-
+		Vector3 forward = _Camera.GlobalTransform.Basis.Z;
+		Vector3 right = _Camera.GlobalTransform.Basis.X;
 
 		if (inputDir != Vector2.Zero)
 		{
-			inputDir = inputDir.Normalized();
-
-			// Get camera basis from the spring arm
-			Basis camBasis = _springArm.GlobalTransform.Basis;
-			Vector3 camForward = camBasis.Z;
-			Vector3 camRight = camBasis.X;
-
-			// Flatten direction vectors
-			camForward.Y = 0;
-			camRight.Y = 0;
-			camForward = camForward.Normalized();
-			camRight = camRight.Normalized();
-
-			// Combine input direction with camera vectors
-			Vector3 moveDir = (camForward * inputDir.Y + camRight * inputDir.X).Normalized();
-
-			velocity.X = moveDir.X * Speed;
-			velocity.Z = moveDir.Z * Speed;
+			Vector3 moveDirection = forward * inputDir.Y + right * inputDir.X;
+			moveDirection.Y = 0.0f;
+			moveDirection = moveDirection.Normalized();
+ 			//velocity = Mathf.MoveToward(moveDirection * Speed, Acceleration*delta);
+			velocity.X = moveDirection.X * Speed;
+			velocity.Z = moveDirection.Z * Speed;
 		}
 		else
 		{
@@ -71,6 +79,7 @@ public partial class Player : CharacterBody3D
 
 		Velocity = velocity;
 		MoveAndSlide();
+		
 	}
 
 }
