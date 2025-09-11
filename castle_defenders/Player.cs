@@ -5,8 +5,21 @@ public partial class Player : CharacterBody3D
 {
 	public const float Speed = 5.0f;
 	public const float JumpVelocity = 4.5f;
+	public const float MouseSensitivity = 0.25f;
+	Vector2 CameraInputDirection;
 	private SpringArm3D _springArm;
 	
+	// https://www.youtube.com/watch?v=JlgZtOFMdfc&t=493sf
+	
+	public override void _UnhandledInput(InputEvent ev) {
+		// Add check for MouseModeCaptured
+		if (ev is InputEventMouseMotion mouseMotion
+		 && Input.GetMouseMode() == Godot.Input.MouseModeEnum.Captured)
+		{
+			CameraInputDirection = mouseMotion.Relative * MouseSensitivity;
+		}
+	}
+		
 	public override void _Ready()
 	{
 		_springArm = GetNode<SpringArm3D>("SpringArm3D");
@@ -26,6 +39,7 @@ public partial class Player : CharacterBody3D
 
 		// Camera-relative movement
 		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+
 
 		if (inputDir != Vector2.Zero)
 		{
