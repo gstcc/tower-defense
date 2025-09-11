@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://cfo7j11et57my"]
 
 [ext_resource type="PackedScene" uid="uid://c4l4dgchg6d64" path="res://player.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://bx2svmuu5fx3m" path="res://FirstHouse.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://dyps24aneq1lp" path="res://SmallStoneHouse.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bx2svmuu5fx3m" path="res://builtAssets/FirstHouse.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dyps24aneq1lp" path="res://builtAssets/SmallStoneHouse.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dvis8ujb17t35" path="res://chest.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://d0ys4dh5sk46x" path="res://BasicEnemy.tscn" id="5_lquwl"]
 
