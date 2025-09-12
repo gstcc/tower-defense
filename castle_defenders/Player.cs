@@ -8,11 +8,16 @@ public partial class Player : CharacterBody3D
 	private const float JumpVelocity = 4.5f;
 	private const float MouseSensitivity = 0.25f;
 	private const float RotationSpeed = 12.0f; 
+	private const int Damage = 20;
 	private Vector2 CameraInputDirection;
 	private Vector3 _LastMovementDirection;
 	private Node3D _CameraPivot;
 	private Camera3D _Camera;
+	private Area3D _HitBox;
 	private Knight _Skin;
+	private bool isAttacking = false;
+	private float attackTimer = 0.0f;
+	private const float ATTACK_DURATION = 0.5f;
 	
 	// https://www.youtube.com/watch?v=JlgZtOFMdfc 24.10
 	public override void _UnhandledInput(InputEvent ev) 
@@ -30,12 +35,26 @@ public partial class Player : CharacterBody3D
 		_CameraPivot = GetNode<Node3D>("%CameraPivot");
 		_Camera = GetNode<Camera3D>("%Camera3D");
 		_Skin = GetNode<Knight>("%Knight");
+		_HitBox = GetNode<Area3D>("%HitBox");
 	}
 	
 	public override void _Input(InputEvent ev) 
 	{
 		if (ev.IsActionPressed("left_click")) {
 			Input.MouseMode = Input.MouseModeEnum.Captured;
+		}
+	}
+	
+	public void Attack()
+	{
+		var enemies = _HitBox.GetOverlappingBodies();
+
+		foreach (var body in _HitBox.GetOverlappingBodies())
+		{
+			if (body is BaseMob enemy)
+			{
+				enemy.Hurt(Damage);
+			}
 		}
 	}
 
@@ -96,11 +115,26 @@ public partial class Player : CharacterBody3D
 		skinRotation.Y = Mathf.LerpAngle(skinRotation.Y, targetAngle, (float)(RotationSpeed*delta));
 		_Skin.GlobalRotation = skinRotation;
 		float groundSpeed = Velocity.Length();
+		attackTimer -= (float)delta;
+		
+		
+		if (attackTimer <= 0f)
+		{
+			isAttacking = false;
+		} else {
+			return;
+		}
+		
 		if (isStartingJump) {
 			_Skin.Jump();
 		} else if (!IsOnFloor() && velocity.Y < 0.0f) {
 			_Skin.Fall();
-		} else if (IsOnFloor()) {
+		} else if (Input.IsActionJustPressed("left_click")) {
+			_Skin.Attack();
+			isAttacking = true;
+			attackTimer = ATTACK_DURATION;
+			Attack();
+		} else if (IsOnFloor() && !isAttacking) {
 			if (groundSpeed > 0.0f) {
 				_Skin.Move();
 			} else {

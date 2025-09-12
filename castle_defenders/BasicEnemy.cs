@@ -9,10 +9,10 @@ public partial class BasicEnemy : BaseMob
 		base._Ready();
 
 		// Set specific values for this enemy type
-		speed = 3;
-		health = 100;
-		damage = 10;
+		Speed = 3;
+		Health = 100;
+		Damage = 10;
 
 		GD.Print("BasicEnemy ready.");
-	}
+	}	
 }

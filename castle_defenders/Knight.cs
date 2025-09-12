@@ -7,9 +7,13 @@ public partial class Knight : Node3D
 	
 	
 	public override void _Ready()
-{
-	_Animation = GetNode<AnimationPlayer>("%AnimationPlayer");
-}
+	{
+		_Animation = GetNode<AnimationPlayer>("%AnimationPlayer");
+	}
+	
+	public void Attack() {
+		_Animation.Play("1H_Melee_Attack_Slice_Diagonal");
+	}
 	
 	public void Jump()
 	{

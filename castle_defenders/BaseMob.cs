@@ -3,9 +3,9 @@ using System;
 
 public abstract partial class BaseMob : CharacterBody3D
 {
-	public int speed = 5;
-	public int health = 100;
-	public int damage = 10;
+	public int Speed = 5;
+	public int Health = 20;
+	public int Damage = 10;
 	NavigationAgent3D navAgent;
 	StaticBody3D chest;
 
@@ -24,6 +24,24 @@ public abstract partial class BaseMob : CharacterBody3D
 	public void MakePath()
 	{
 		navAgent.TargetPosition = chest.GlobalPosition;
+	}
+	
+	private void Die()
+	{
+		GD.Print($"{Name} died!");
+		//Should killed mobs be removed to save performance?
+		// Maybe save dead bodies for a while and then despawn?
+		//QueueFree();
+	}
+	
+	public virtual void Hurt(int damage)
+	{
+		GD.Print("Hurt");
+		Health -= damage;
+		if (Health <= 0) {
+			GD.Print("Dead");
+			Die();
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -48,8 +66,8 @@ public abstract partial class BaseMob : CharacterBody3D
 			velocity += GetGravity() * (float)delta;
 
 		// Move toward next position on the path, keep Y velocity for gravity
-		velocity.X = direction.X * speed;
-		velocity.Z = direction.Z * speed;
+		velocity.X = direction.X * Speed;
+		velocity.Z = direction.Z * Speed;
 
 		Velocity = velocity;
 
