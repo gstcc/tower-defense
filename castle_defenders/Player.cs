@@ -3,19 +3,21 @@ using System;
 
 public partial class Player : CharacterBody3D
 {
-	public const float Speed = 5.0f;
-	public const float Acceleration = 0.5f;
-	public const float JumpVelocity = 4.5f;
-	public const float MouseSensitivity = 0.25f;
-	Vector2 CameraInputDirection;
+	private const float Speed = 5.0f;
+	private const float Acceleration = 0.5f;
+	private const float JumpVelocity = 4.5f;
+	private const float MouseSensitivity = 0.25f;
+	private const float RotationSpeed = 12.0f; 
+	private Vector2 CameraInputDirection;
+	private Vector3 _LastMovementDirection;
 	private Node3D _CameraPivot;
 	private Camera3D _Camera;
+	private Knight _Skin;
 	
 	// https://www.youtube.com/watch?v=JlgZtOFMdfc 24.10
 	public override void _UnhandledInput(InputEvent ev) 
 	{
 		// Add check for MouseModeCaptured
-		GD.Print(Input.GetMouseMode());
 		if (ev is InputEventMouseMotion mouseMotion
 		 && Input.GetMouseMode() == Godot.Input.MouseModeEnum.Captured)
 		{
@@ -27,6 +29,7 @@ public partial class Player : CharacterBody3D
 	{
 		_CameraPivot = GetNode<Node3D>("%CameraPivot");
 		_Camera = GetNode<Camera3D>("%Camera3D");
+		_Skin = GetNode<Knight>("%Knight");
 	}
 	
 	public override void _Input(InputEvent ev) 
@@ -47,23 +50,27 @@ public partial class Player : CharacterBody3D
 		
 		// Character movement
 		Vector3 velocity = Velocity;
+		float yVelocity = velocity.Y;
+		bool isStartingJump = false;
 
 		// Apply gravity
 		if (!IsOnFloor())
 			velocity += GetGravity() * (float)delta;
 
 		// Jump
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+		if (Input.IsActionJustPressed("jump") && IsOnFloor()) {
 			velocity.Y = JumpVelocity;
+			isStartingJump = true;	
+		}
 
 		// Camera-relative movement
 		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 		Vector3 forward = _Camera.GlobalTransform.Basis.Z;
 		Vector3 right = _Camera.GlobalTransform.Basis.X;
+		Vector3 moveDirection = forward * inputDir.Y + right * inputDir.X;
 
 		if (inputDir != Vector2.Zero)
 		{
-			Vector3 moveDirection = forward * inputDir.Y + right * inputDir.X;
 			moveDirection.Y = 0.0f;
 			moveDirection = moveDirection.Normalized();
  			//velocity = Mathf.MoveToward(moveDirection * Speed, Acceleration*delta);
@@ -79,7 +86,27 @@ public partial class Player : CharacterBody3D
 
 		Velocity = velocity;
 		MoveAndSlide();
-		
+		if (moveDirection.Length() > 0.2f) {
+			_LastMovementDirection = moveDirection;
+		}
+
+		float targetAngle = (-Vector3.Forward).SignedAngleTo(_LastMovementDirection, Vector3.Up);
+
+		Vector3 skinRotation = _Skin.GlobalRotation;
+		skinRotation.Y = Mathf.LerpAngle(skinRotation.Y, targetAngle, (float)(RotationSpeed*delta));
+		_Skin.GlobalRotation = skinRotation;
+		float groundSpeed = Velocity.Length();
+		if (isStartingJump) {
+			_Skin.Jump();
+		} else if (!IsOnFloor() && velocity.Y < 0.0f) {
+			_Skin.Fall();
+		} else if (IsOnFloor()) {
+			if (groundSpeed > 0.0f) {
+				_Skin.Move();
+			} else {
+				_Skin.Idle();
+			}	
+		}
 	}
 
 }
