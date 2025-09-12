@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7mqsougua871"]
+
+[ext_resource type="PackedScene" uid="uid://b3dr3o2jpl6oi" path="res://art/Dungeon/template-floor-detail-a.glb" id="1_fo8hi"]
+[ext_resource type="ArrayMesh" uid="uid://dbrw4n3nvhlbw" path="res://builtAssets/Dungeon_floor.tres" id="2_s8vrg"]
+
+[node name="template-floor-detail-a2" instance=ExtResource("1_fo8hi")]
+
+[node name="template-floor-detail-a" parent="." index="0"]
+mesh = ExtResource("2_s8vrg")
