@@ -1,0 +1,304 @@
+[gd_scene load_steps=61 format=3 uid="uid://bmola83eibm22"]
+
+[ext_resource type="PackedScene" uid="uid://du63q487t7m3u" path="res://art/Dungeon/template-floor-detail.glb" id="1_j6rbe"]
+[ext_resource type="PackedScene" uid="uid://b3dr3o2jpl6oi" path="res://art/Dungeon/template-floor-detail-a.glb" id="2_4kid3"]
+[ext_resource type="PackedScene" uid="uid://d3o1c7y2x8rwt" path="res://art/Pirates/platform.glb" id="3_ilnww"]
+[ext_resource type="PackedScene" uid="uid://tdwi83i4pv1j" path="res://art/Pirates/patch-sand.glb" id="4_frfqb"]
+[ext_resource type="PackedScene" uid="uid://cm7dsscubxclo" path="res://art/Pirates/patch-sand-foliage.glb" id="5_4wc71"]
+[ext_resource type="PackedScene" uid="uid://cjhhopg03cn4v" path="res://art/Pirates/patch-grass.glb" id="6_eb21e"]
+[ext_resource type="PackedScene" uid="uid://c0b5svrh5pbf7" path="res://art/Pirates/patch-grass-foliage.glb" id="7_e18er"]
+[ext_resource type="PackedScene" uid="uid://b4ed2o16ckj8c" path="res://art/Town/planks.glb" id="8_0l1qb"]
+[ext_resource type="PackedScene" uid="uid://blbwsrmjkuwgd" path="res://art/Town/road-bend.glb" id="9_ytvwk"]
+[ext_resource type="PackedScene" uid="uid://b4r7x58id4afw" path="res://art/Town/road-corner-inner.glb" id="10_6r1fu"]
+[ext_resource type="PackedScene" uid="uid://l4jxji526u4v" path="res://art/Town/road-corner.glb" id="11_bxe1t"]
+[ext_resource type="PackedScene" uid="uid://b7b8i1t41e03s" path="res://art/Town/road-curb-end.glb" id="12_23ia6"]
+[ext_resource type="PackedScene" uid="uid://dxnowlbupplnq" path="res://art/Town/road-curb.glb" id="13_2fbfr"]
+[ext_resource type="PackedScene" uid="uid://cg2y3cdwl7aww" path="res://art/Town/road-edge-slope.glb" id="14_kdiup"]
+[ext_resource type="PackedScene" uid="uid://usjhge6sw2u0" path="res://art/Town/road-edge.glb" id="15_6j11v"]
+[ext_resource type="PackedScene" uid="uid://cqsevyk4yxx46" path="res://art/Town/road-slope.glb" id="16_3knpi"]
+[ext_resource type="PackedScene" uid="uid://d3a8newk874ae" path="res://art/Town/road.glb" id="17_au5x0"]
+[ext_resource type="PackedScene" uid="uid://b67fmg62twfr6" path="res://art/Nature/platform_stone.glb" id="18_cw65p"]
+[ext_resource type="PackedScene" uid="uid://ba2eowitmr68t" path="res://art/Nature/platform_grass.glb" id="19_hde8l"]
+[ext_resource type="PackedScene" uid="uid://daxp3nhueagyj" path="res://art/Nature/platform_beach.glb" id="20_kd0j4"]
+[ext_resource type="PackedScene" uid="uid://cqtw0tqdrqiw" path="res://art/Nature/path_stone.glb" id="21_ceqby"]
+[ext_resource type="PackedScene" uid="uid://cluv8ctwurgq3" path="res://art/Nature/path_stoneCircle.glb" id="22_3yxbt"]
+[ext_resource type="PackedScene" uid="uid://bny2ssvrvjgyw" path="res://art/Nature/path_stoneCorner.glb" id="23_4n0nu"]
+[ext_resource type="PackedScene" uid="uid://cg0wylsoqaj65" path="res://art/Nature/path_stoneEnd.glb" id="24_b52bx"]
+[ext_resource type="PackedScene" uid="uid://csie2o11k8jpg" path="res://art/Nature/path_wood.glb" id="25_wfukm"]
+[ext_resource type="PackedScene" uid="uid://ku122a2fc7cp" path="res://art/Nature/path_woodCorner.glb" id="26_be4a8"]
+[ext_resource type="PackedScene" uid="uid://dmq4ggevgs0np" path="res://art/Nature/path_woodEnd.glb" id="27_ovwfe"]
+[ext_resource type="PackedScene" uid="uid://c3d6ktgob7oi4" path="res://art/Nature/ground_grass.glb" id="28_2xuqi"]
+[ext_resource type="PackedScene" uid="uid://c8v474fmnpk0p" path="res://art/Nature/cliff_blockCave_rock.glb" id="29_618iv"]
+[ext_resource type="PackedScene" uid="uid://bf1lj6qytcxq2" path="res://art/Nature/cliff_blockDiagonal_rock.glb" id="30_8w4pa"]
+[ext_resource type="PackedScene" uid="uid://4my4ojgy4nre" path="res://art/Nature/cliff_blockHalf_rock.glb" id="31_4o1rm"]
+[ext_resource type="PackedScene" uid="uid://cunbg53muh8lr" path="res://art/Nature/cliff_blockQuarter_rock.glb" id="32_3616t"]
+[ext_resource type="PackedScene" uid="uid://n2l1lhpumfcr" path="res://art/Nature/cliff_blockSlopeHalfWalls_rock.glb" id="33_tgjq6"]
+[ext_resource type="PackedScene" uid="uid://xas243ke64j4" path="res://art/Nature/cliff_blockSlopeWalls_rock.glb" id="34_eeigp"]
+[ext_resource type="PackedScene" uid="uid://b8bk8s3s7ri3m" path="res://art/Nature/cliff_blockSlope_rock.glb" id="35_lye8y"]
+[ext_resource type="PackedScene" uid="uid://dj4141aqmxjqc" path="res://art/Nature/cliff_block_rock.glb" id="36_pndde"]
+[ext_resource type="PackedScene" uid="uid://dl61yncexfxmb" path="res://art/Nature/cliff_cave_rock.glb" id="37_01kbh"]
+[ext_resource type="PackedScene" uid="uid://jyh5ncolfsxi" path="res://art/Nature/cliff_cornerInnerLarge_rock.glb" id="38_3awgt"]
+[ext_resource type="PackedScene" uid="uid://dmuon7tj5qykb" path="res://art/Nature/cliff_cornerInnerTop_rock.glb" id="39_n6hqu"]
+[ext_resource type="PackedScene" uid="uid://bs60lgnaugyjg" path="res://art/Nature/cliff_diagonal_rock.glb" id="40_x6h7f"]
+[ext_resource type="PackedScene" uid="uid://bvyhqgciky6y" path="res://art/Nature/cliff_halfCornerInner_rock.glb" id="41_kqgys"]
+[ext_resource type="PackedScene" uid="uid://0de50wmabnf8" path="res://art/Nature/cliff_halfCorner_rock.glb" id="42_y4lu2"]
+[ext_resource type="PackedScene" uid="uid://bg0rqpmid2kly" path="res://art/Nature/cliff_half_rock.glb" id="43_xni3r"]
+[ext_resource type="PackedScene" uid="uid://bo40me31vh6g7" path="res://art/Nature/cliff_stepsCornerInner_rock.glb" id="44_s1hwq"]
+[ext_resource type="PackedScene" uid="uid://cbeqdjl27o3qx" path="res://art/Nature/cliff_stepsCorner_rock.glb" id="45_7msfg"]
+[ext_resource type="PackedScene" uid="uid://cs5ukhaxgmro2" path="res://art/Nature/cliff_steps_rock.glb" id="46_6ljvu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_auyqo"]
+size = Vector3(4, 0.5, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a05q5"]
+size = Vector3(4, 0.5, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ilnww"]
+size = Vector3(2.5, 0.5, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_frfqb"]
+size = Vector3(8, 0.5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4wc71"]
+size = Vector3(7, 0.5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eb21e"]
+size = Vector3(4, 0.5, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e18er"]
+size = Vector3(4, 0.5, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0l1qb"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ytvwk"]
+size = Vector3(3, 0.2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6r1fu"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bxe1t"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_23ia6"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2fbfr"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kdiup"]
+size = Vector3(1, 0.2, 1)
+
+[node name="TestGroundMeshLib" type="Node3D"]
+
+[node name="template-floor-detail2" parent="." instance=ExtResource("1_j6rbe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.366566, 0, 2.61153)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="template-floor-detail2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="template-floor-detail2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+shape = SubResource("BoxShape3D_auyqo")
+
+[node name="template-floor-detail-a2" parent="." instance=ExtResource("2_4kid3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1125, 0, 2.46818)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="template-floor-detail-a2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="template-floor-detail-a2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+shape = SubResource("BoxShape3D_a05q5")
+
+[node name="platform2" parent="." instance=ExtResource("3_ilnww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.97447, 0, 2.74632)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="platform2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="platform2/StaticBody3D"]
+shape = SubResource("BoxShape3D_ilnww")
+
+[node name="patch-sand2" parent="." instance=ExtResource("4_frfqb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8327, 0, 3.65239)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="patch-sand2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="patch-sand2/StaticBody3D"]
+shape = SubResource("BoxShape3D_frfqb")
+
+[node name="patch-sand-foliage2" parent="." instance=ExtResource("5_4wc71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2721, 0, 4.20978)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="patch-sand-foliage2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="patch-sand-foliage2/StaticBody3D"]
+shape = SubResource("BoxShape3D_4wc71")
+
+[node name="patch-grass2" parent="." instance=ExtResource("6_eb21e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0283, 0, 3.27149)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="patch-grass2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="patch-grass2/StaticBody3D"]
+shape = SubResource("BoxShape3D_eb21e")
+
+[node name="patch-grass-foliage2" parent="." instance=ExtResource("7_e18er")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0076, 0, 3.1326)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="patch-grass-foliage2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="patch-grass-foliage2/StaticBody3D"]
+shape = SubResource("BoxShape3D_e18er")
+
+[node name="planks2" parent="." instance=ExtResource("8_0l1qb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75513, 0, 7.43753)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="planks2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="planks2/StaticBody3D"]
+shape = SubResource("BoxShape3D_0l1qb")
+
+[node name="road-bend2" parent="." instance=ExtResource("9_ytvwk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4165, 0, 10.6138)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="road-bend2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="road-bend2/StaticBody3D"]
+shape = SubResource("BoxShape3D_ytvwk")
+
+[node name="road-corner-inner2" parent="." instance=ExtResource("10_6r1fu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9939, 0, 10.2853)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="road-corner-inner2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="road-corner-inner2/StaticBody3D"]
+shape = SubResource("BoxShape3D_6r1fu")
+
+[node name="road-corner2" parent="." instance=ExtResource("11_bxe1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.1363, 0, 13.9298)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="road-corner2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="road-corner2/StaticBody3D"]
+shape = SubResource("BoxShape3D_bxe1t")
+
+[node name="road-curb-end2" parent="." instance=ExtResource("12_23ia6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0919, -1.90735e-06, 13.9728)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="road-curb-end2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="road-curb-end2/StaticBody3D"]
+shape = SubResource("BoxShape3D_23ia6")
+
+[node name="road-curb2" parent="." instance=ExtResource("13_2fbfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7954, 0, 12.6373)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="road-curb2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="road-curb2/StaticBody3D"]
+shape = SubResource("BoxShape3D_2fbfr")
+
+[node name="road-edge-slope2" parent="." instance=ExtResource("14_kdiup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3321, -1.90735e-06, 8.64863)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="road-edge-slope2"]
+
+[node name="road-edge2" parent="." instance=ExtResource("15_6j11v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6518, 0, 10.9777)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="road-edge2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="road-edge2/StaticBody3D"]
+shape = SubResource("BoxShape3D_kdiup")
+
+[node name="road-slope2" parent="." instance=ExtResource("16_3knpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9561, 0, 13.6599)
+
+[node name="road2" parent="." instance=ExtResource("17_au5x0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.87143, 0, 9.56335)
+
+[node name="platform_stone2" parent="." instance=ExtResource("18_cw65p")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.50464, 0, 11.2665)
+
+[node name="platform_grass2" parent="." instance=ExtResource("19_hde8l")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7, 0, 8)
+
+[node name="platform_beach2" parent="." instance=ExtResource("20_kd0j4")]
+transform = Transform3D(1.99992, 0, -0.0183257, 0, 2, 0, 0.0183257, 0, 1.99992, -3.97221, 9.53674e-07, 9.73497)
+
+[node name="path_stone2" parent="." instance=ExtResource("21_ceqby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24095, 9.53674e-07, 8.73036)
+
+[node name="path_stoneCircle2" parent="." instance=ExtResource("22_3yxbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.40512, 0, 11.2242)
+
+[node name="path_stoneCorner2" parent="." instance=ExtResource("23_4n0nu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.20593, 0, 11.6791)
+
+[node name="path_stoneEnd2" parent="." instance=ExtResource("24_b52bx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6663, 0, 11.551)
+
+[node name="path_wood2" parent="." instance=ExtResource("25_wfukm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.486578, 0, 11.0197)
+
+[node name="path_woodCorner2" parent="." instance=ExtResource("26_be4a8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54355, 0, 10.4367)
+
+[node name="path_woodEnd2" parent="." instance=ExtResource("27_ovwfe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97478, 0, 12.5361)
+
+[node name="ground_grass2" parent="." instance=ExtResource("28_2xuqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66518, 0, 8.37859)
+
+[node name="cliff_blockCave_rock2" parent="." instance=ExtResource("29_618iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.82392, 0, 10.5129)
+
+[node name="cliff_blockDiagonal_rock2" parent="." instance=ExtResource("30_8w4pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.74754, 0, 12.2831)
+
+[node name="cliff_blockHalf_rock2" parent="." instance=ExtResource("31_4o1rm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.65834, 0, 12.085)
+
+[node name="cliff_blockQuarter_rock2" parent="." instance=ExtResource("32_3616t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3645, 0, 8.44825)
+
+[node name="cliff_blockSlopeHalfWalls_rock2" parent="." instance=ExtResource("33_tgjq6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8417, 0, 14.0076)
+
+[node name="cliff_blockSlopeWalls_rock2" parent="." instance=ExtResource("34_eeigp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.39066, 0, 14.1944)
+
+[node name="cliff_blockSlope_rock2" parent="." instance=ExtResource("35_lye8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0813, 0, 11.1778)
+
+[node name="cliff_block_rock2" parent="." instance=ExtResource("36_pndde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.580863, 0, 15.2161)
+
+[node name="cliff_cave_rock2" parent="." instance=ExtResource("37_01kbh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.50212, 0, 14.4112)
+
+[node name="cliff_cornerInnerLarge_rock2" parent="." instance=ExtResource("38_3awgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51365, 0, 15.3129)
+
+[node name="cliff_cornerInnerTop_rock2" parent="." instance=ExtResource("39_n6hqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.72575, 0, 16.0213)
+
+[node name="cliff_diagonal_rock2" parent="." instance=ExtResource("40_x6h7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.84612, 0, 16.4037)
+
+[node name="cliff_halfCornerInner_rock2" parent="." instance=ExtResource("41_kqgys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.017, 0, 15.8009)
+
+[node name="cliff_halfCorner_rock2" parent="." instance=ExtResource("42_y4lu2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7226, 0, 14.3409)
+
+[node name="cliff_half_rock2" parent="." instance=ExtResource("43_xni3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9306, 0, 13.5678)
+
+[node name="cliff_stepsCornerInner_rock2" parent="." instance=ExtResource("44_s1hwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96308, 0, 18.2403)
+
+[node name="cliff_stepsCorner_rock2" parent="." instance=ExtResource("45_7msfg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.14814, 0, 19.3057)
+
+[node name="cliff_steps_rock2" parent="." instance=ExtResource("46_6ljvu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.72595, 0, 19.0276)
