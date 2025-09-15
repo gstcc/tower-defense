@@ -3,16 +3,21 @@ using System;
 
 public abstract partial class BaseMob : CharacterBody3D
 {
-	public int Speed = 5;
+	public float Speed = 5.0f;
 	public int Health = 20;
 	public int Damage = 10;
-	NavigationAgent3D navAgent;
-	StaticBody3D chest;
+	protected float _SeeRange = 10f;
+	public const float AttackRange = 1.0f;
+	public NavigationAgent3D _NavAgent;
+	public Node3D chest;
+	protected CharacterBody3D _Player;
+	public AnimationTree _AnimTree;
 
 	public override void _Ready()
 	{
-		navAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
+		//_NavAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
 		chest = GetNode<StaticBody3D>("/root/Main/Chest");
+		_Player = GetNode<CharacterBody3D>("/root/Main/Player");
 		if (chest == null)
 		{
 			GD.PrintErr("Chest node not found at /root/Main/Chest");
@@ -21,9 +26,17 @@ public abstract partial class BaseMob : CharacterBody3D
 		MakePath();
 	}
 
-	public void MakePath()
+	public virtual void MakePath()
 	{
-		navAgent.TargetPosition = chest.GlobalPosition;
+		if (!IsPlayerSeeable()) {
+			_NavAgent.TargetPosition = chest.GlobalPosition;
+		} else {
+			_NavAgent.TargetPosition = _Player.GlobalPosition;
+		}
+	}
+	
+	protected virtual bool IsPlayerSeeable() {
+		return GlobalPosition.DistanceTo(_Player.GlobalPosition) < _SeeRange;
 	}
 	
 	private void Die()
@@ -53,7 +66,7 @@ public abstract partial class BaseMob : CharacterBody3D
 		// MakePath();
 
 		// Get the next position on the path
-		Vector3 nextPos = navAgent.GetNextPathPosition();
+		Vector3 nextPos = _NavAgent.GetNextPathPosition();
 
 		// Direction to next position
 		Vector3 direction = (nextPos - GlobalPosition).Normalized();
