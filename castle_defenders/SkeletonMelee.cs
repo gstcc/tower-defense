@@ -61,10 +61,12 @@ public partial class SkeletonMelee : BaseMob
 				if (!hasAttacked)
 				{
 					Attack(_Player);
+					velocity.X = 0;
+					velocity.Y = 0;
 					hasAttacked = true;
 
 					// Play attack animation via AnimationTree (if not already)
-					_AnimTree.Set("parameters/conditions/Attack", true);
+					_AnimTree.Set("parameters/conditions/Attack", TargetInRange());
 
 					// Optional: also use a Timer to delay resetting state
 					//GetNode<Timer>("AttackCooldownTimer").Start();

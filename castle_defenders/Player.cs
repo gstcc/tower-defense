@@ -82,34 +82,34 @@ public partial class Player : CharacterBody3D
 		attackTimer -= (float)delta;
 		bool isStartingJump = false;
 		
-		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		Vector2 inputDir = Input.GetVector("move_left", "move_right", "move_up", "move_down");
 		if (inputDir != Vector2.Zero) {
-			GD.Print("Not zero");
-			GD.Print(inputDir);
 			_AnimTree.Set("parameters/conditions/Run", true);
+			_AnimTree.Set("parameters/conditions/Idle", false);
 		} else {
 			_AnimTree.Set("parameters/conditions/Run", false);
+			// If we're falling we're not idle
+			_AnimTree.Set("parameters/conditions/Idle", IsOnFloor());
 		}
 		
 		// Attack button was pressed
 		if (Input.IsActionJustPressed("left_click")) {
 			_AnimTree.Set("parameters/conditions/Attack", true);
+			_AnimTree.Set("parameters/conditions/Idle", false);
 		}
 		// Jump
 		if (Input.IsActionJustPressed("jump") && IsOnFloor()) {
 			_AnimTree.Set("parameters/conditions/Jump", true);
+			_AnimTree.Set("parameters/conditions/Idle", false);
 			isStartingJump = true;	
 		}
-		_AnimTree.Set("parameters/conditions/Idle", false);
 		//Handle movement and animations
 		Vector3 velocity = Velocity;
 		string state = _StateMachine.GetCurrentNode();
-		GD.Print(state);
 		switch (state) {
 			case "Run":
 				// Character movement
 				float yVelocity = velocity.Y;
-
 				// Apply gravity
 				if (!IsOnFloor())
 					velocity += GetGravity() * (float)delta;
@@ -146,11 +146,12 @@ public partial class Player : CharacterBody3D
 				break;
 			case "Attack":
 				if (attackTimer <= 0f) {
-					_Skin.Attack();
 					isAttacking = true;
 					attackTimer = ATTACK_DURATION;
-					Attack();	
+					Attack();
 				}
+				velocity.X = 0;
+				velocity.Z = 0;	
 				_AnimTree.Set("parameters/conditions/Attack", attackTimer <= 0f);
 				break;
 			case "Hit":
@@ -163,10 +164,20 @@ public partial class Player : CharacterBody3D
 				if (IsOnFloor()) {
 					velocity.Y = JumpVelocity;	
 				}
+				_AnimTree.Set("parameters/conditions/Jump", false);
 				break;
 			case "Fall":
-				if (!IsOnFloor())
-					velocity += GetGravity() * (float)delta;
+				if (!IsOnFloor()) {
+					velocity += GetGravity() * (float)delta;	
+				} else {
+					velocity = Vector3.Zero;
+					if (inputDir != Vector2.Zero) {
+						_AnimTree.Set("parameters/conditions/Run", true);
+					} else {
+						_AnimTree.Set("parameters/conditions/Run", false);
+						_AnimTree.Set("parameters/conditions/Idle", true);
+					}
+				}
 				break;
 			default:
 				_AnimTree.Set("parameters/conditions/Idle", true);
