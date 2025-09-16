@@ -1,6 +1,19 @@
 - [ ] Player animations, bot animations, weapon animations, trap animations, damage
+    - [ ] Player animations
+    - [ ] Weapon animations
+    - [ ] Trap animations
+    - [ ] Hit animation
+    - [ ] Interact with items animations
 - [ ] Create map
+    - [X] Ground mesh
+    - [ ] Items mesh
 - [ ] Life bar, level status
+    - [ ] Lifebar
+    - [ ] Menu
 - [ ] Coins, shop, spawn in weapons
 - [ ] Bot movement/pathfinding
+    - [X] Pathfinding
+    - [X] Movement
+    - [ ] Attack chest/and player
+    - [ ] Ranged mobs
 - [ ] Menu/inventory/between levels 
