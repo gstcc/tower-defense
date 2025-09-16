@@ -10,7 +10,7 @@ radius = 0.7
 script = ExtResource("1_6njx4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_6njx4")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

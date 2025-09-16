@@ -3,21 +3,24 @@ using System;
 
 public abstract partial class BaseMob : CharacterBody3D
 {
-	public float Speed = 5.0f;
-	public int Health = 20;
-	public int Damage = 10;
+	protected float _Speed = 5.0f;
+	protected int _Health = 20;
+	protected int _Damage = 2;
 	protected float _SeeRange = 10f;
-	public const float AttackRange = 1.0f;
-	public NavigationAgent3D _NavAgent;
-	public Node3D chest;
-	protected CharacterBody3D _Player;
-	public AnimationTree _AnimTree;
+	protected float _AttackRange = 1.0f;
+	protected NavigationAgent3D _NavAgent;
+	protected Node3D chest;
+	protected Player _Player;
+	protected AnimationTree _AnimTree;
+	protected bool hasAttacked = false;
+	[Signal]
+	public delegate void AttackedEventHandler(Node target);
 
 	public override void _Ready()
 	{
 		//_NavAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
 		chest = GetNode<StaticBody3D>("/root/Main/Chest");
-		_Player = GetNode<CharacterBody3D>("/root/Main/Player");
+		_Player = GetNode<Player>("/root/Main/Player");
 		if (chest == null)
 		{
 			GD.PrintErr("Chest node not found at /root/Main/Chest");
@@ -39,6 +42,19 @@ public abstract partial class BaseMob : CharacterBody3D
 		return GlobalPosition.DistanceTo(_Player.GlobalPosition) < _SeeRange;
 	}
 	
+	public bool TargetInRange() {
+		return GlobalPosition.DistanceTo(_Player.GlobalPosition) < _AttackRange;
+	}
+	
+	public async void Attack(Player player)
+	{
+		await ToSignal(GetTree().CreateTimer(0.4), "timeout");
+		//player.TakeDamage(10);
+		if (TargetInRange()) {
+			EmitSignal(SignalName.Attacked, _Damage);
+		}
+	}
+	
 	private void Die()
 	{
 		GD.Print($"{Name} died!");
@@ -50,8 +66,8 @@ public abstract partial class BaseMob : CharacterBody3D
 	public virtual void Hurt(int damage)
 	{
 		GD.Print("Hurt");
-		Health -= damage;
-		if (Health <= 0) {
+		_Health -= damage;
+		if (_Health <= 0) {
 			GD.Print("Dead");
 			Die();
 		}
@@ -79,8 +95,8 @@ public abstract partial class BaseMob : CharacterBody3D
 			velocity += GetGravity() * (float)delta;
 
 		// Move toward next position on the path, keep Y velocity for gravity
-		velocity.X = direction.X * Speed;
-		velocity.Z = direction.Z * Speed;
+		velocity.X = direction.X * _Speed;
+		velocity.Z = direction.Z * _Speed;
 
 		Velocity = velocity;
 

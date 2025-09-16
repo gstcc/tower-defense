@@ -12,11 +12,10 @@ public partial class SkeletonMelee : BaseMob
 	
 	public override void _Ready()
 	{
-
 		// Set specific values for this enemy type
-		Speed = 2;
-		Health = 100;
-		Damage = 10;
+		_Speed = 2;
+		_Health = 100;
+		_Damage = 10;
 
 		_Skin = GetNode<SkeletonMinion>("%SkeletonMinion");
 		_NavAgent = GetNode<NavigationAgent3D>("%NavigationAgent3D");
@@ -49,16 +48,28 @@ public partial class SkeletonMelee : BaseMob
 				{
 					velocity.Y = 0;
 				}
-				Velocity = velocity.Normalized() * Speed;
+				Velocity = velocity.Normalized() * _Speed;
 				float targetAngle = (-Vector3.Forward).SignedAngleTo(Velocity, Vector3.Up);
 				Vector3 skinRotation = _Skin.GlobalRotation;
 				skinRotation.Y = Mathf.LerpAngle(skinRotation.Y, targetAngle, (float)(RotationSpeed*delta));
 				_Skin.GlobalRotation = skinRotation;
+				hasAttacked = false;
 				_AnimTree.Set("parameters/conditions/Attack", TargetInRange());
 				MoveAndSlide(); 
 				break;
 			case "Attack":
-				_AnimTree.Set("parameters/conditions/Run", TargetInRange());
+				if (!hasAttacked)
+				{
+					Attack(_Player);
+					hasAttacked = true;
+
+					// Play attack animation via AnimationTree (if not already)
+					_AnimTree.Set("parameters/conditions/Attack", true);
+
+					// Optional: also use a Timer to delay resetting state
+					//GetNode<Timer>("AttackCooldownTimer").Start();
+				}
+				//_AnimTree.Set("parameters/conditions/Run", TargetInRange());
 				break;
 			case "Death":
 				break;
@@ -67,9 +78,5 @@ public partial class SkeletonMelee : BaseMob
 			default:
 				break;
 		}
-	}
-	
-	public bool TargetInRange() {
-		return false;
 	}
 }

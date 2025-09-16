@@ -30,7 +30,7 @@ shadow_enabled = true
 transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -1.73256, 1.30303, 10)
 
 [node name="Skeleton" parent="." instance=ExtResource("5_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02395, 0.589692, -7.12025)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.02395, 0.589692, -7.12025)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_lquwl")
@@ -59,4 +59,4 @@ shape = SubResource("BoxShape3D_4xowi")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
