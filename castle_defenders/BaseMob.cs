@@ -47,11 +47,15 @@ public abstract partial class BaseMob : CharacterBody3D
 		return GlobalPosition.DistanceTo(_Player.GlobalPosition) < _AttackRange;
 	}
 	
+	protected virtual bool CanAttack() {
+		return true;
+	}
+	
 	public async void Attack(Player player)
 	{
 		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
 		//player.TakeDamage(10);
-		if (TargetInRange()) {
+		if (TargetInRange() && CanAttack()) {
 			EmitSignal(SignalName.Attacked, _Damage);
 		}
 	}

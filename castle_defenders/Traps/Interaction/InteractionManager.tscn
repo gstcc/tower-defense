@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy41pp0pot0or"]
+
+[ext_resource type="Script" uid="uid://cafkl8femt7iy" path="res://Traps/Interaction/InteractionManager.cs" id="1_abjqo"]
+
+[sub_resource type="FontVariation" id="FontVariation_2lwle"]
+
+[node name="InteractionManager" type="Node3D"]
+script = ExtResource("1_abjqo")
+
+[node name="Label3D" type="Label3D" parent="."]
+unique_name_in_owner = true
+text = "[E] to interact"
+font = SubResource("FontVariation_2lwle")

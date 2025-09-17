@@ -1,5 +1,79 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgegdw41t4wvv"]
+[gd_scene load_steps=11 format=4 uid="uid://dgegdw41t4wvv"]
 
 [ext_resource type="PackedScene" uid="uid://12s6w8rmjld" path="res://Traps/siege-ballista.glb" id="1_omodc"]
+[ext_resource type="Script" uid="uid://cikr8lg308nlb" path="res://SiegeBalista.cs" id="2_nw77a"]
+[ext_resource type="Texture2D" uid="uid://bdt8ym5km1idx" path="res://Traps/Textures/colormap.png" id="3_jg65a"]
+[ext_resource type="Script" uid="uid://cbqp55as5apkq" path="res://BallistaArrow.cs" id="3_wi0pm"]
+[ext_resource type="PackedScene" uid="uid://c732t0tetfw2b" path="res://Traps/Interaction/interactionArea.tscn" id="3_wy8yk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qna3r"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("3_jg65a")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0wrhn"]
+_surfaces = [{
+"aabb": AABB(-0.664117, 0, -0.0762829, 1.32823, 0.152566, 0.152566),
+"format": 34896613377,
+"index_count": 156,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAgABAAQAAQADAAUAAQAFAAQABAAGAAIAAgAHAAAACAAHAAIACQAAAAcABwAIAAkAAgAKAAgACgACAAYABgADAAoACwAIAAoACgADAAsAAAALAAMABgAMAAMADAAFAAMADQAMAAYABQAMAA0ACAALAA4ADgAJAAgACwAAAA8ACwAPAA4ACQAQAAAAEAAPAAAAEQAJAA4AEgAQAAkACQARABIADwAQABIADgATABEAEgARABMADgAPABQAEgAUAA8AFAATAA4AEwAUABIABgAVAA0AFQAGAAQABAAWABUAFgAEAAUADQAXAAUABQAXABYAGAAXAA0AGQAWABcAFwAYABkAFQAWABkADQAaABgAGgANABUAGQAYABoAFQAbABoAGgAbABkAGQAbABUA"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 28,
+"vertex_data": PackedByteArray("a5obCuP1AAB6rxsK4/UAAHqvGwobCgAAeq/j9eP1AAB6r6oqqioAAHqvqipU1QAAeq9U1aoqAABrmhsKGwoAAGua4/UbCgAAa5qqKqoqAAB6r+P1GwoAAGua4/Xj9QAAeq9U1VTVAABwvv////8AAGuaVNWqKgAAa5pU1VTVAABrmqoqVNUAAAAA9E70TgAAAAD0TgqxAAAAAAqx9E4AAAAACrEKsQAAcL7//wAAAABwvgAAAAAAAHC+AAD//wAA///PaS+WAAD//89pz2kAAP//L5YvlgAA//8vls9pAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_q0j2o"]
+resource_name = "siege-ballista_arrow"
+_surfaces = [{
+"aabb": AABB(-0.664117, 0, -0.0762829, 1.32823, 0.152566, 0.152566),
+"attribute_data": PackedByteArray("/1eT9/9Xk/f/V5P3/1eT9/9Xa8j/V5P3/1eT9/9Xa8j/V2vI/1eT9/9Xk/f/V2vI/1dryP9Xa8j/V2vI/1dryP9Xj9v/V4/b/1dv5P9Xb+T/V2XG/1eY+f9XEPH/V+7O/1dv5P9XmPn/V2XG/1eP2/9X7s7/V2XG/1dlxv9X7s7/V5j5/1dv5P9Xb+T/V5j5/1dlxv9XmPn/V2/k/1eP2/9XEPH/V5j5/1eY+f9XEPH/VxDx/1eY+f9XZcb/V+7O/1dlxv9Xj9v/V4/b/1dlxv9X7s7/V+7O/1dryP9XEPH/V2vI/1eT9/9Xk/f/VxDx/1eT9/9Xa8j/VxDx/1eT9/9X7s7/VxDx/1dryP9X7s7/l87p/5fO6f+XMNb/lzDW/5fuzv+X7s7/lzDW/5cw1v+X7s7/lxDx/5fO6f+XMNb/l87p/5cQ8f+XEPH/l87p/5fO6f+XEPH/l+7O/5cw1g=="),
+"format": 34896613399,
+"index_count": 156,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAAJAAlACYAJgAnACQAKAApACoAKgArACgALAAtAC4ALgAvACwAMAAxADIAMgAzADAANAA1ADYANQA3ADYANAA2ADgAOQA2ADcAOAA6ADQAOQA3ADsAOwA0ADoAOgA5ADsAPAA9AD4APgA/ADwAQAA+AD0APgBBAD8APQBCAEAAQQBDAD8AQgBDAEAAQgA/AEMARABFAEYARgBHAEQASABJAEoASgBLAEgATABNAE4ATgBPAEwAUABRAFIAUgBTAFAAVABVAFYAVgBXAFQA"),
+"material": SubResource("StandardMaterial3D_qna3r"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 88,
+"vertex_data": PackedByteArray("a5obCuP1/596rxsK4/X/n3qvGwobCv/fa5obChsK/99rmuP1Gwr//2uaGwobCv//eq8bChsK//96r+P1Gwr//3qv4/Xj9f+feq8bCuP1/59rmhsK4/X/n2ua4/Xj9f+feq/j9RsK//96r+P14/X//2ua4/Xj9f//a5rj9RsK/////y+WL5b/v///L5bPaf+////Pac9p/7///89pL5b/v3C+/////zyCcL4AAP//PIJ6r6oqVNXljHqvVNVU1eWM///PaS+Wd4dwvgAA//88gnC+/////zyC//8vli+Wd4d6r1TVqipRznC+//8AAAzUcL7/////DNR6r1TVVNVRznC+AAD//6LW///PaS+WKNH//89pz2ko0XC+AAAAAKLWcL7//wAAwf1wvgAAAADB/f//z2nPaYf4//8vls9ph/h6r6oqVNVRznC+AAD//wzUcL4AAAAADNR6r6oqqipRznqvqiqqKhjzcL4AAAAAwf1wvv//AADB/XqvVNWqKhjzcL7//wAAotb//y+Wz2ko0f//L5YvlijRcL7/////otZ6r1TVqir/v3qvVNVU1f+/eq/j9eP1/796r6oqVNX/v3qv4/UbCv+/eq8bCuP1/796rxsKGwr/v3qvqiqqKv+/a5obChsK/79rmuP1Gwr/v2uaqiqqKv+/a5obCuP1/79rmlTVqir/v2uaqipU1f+/a5rj9eP1/79rmlTVVNX/vwAA9E4Ksf+/AAD0TvRO/78AAAqx9E7/vwAACrEKsf+/a5pU1aoqstRrmlTVVNWy1AAACrEKsbLUAAAKsfROstRrmlTVVNUYgWuaqipU1RiBAAD0TgqxGIEAAAqxCrEYgQAA9E4KsbLUa5qqKlTVstRrmqoqqiqy1AAA9E70TrLUAAD0TvRO5f5rmqoqqirl/muaVNWqKuX+AAAKsfRO5f4AAP9/AAD/fwAA/38AAP9//3+B2nyl//98pf///3+B2v///38AAP9/AAD/f////3//f4Ha/398pf9/fKX/f4Ha/38AAP9/AAD/fwAA/38AAP9/////f////3////9/////fwAA/3////9/////fwAA3qVBtN+pPqzfqT6s3qVBtI5U4VYHWPBPB1jwT45U4Vb/f////3////9/AAD/fwAAQTQg2j4sHtY+LB7WQTQg2v9/////f////3////9////h1nAr78/4J+/P+Cfh1nAr/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/f////3////9/////f////3////9/////f////3////9/////f////3////9///9Hqm+rR6pvq0eqb6tHqm+r/3////9/////f////3///28rt9VvK7fVbyu31W8rt9X/f////3////9/////f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_0wrhn")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wi0pm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jg65a"]
 
 [node name="SiegeBallista" instance=ExtResource("1_omodc")]
+script = ExtResource("2_nw77a")
+
+[node name="arrow" parent="siege-ballista" index="0"]
+visible = false
+
+[node name="BallistaArrow" type="Area3D" parent="siege-ballista" index="3"]
+unique_name_in_owner = true
+script = ExtResource("3_wi0pm")
+
+[node name="arrow2" type="MeshInstance3D" parent="siege-ballista/BallistaArrow" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.326368, 0.416426, -1.84087e-14)
+mesh = SubResource("ArrayMesh_q0j2o")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="siege-ballista/BallistaArrow" index="1"]
+transform = Transform3D(1.4, 0, 0, 0, 0.3, 0, 0, 0, 0.2, 0.319088, 0.525148, 0)
+shape = SubResource("BoxShape3D_wi0pm")
+
+[node name="InteractionArea" parent="." index="1" instance=ExtResource("3_wy8yk")]
+unique_name_in_owner = true
+_ActionName = "fire"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" index="0"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1, 0)
+shape = SubResource("BoxShape3D_jg65a")
+
+[connection signal="body_entered" from="siege-ballista/BallistaArrow" to="." method="_OnBodyEntered"]
+[connection signal="body_exited" from="siege-ballista/BallistaArrow" to="." method="_OnBodyExited"]

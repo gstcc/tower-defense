@@ -10,6 +10,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_onrkg"]
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 2
 script = ExtResource("1_4flbx")
 
 [node name="Knight" parent="." instance=ExtResource("3_i3pqv")]

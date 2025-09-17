@@ -25,7 +25,11 @@ public partial class SkeletonMelee : BaseMob
 
 		GD.Print("SkeletonMelee ready.");
 	}
-// https://www.youtube.com/watch?v=kBzV7vgdQfU
+	
+	protected override bool CanAttack() {
+		return _StateMachine.GetCurrentNode() != "Hit";
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
 		string state = _StateMachine.GetCurrentNode();
