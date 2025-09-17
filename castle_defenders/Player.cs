@@ -85,7 +85,6 @@ public partial class Player : CharacterBody3D
 		_CameraPivot.Rotation = rotation;
 		CameraInputDirection = Vector2.Zero;
 		attackTimer -= (float)delta;
-		bool isStartingJump = false;
 		
 		Vector2 inputDir = Input.GetVector("move_left", "move_right", "move_up", "move_down");
 		if (inputDir != Vector2.Zero) {
@@ -114,15 +113,12 @@ public partial class Player : CharacterBody3D
 		if (Input.IsActionJustPressed("jump") && IsOnFloor()) {
 			_AnimTree.Set("parameters/conditions/Jump", true);
 			_AnimTree.Set("parameters/conditions/Idle", false);
-			isStartingJump = true;	
 		}
 		//Handle movement and animations
 		Vector3 velocity = Velocity;
 		string state = _StateMachine.GetCurrentNode();
 		switch (state) {
 			case "Run":
-				// Character movement
-				float yVelocity = velocity.Y;
 				// Apply gravity
 				if (!IsOnFloor())
 					velocity += GetGravity() * (float)delta;

@@ -49,6 +49,7 @@ shadow_mesh = SubResource("ArrayMesh_0wrhn")
 [sub_resource type="BoxShape3D" id="BoxShape3D_jg65a"]
 
 [node name="SiegeBallista" instance=ExtResource("1_omodc")]
+transform = Transform3D(0.996234, -0.0867037, 0, 0.0867037, 0.996234, 0, 0, 0, 1, 0, -0.0974712, 0)
 script = ExtResource("2_nw77a")
 
 [node name="arrow" parent="siege-ballista" index="0"]
@@ -56,6 +57,8 @@ visible = false
 
 [node name="BallistaArrow" type="Area3D" parent="siege-ballista" index="3"]
 unique_name_in_owner = true
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("3_wi0pm")
 
 [node name="arrow2" type="MeshInstance3D" parent="siege-ballista/BallistaArrow" index="0"]
@@ -64,8 +67,13 @@ mesh = SubResource("ArrayMesh_q0j2o")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="siege-ballista/BallistaArrow" index="1"]
-transform = Transform3D(1.4, 0, 0, 0, 0.3, 0, 0, 0, 0.2, 0.319088, 0.525148, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.766644, 0.486197, 0)
 shape = SubResource("BoxShape3D_wi0pm")
+
+[node name="RayCast3D" type="RayCast3D" parent="siege-ballista/BallistaArrow" index="2"]
+transform = Transform3D(1, -7.45058e-09, 0, 7.45058e-09, 1, 0, 0, 0, 1, -0.0545515, 0.562426, 0)
+target_position = Vector3(1, 0, 0)
+collide_with_areas = true
 
 [node name="InteractionArea" parent="." index="1" instance=ExtResource("3_wy8yk")]
 unique_name_in_owner = true
@@ -75,5 +83,8 @@ _ActionName = "fire"
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1, 0)
 shape = SubResource("BoxShape3D_jg65a")
 
+[connection signal="area_entered" from="siege-ballista/BallistaArrow" to="siege-ballista/BallistaArrow" method="_OnBodyEntered"]
 [connection signal="body_entered" from="siege-ballista/BallistaArrow" to="." method="_OnBodyEntered"]
-[connection signal="body_exited" from="siege-ballista/BallistaArrow" to="." method="_OnBodyExited"]
+[connection signal="body_entered" from="siege-ballista/BallistaArrow" to="siege-ballista/BallistaArrow" method="_OnBodyExited"]
+[connection signal="body_exited" from="siege-ballista/BallistaArrow" to="siege-ballista/BallistaArrow" method="_OnBodyEntered"]
+[connection signal="body_exited" from="siege-ballista/BallistaArrow" to="siege-ballista/BallistaArrow" method="_OnBodyExited"]
