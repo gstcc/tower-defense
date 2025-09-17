@@ -86,5 +86,5 @@ shape = SubResource("BoxShape3D_jg65a")
 [connection signal="area_entered" from="siege-ballista/BallistaArrow" to="siege-ballista/BallistaArrow" method="_OnBodyEntered"]
 [connection signal="body_entered" from="siege-ballista/BallistaArrow" to="." method="_OnBodyEntered"]
 [connection signal="body_entered" from="siege-ballista/BallistaArrow" to="siege-ballista/BallistaArrow" method="_OnBodyExited"]
-[connection signal="body_exited" from="siege-ballista/BallistaArrow" to="siege-ballista/BallistaArrow" method="_OnBodyEntered"]
 [connection signal="body_exited" from="siege-ballista/BallistaArrow" to="siege-ballista/BallistaArrow" method="_OnBodyExited"]
+[connection signal="body_exited" from="siege-ballista/BallistaArrow" to="siege-ballista/BallistaArrow" method="_OnBodyEntered"]
