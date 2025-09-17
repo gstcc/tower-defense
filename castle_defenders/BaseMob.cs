@@ -13,6 +13,7 @@ public abstract partial class BaseMob : CharacterBody3D
 	protected Player _Player;
 	protected AnimationTree _AnimTree;
 	protected bool hasAttacked = false;
+	protected bool _Dead;
 	[Signal]
 	public delegate void AttackedEventHandler(Node target);
 
@@ -48,25 +49,31 @@ public abstract partial class BaseMob : CharacterBody3D
 	
 	public async void Attack(Player player)
 	{
-		await ToSignal(GetTree().CreateTimer(0.4), "timeout");
+		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
 		//player.TakeDamage(10);
 		if (TargetInRange()) {
 			EmitSignal(SignalName.Attacked, _Damage);
 		}
 	}
 	
-	private void Die()
+	private async void Die()
 	{
 		GD.Print($"{Name} died!");
-		//Should killed mobs be removed to save performance?
+		_Dead=true;
+		_AnimTree.Set("parameters/conditions/Die", true);
+		
+		//Save bodies for 1 minute then despawn.
+		await ToSignal(GetTree().CreateTimer(60), "timeout");
+		// Should killed mobs be removed to save performance?
 		// Maybe save dead bodies for a while and then despawn?
-		//QueueFree();
+		QueueFree();
 	}
 	
 	public virtual void Hurt(int damage)
 	{
 		GD.Print("Hurt");
 		_Health -= damage;
+		_AnimTree.Set("parameters/conditions/Hit", true);
 		if (_Health <= 0) {
 			GD.Print("Dead");
 			Die();
@@ -77,6 +84,9 @@ public abstract partial class BaseMob : CharacterBody3D
 	{
 		if (chest == null)
 			return;
+		if (_Dead) {
+			return;
+		}
 
 		// Update target only if the chest moved (optional)
 		// MakePath();

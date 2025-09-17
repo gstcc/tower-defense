@@ -1,10 +1,15 @@
-[gd_scene load_steps=34 format=3 uid="uid://vu1bmd1o7de3"]
+[gd_scene load_steps=38 format=3 uid="uid://vu1bmd1o7de3"]
 
 [ext_resource type="PackedScene" uid="uid://dmqgbgl01u4po" path="res://Characters/Knight.glb" id="1_owtlo"]
 [ext_resource type="Script" uid="uid://cskmomj2oyj5l" path="res://Knight.cs" id="2_26ldq"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nsuie"]
 animation = &"1H_Melee_Attack_Slice_Diagonal"
+use_custom_timeline = true
+timeline_length = 0.5
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_26ldq"]
 animation = &"Block"
@@ -126,6 +131,22 @@ advance_mode = 2
 advance_mode = 2
 advance_condition = &"Idle"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dv8gv"]
+advance_mode = 2
+advance_condition = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2enxl"]
+advance_mode = 2
+advance_condition = &"Run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jb4xp"]
+advance_mode = 2
+advance_condition = &"Jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s17li"]
+advance_mode = 2
+advance_condition = &"Run"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nsuie"]
 states/Attack/node = SubResource("AnimationNodeAnimation_nsuie")
 states/Attack/position = Vector2(726, 100)
@@ -143,7 +164,8 @@ states/Jump/node = SubResource("AnimationNodeAnimation_hnm0a")
 states/Jump/position = Vector2(596, 174)
 states/Run/node = SubResource("AnimationNodeAnimation_k3kcr")
 states/Run/position = Vector2(449, 109)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1o34j"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_7woc6"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_nabqu"), "Idle", "Block", SubResource("AnimationNodeStateMachineTransition_ttilu"), "Run", "Block", SubResource("AnimationNodeStateMachineTransition_ir7sf"), "Attack", "Block", SubResource("AnimationNodeStateMachineTransition_2yhar"), "Attack", "Jump", SubResource("AnimationNodeStateMachineTransition_6j7tr"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_1hfkx"), "Interact", "Idle", SubResource("AnimationNodeStateMachineTransition_nsuie"), "Idle", "Interact", SubResource("AnimationNodeStateMachineTransition_26ldq"), "Run", "Interact", SubResource("AnimationNodeStateMachineTransition_np0bx"), "Attack", "Interact", SubResource("AnimationNodeStateMachineTransition_go3up"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_gadha"), "Run", "Hit", SubResource("AnimationNodeStateMachineTransition_o118k"), "Attack", "Hit", SubResource("AnimationNodeStateMachineTransition_hnm0a"), "Fall", "Idle", SubResource("AnimationNodeStateMachineTransition_k3kcr"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_y3qlt"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_mqylv"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_ei71d"), "Block", "Attack", SubResource("AnimationNodeStateMachineTransition_0k4cw"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_dbld7"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_abgp4")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1o34j"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_7woc6"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_nabqu"), "Idle", "Block", SubResource("AnimationNodeStateMachineTransition_ttilu"), "Run", "Block", SubResource("AnimationNodeStateMachineTransition_ir7sf"), "Attack", "Block", SubResource("AnimationNodeStateMachineTransition_2yhar"), "Attack", "Jump", SubResource("AnimationNodeStateMachineTransition_6j7tr"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_1hfkx"), "Interact", "Idle", SubResource("AnimationNodeStateMachineTransition_nsuie"), "Idle", "Interact", SubResource("AnimationNodeStateMachineTransition_26ldq"), "Run", "Interact", SubResource("AnimationNodeStateMachineTransition_np0bx"), "Attack", "Interact", SubResource("AnimationNodeStateMachineTransition_go3up"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_gadha"), "Run", "Hit", SubResource("AnimationNodeStateMachineTransition_o118k"), "Attack", "Hit", SubResource("AnimationNodeStateMachineTransition_hnm0a"), "Fall", "Idle", SubResource("AnimationNodeStateMachineTransition_k3kcr"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_y3qlt"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_mqylv"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_ei71d"), "Block", "Attack", SubResource("AnimationNodeStateMachineTransition_0k4cw"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_dbld7"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_abgp4"), "Block", "Idle", SubResource("AnimationNodeStateMachineTransition_dv8gv"), "Block", "Run", SubResource("AnimationNodeStateMachineTransition_2enxl"), "Block", "Jump", SubResource("AnimationNodeStateMachineTransition_jb4xp"), "Fall", "Run", SubResource("AnimationNodeStateMachineTransition_s17li")]
+graph_offset = Vector2(-5, -29)
 
 [node name="Knight" instance=ExtResource("1_owtlo")]
 script = ExtResource("2_26ldq")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b8humbbgybgdf"]
+[gd_scene load_steps=21 format=3 uid="uid://b8humbbgybgdf"]
 
 [ext_resource type="PackedScene" uid="uid://crt8l7hu0wk62" path="res://Characters/Skeleton_Minion.glb" id="1_ggfys"]
 [ext_resource type="Script" uid="uid://ry4kn0nee57c" path="res://Characters/SkeletonMinion.cs" id="2_0j7lq"]
@@ -6,6 +6,11 @@
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2wfpi"]
 animation = &"1H_Melee_Attack_Slice_Diagonal"
+use_custom_timeline = true
+timeline_length = 2.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0j7lq"]
 animation = &"Death_A"
@@ -62,18 +67,27 @@ xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"Hit"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2wfpi"]
+advance_mode = 2
+advance_condition = &"Hit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0j7lq"]
+advance_mode = 2
+advance_condition = &"Die"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pml04"]
 states/Attack/node = SubResource("AnimationNodeAnimation_2wfpi")
 states/Attack/position = Vector2(657, 105)
-states/Death_A/node = SubResource("AnimationNodeAnimation_0j7lq")
-states/Death_A/position = Vector2(423, 3)
+states/Die/node = SubResource("AnimationNodeAnimation_0j7lq")
+states/Die/position = Vector2(423, 3)
 states/Hit/node = SubResource("AnimationNodeAnimation_m5feg")
 states/Hit/position = Vector2(443, 228)
 states/Idle/node = SubResource("AnimationNodeAnimation_jk8x6")
 states/Idle/position = Vector2(313, 105)
 states/Run/node = SubResource("AnimationNodeAnimation_ubkml")
 states/Run/position = Vector2(431, 113)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_wysgh"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_0p28x"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_qv3mf"), "Attack", "Death_A", SubResource("AnimationNodeStateMachineTransition_di1gg"), "Run", "Death_A", SubResource("AnimationNodeStateMachineTransition_lvhts"), "Idle", "Death_A", SubResource("AnimationNodeStateMachineTransition_6mep7"), "Attack", "Run", SubResource("AnimationNodeStateMachineTransition_bn4k3"), "Hit", "Run", SubResource("AnimationNodeStateMachineTransition_ef3tm"), "Run", "Hit", SubResource("AnimationNodeStateMachineTransition_0hpv7")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_wysgh"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_0p28x"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_qv3mf"), "Attack", "Die", SubResource("AnimationNodeStateMachineTransition_di1gg"), "Run", "Die", SubResource("AnimationNodeStateMachineTransition_lvhts"), "Idle", "Die", SubResource("AnimationNodeStateMachineTransition_6mep7"), "Attack", "Run", SubResource("AnimationNodeStateMachineTransition_bn4k3"), "Hit", "Run", SubResource("AnimationNodeStateMachineTransition_ef3tm"), "Run", "Hit", SubResource("AnimationNodeStateMachineTransition_0hpv7"), "Attack", "Hit", SubResource("AnimationNodeStateMachineTransition_2wfpi"), "Hit", "Die", SubResource("AnimationNodeStateMachineTransition_0j7lq")]
+graph_offset = Vector2(52, 73)
 
 [node name="SkeletonMinion" instance=ExtResource("1_ggfys")]
 script = ExtResource("2_0j7lq")

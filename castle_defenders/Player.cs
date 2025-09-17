@@ -3,9 +3,9 @@ using System;
 
 public partial class Player : CharacterBody3D
 {
-	private const float Speed = 5.0f;
+	private const float Speed = 3.0f;
 	private const float Acceleration = 0.5f;
-	private const float JumpVelocity = 4.5f;
+	private const float JumpVelocity = 1.5f;
 	private const float MouseSensitivity = 0.25f;
 	private const float RotationSpeed = 12.0f; 
 	private const int Damage = 20;
@@ -21,6 +21,7 @@ public partial class Player : CharacterBody3D
 	private bool isAttacking = false;
 	private float attackTimer = 0.0f;
 	private const float ATTACK_DURATION = 0.5f;
+	//private bool _IsBlocking = false;
 	
 	// https://www.youtube.com/watch?v=JlgZtOFMdfc 24.10
 	public override void _UnhandledInput(InputEvent ev) 
@@ -47,6 +48,10 @@ public partial class Player : CharacterBody3D
 	
 	private void OnEnemyAttacked(int damage)
 	{
+		//Blocking
+		if (Input.IsActionPressed("right_click")) {
+			GD.Print("Blocking while attackec");
+		}
 		GD.Print("Player received attack signal.");
 		GD.Print(damage);
 	}
@@ -84,12 +89,20 @@ public partial class Player : CharacterBody3D
 		
 		Vector2 inputDir = Input.GetVector("move_left", "move_right", "move_up", "move_down");
 		if (inputDir != Vector2.Zero) {
-			_AnimTree.Set("parameters/conditions/Run", true);
+			_AnimTree.Set("parameters/conditions/Run", IsOnFloor());
 			_AnimTree.Set("parameters/conditions/Idle", false);
+			_AnimTree.Set("parameters/conditions/Block", false);
 		} else {
 			_AnimTree.Set("parameters/conditions/Run", false);
 			// If we're falling we're not idle
 			_AnimTree.Set("parameters/conditions/Idle", IsOnFloor());
+			_AnimTree.Set("parameters/conditions/Block", false);
+		}
+		
+		if (Input.IsActionPressed("right_click")) {
+			_AnimTree.Set("parameters/conditions/Block", true);
+			_AnimTree.Set("parameters/conditions/Run", false);
+			_AnimTree.Set("parameters/conditions/Idle", false);
 		}
 		
 		// Attack button was pressed
@@ -157,6 +170,8 @@ public partial class Player : CharacterBody3D
 			case "Hit":
 				break;
 			case "Block":
+				velocity.X = 0;
+				velocity.Z = 0;	
 				break;
 			case "Interact":
 				break;
