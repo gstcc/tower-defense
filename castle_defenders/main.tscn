@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfo7j11et57my"]
+[gd_scene load_steps=14 format=3 uid="uid://cfo7j11et57my"]
 
 [ext_resource type="PackedScene" uid="uid://c4l4dgchg6d64" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bx2svmuu5fx3m" path="res://builtAssets/FirstHouse.tscn" id="2_0xm2m"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dy41pp0pot0or" path="res://Traps/Interaction/InteractionManager.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dgegdw41t4wvv" path="res://Traps/siegeBalista.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://b8fru1b3j2o7u" path="res://Traps/ExplosiveBarrels.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://bf3dcbdktggoc" path="res://Characters/SkeletonAxe.tscn" id="9_kek77"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_lquwl"]
 vertices = PackedVector3Array(-59, 0.488, -2, -11.25, 0.488, -1.75, -11.25, 0.488, -3.25, -10.5, 0.488, -4, -8, 0.488, -59, -59, 0.488, -59, -8, 0.488, -4, -4.75, 0.488, -3.25, -4.75, 0.488, -2, -3.5, 0.488, -2, -1, 0.488, -2.5, -0.25, 0.488, -3.25, -2.75, 0.488, -1.25, -2.75, 0.488, 0.5, -1, 0.488, 0.5, -5.5, 0.488, -4, 1.25, 0.488, -3.25, 1.25, 0.488, -59, 3.25, 0.488, -2.5, 3.25, 0.488, -1, 59, 0.488, -1.25, 2.5, 0.488, -3.25, 59, 0.488, -59, -59, 0.488, 2.25, -11.25, 0.488, 2, -9, 4.488, 2, -7, 4.488, 2, -6.75, 4.488, 1, -6.75, 4.488, -2, -9, 4.488, -2, -8.75, 0.488, 1.75, -7.5, 0.488, 1.75, -7.5, 0.488, 1, -7, 0.488, 0.75, -7.5, 0.488, -1.75, -8.75, 0.488, -1.75, 3.25, 0.488, 1, 4.25, 0.488, 1.75, 59, 0.488, 3, 4.25, 0.488, 3.25, -3.5, 0.488, 3, -3.75, 0.488, 2.25, -4.75, 0.488, 2.25, -4.75, 0.488, 3.25, -4.25, 0.488, 3.75, -2.25, 0.488, 8.5, -2.25, 0.488, 7.25, -3.5, 0.488, 7.25, -6, 0.488, 7.5, -6.75, 0.488, 8.25, -2.25, 0.488, 3, -2.25, 0.488, 1.75, -2.75, 0.488, 1.25, -1, 0.488, 1, -1.5, 0.488, 9.25, -8.25, 0.488, 8.25, -8.25, 0.488, 59, -0.25, 0.488, 59, -6, 0.488, 4.25, -4.25, 0.488, 6.5, 0, 0.488, 9.25, -10.25, 0.488, 6, -10.25, 0.488, 4.25, -11.25, 0.488, 3.5, -59, 0.488, 6.25, -0.25, 4.488, 3, -0.25, 4.488, 7.25, 2, 4.488, 7.25, 2, 4.488, 3, 4.25, 0.488, 7, 59, 0.488, 7.25, 1.75, 0.488, 3.25, 0.5, 0.488, 3.25, 0, 0.488, 4.5, 0.5, 0.488, 6.75, 1.75, 0.488, 6.75, -10.25, 0.488, 7.5, -9.5, 0.488, 8.25, -59, 0.488, 59, 3.5, 0.488, 9.25, 2, 0.488, 9.25, 2.25, 0.488, 59, 4.25, 0.488, 8.5, 59, 0.488, 59)
@@ -72,3 +73,6 @@ transform = Transform3D(-0.980606, 0.138985, 0.138188, 0.140331, 0.990105, 3.379
 
 [node name="ExplosiveBarrels" parent="." instance=ExtResource("8_5vw27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+
+[node name="SkeletonAxe" parent="." instance=ExtResource("9_kek77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -6)

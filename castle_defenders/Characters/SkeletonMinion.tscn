@@ -87,7 +87,7 @@ states/Idle/position = Vector2(313, 105)
 states/Run/node = SubResource("AnimationNodeAnimation_ubkml")
 states/Run/position = Vector2(431, 113)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_wysgh"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_0p28x"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_qv3mf"), "Attack", "Die", SubResource("AnimationNodeStateMachineTransition_di1gg"), "Run", "Die", SubResource("AnimationNodeStateMachineTransition_lvhts"), "Idle", "Die", SubResource("AnimationNodeStateMachineTransition_6mep7"), "Attack", "Run", SubResource("AnimationNodeStateMachineTransition_bn4k3"), "Hit", "Run", SubResource("AnimationNodeStateMachineTransition_ef3tm"), "Run", "Hit", SubResource("AnimationNodeStateMachineTransition_0hpv7"), "Attack", "Hit", SubResource("AnimationNodeStateMachineTransition_2wfpi"), "Hit", "Die", SubResource("AnimationNodeStateMachineTransition_0j7lq")]
-graph_offset = Vector2(52, 73)
+graph_offset = Vector2(52, -27.2716)
 
 [node name="SkeletonMinion" instance=ExtResource("1_ggfys")]
 script = ExtResource("2_0j7lq")
@@ -95,7 +95,9 @@ script = ExtResource("2_0j7lq")
 [node name="Skeleton3D" parent="Rig" index="0"]
 bones/1/position = Vector3(0, 0.392064, 0)
 bones/1/rotation = Quaternion(-1.11123e-10, 0.0431578, 2.57241e-09, 0.999068)
+bones/1/scale = Vector3(1, 1, 1)
 bones/2/rotation = Quaternion(-6.93889e-18, 7.10543e-15, 4.93038e-32, 1)
+bones/2/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(8.27181e-25, 3.72529e-09, -2.75506e-40, 1)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(0.212007, 0.134132, 7.92996e-08)
@@ -123,6 +125,7 @@ bones/13/position = Vector3(-1.5736e-08, 0.0961251, -0.0575)
 bones/13/rotation = Quaternion(-1.02444e-09, -4.24391e-09, 0.707107, 0.707107)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/rotation = Quaternion(-5.80608e-11, -0.0313417, -1.88012e-09, 0.999509)
+bones/14/scale = Vector3(1, 1, 1)
 bones/15/position = Vector3(0.170945, 0.113587, 1.59941e-08)
 bones/15/rotation = Quaternion(0.993715, 0.0837146, 0.0735038, 0.0109185)
 bones/15/scale = Vector3(1, 1, 1)
@@ -172,13 +175,14 @@ bones/38/rotation = Quaternion(0.794627, -1.11759e-07, 0.607098, -5.96046e-08)
 bones/39/rotation = Quaternion(-0.707107, -7.27951e-08, -7.27951e-08, 0.707107)
 bones/40/position = Vector3(-0.510844, 0.788312, 0.0597369)
 bones/40/rotation = Quaternion(-0.758253, -1.52737e-07, 0.651961, -1.11759e-08)
+bones/40/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Rig/Skeleton3D" index="9"]
 transform = Transform3D(-0.578895, -0.471723, -0.665099, -0.240088, -0.680901, 0.691902, -0.779254, 0.560222, 0.280916, -0.388189, 0.96536, -0.0859395)
 bone_name = "lowerarm.r"
 bone_idx = 10
 
-[node name="Skeleton_Blade2" parent="Rig/Skeleton3D/BoneAttachment3D" index="0" instance=ExtResource("2_2wfpi")]
+[node name="Blade" parent="Rig/Skeleton3D/BoneAttachment3D" index="0" instance=ExtResource("2_2wfpi")]
 transform = Transform3D(-0.48387, -0.770878, -0.414271, -0.667104, 0.631292, -0.395532, 0.566431, 0.0849756, -0.819718, -0.0331872, 0.397482, -0.0350901)
 
 [node name="AnimationPlayer" parent="." index="1"]

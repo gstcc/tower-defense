@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf3dcbdktggoc"]
+
+[ext_resource type="Script" uid="uid://n23seb6aiycu" path="res://Characters/SkeletonAxe.cs" id="1_5jlfk"]
+[ext_resource type="PackedScene" uid="uid://n0ia2uxu0vtk" path="res://SkeletonWarrior.tscn" id="2_03qcl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_osxdw"]
+
+[node name="SkeletonAxe" type="CharacterBody3D"]
+script = ExtResource("1_5jlfk")
+
+[node name="SkeletonWarrior" parent="." instance=ExtResource("2_03qcl")]
+unique_name_in_owner = true
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_osxdw")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+unique_name_in_owner = true
