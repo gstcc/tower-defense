@@ -1418,7 +1418,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259766, 0.794571, 0.0452881
 shape = SubResource("BoxShape3D_pcjtj")
 
 [node name="tree_tall_fall2" parent="." instance=ExtResource("101_5588t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46607, 0, 6.909)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -1.46607, 0, 6.909)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="tree_tall_fall2"]
 
