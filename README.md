@@ -6,7 +6,9 @@
     - [ ] Interact with items animations
 - [ ] Create map
     - [X] Ground mesh
-    - [ ] Items mesh
+    - [X] Items mesh
+    - [ ] make "tutorial" map
+    - [ ] make levels
 - [ ] Life bar, level status
     - [ ] Lifebar
     - [ ] Menu
