@@ -11,7 +11,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_sq41i"]
 size = Vector3(2, 1.5, 3)
 
-[node name="Node3D" type="StaticBody3D"]
+[node name="basicWoodHouse" type="StaticBody3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
 [node name="wall-wood-door2" parent="." instance=ExtResource("1_wlu6r")]
 

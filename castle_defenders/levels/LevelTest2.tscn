@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbye5kv0yyew7"]
+
+[ext_resource type="PackedScene" uid="uid://dmqgbgl01u4po" path="res://Characters/Knight.glb" id="1_hdp2g"]
+[ext_resource type="PackedScene" uid="uid://camojpwqwequl" path="res://builtAssets/basicWoodHouse2.tscn" id="2_3d6wo"]
+[ext_resource type="PackedScene" uid="uid://djpiuhttr3pwx" path="res://builtAssets/SmallTallHouse.tscn" id="3_2iepk"]
+[ext_resource type="PackedScene" uid="uid://ce3wf1ar0oop4" path="res://builtAssets/SkinnyWoodHouse.tscn" id="4_6iw3g"]
+[ext_resource type="PackedScene" uid="uid://cvqqqd4ojmc4v" path="res://builtAssets/HouseWithWaterMill.tscn" id="5_qifip"]
+[ext_resource type="PackedScene" uid="uid://bx2svmuu5fx3m" path="res://builtAssets/FirstHouse.tscn" id="6_hgsdm"]
+[ext_resource type="PackedScene" uid="uid://5oy2vqy2ey4a" path="res://builtAssets/basicWoodHouse.tscn" id="7_gikfm"]
+
+[node name="LevelTest2" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+
+[node name="GridMap2" type="GridMap" parent="."]
+
+[node name="Knight" parent="." instance=ExtResource("1_hdp2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -9)
+
+[node name="basicWoodHouse2" parent="." instance=ExtResource("2_3d6wo")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -10, 0, 20)
+
+[node name="SmallTallHouse" parent="." instance=ExtResource("3_2iepk")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 19.7788, -2, -0.233225)
+
+[node name="SmallTallHouse2" parent="." instance=ExtResource("3_2iepk")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5, 0, 11)
+
+[node name="SkinnyWoodHouse" parent="." instance=ExtResource("4_6iw3g")]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 10, 0, 22)
+
+[node name="HouseWithWaterMill" parent="." instance=ExtResource("5_qifip")]
+transform = Transform3D(-2.95803e-05, 0, -4, 0, 4, 0, 4, 0, -2.95803e-05, 0, 0, -24)
+
+[node name="FirstHouse" parent="." instance=ExtResource("6_hgsdm")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -12, 0, 2)
+
+[node name="basicWoodHouse" parent="." instance=ExtResource("7_gikfm")]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 9, 0, 9)
+
+[node name="basicWoodHouse3" parent="." instance=ExtResource("2_3d6wo")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 14, 0, -10)
+
+[node name="basicWoodHouse4" parent="." instance=ExtResource("7_gikfm")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -11, 0, -11)

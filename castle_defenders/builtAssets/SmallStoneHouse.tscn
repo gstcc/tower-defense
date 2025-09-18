@@ -12,7 +12,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_4tcpt"]
 
 [node name="SmallStoneHouse" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0322871, 0.0347552, 0.00734448)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.0322871, 0.0347552, 0.00734448)
 
 [node name="wall-detail-horizontal2" parent="." instance=ExtResource("1_26jyi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.1)

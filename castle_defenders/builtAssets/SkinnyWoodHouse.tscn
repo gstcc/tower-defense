@@ -9,6 +9,7 @@
 size = Vector3(1, 2, 3)
 
 [node name="SkinnyWoodHouse" type="StaticBody3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
 [node name="roof-gable2" parent="." instance=ExtResource("1_lc2pu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2, -1)

@@ -26,7 +26,8 @@ size = Vector3(2, 2.5, 1.25)
 [sub_resource type="BoxShape3D" id="BoxShape3D_r31af"]
 size = Vector3(2, 2.5, 2)
 
-[node name="Node3D" type="StaticBody3D"]
+[node name="HouseWithPathWay" type="StaticBody3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
 [node name="wall-arch2" parent="." instance=ExtResource("1_6qdko")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.4, 0, -0.5)
