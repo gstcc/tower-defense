@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8fru1b3j2o7u"]
+
+[ext_resource type="Script" uid="uid://de1aby544h5wc" path="res://Traps/ExplosiveBarrels.cs" id="1_x40ju"]
+[ext_resource type="PackedScene" uid="uid://cteu6b2ramyy1" path="res://Traps/explosion.tscn" id="2_mevvb"]
+[ext_resource type="PackedScene" uid="uid://c732t0tetfw2b" path="res://Traps/Interaction/interactionArea.tscn" id="3_slv6r"]
+[ext_resource type="PackedScene" uid="uid://clkltvnpb48c2" path="res://art/Pirates/barrel.glb" id="4_h5ssn"]
+[ext_resource type="Script" uid="uid://j7uqbjb1jgyk" path="res://Traps/DamageArea.cs" id="5_mevvb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_up2tb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_slv6r"]
+
+[node name="ExplosiveBarrels" type="Node3D"]
+script = ExtResource("1_x40ju")
+
+[node name="Explosion" parent="." instance=ExtResource("2_mevvb")]
+unique_name_in_owner = true
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_slv6r")]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1, 0)
+shape = SubResource("BoxShape3D_up2tb")
+
+[node name="barrel2" parent="." instance=ExtResource("4_h5ssn")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.168219, 0, -0.167324)
+
+[node name="barrel3" parent="." instance=ExtResource("4_h5ssn")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.168219, 0, 0.172676)
+
+[node name="barrel4" parent="." instance=ExtResource("4_h5ssn")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.171781, 0, -0.167324)
+
+[node name="barrel5" parent="." instance=ExtResource("4_h5ssn")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.171781, 0, 0.172676)
+
+[node name="barrel6" parent="." instance=ExtResource("4_h5ssn")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.3, 0)
+
+[node name="DamageArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("5_mevvb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_slv6r")

@@ -9,6 +9,11 @@ public partial class InteractionManager : Node3D
 	protected const string _BaseText = "[E] to";
 	protected bool _CanInteract = true;
 	protected List<InteractionArea> _ActiveAreas = new();
+	private bool _OneTimeInteract = false;
+	
+	public void SetOneTimeInteract(bool v) {
+		_OneTimeInteract = v;
+	}
 
 	public override void _Ready()
 	{
@@ -22,7 +27,8 @@ public partial class InteractionManager : Node3D
 			_CanInteract=false;
 			_Label.Visible = false;
 			await _ActiveAreas[0].interact();
-			_CanInteract=true;
+			//Some things can only be interacted with once, e.g. explose barrels.
+			_CanInteract= (!_OneTimeInteract);
 		}
 	}	
 	

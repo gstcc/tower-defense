@@ -56,6 +56,10 @@ public partial class Player : CharacterBody3D
 		GD.Print(damage);
 	}
 	
+	public void Hurt(int damage) {
+		OnEnemyAttacked(damage);
+	}
+	
 	public override void _Input(InputEvent ev) 
 	{
 		if (ev.IsActionPressed("left_click")) {
