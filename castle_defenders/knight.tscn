@@ -6,7 +6,7 @@
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nsuie"]
 animation = &"1H_Melee_Attack_Slice_Diagonal"
 use_custom_timeline = true
-timeline_length = 0.5
+timeline_length = 0.7
 stretch_time_scale = true
 start_offset = 0.0
 loop_mode = 0

@@ -67,10 +67,10 @@ public partial class Player : CharacterBody3D
 		}
 	}
 	
-	public void Attack()
+	public async void Attack()
 	{
+		await ToSignal(GetTree().CreateTimer(0.2), "timeout");
 		var enemies = _HitBox.GetOverlappingBodies();
-		
 		foreach (var body in _HitBox.GetOverlappingBodies())
 		{
 			if (body is BaseMob enemy)

@@ -75,9 +75,16 @@ public abstract partial class BaseMob : CharacterBody3D
 	
 	public virtual void Hurt(int damage)
 	{
+		if (_Dead) {
+			return;
+		}
 		GD.Print("Hurt");
 		_Health -= damage;
 		_AnimTree.Set("parameters/conditions/Hit", true);
+		_AnimTree.Set("parameters/conditions/Attack", false);
+		var playback = (AnimationNodeStateMachinePlayback)_AnimTree.Get("parameters/playback");
+		playback.Travel("Hit");
+
 		if (_Health <= 0) {
 			GD.Print("Dead");
 			Die();
