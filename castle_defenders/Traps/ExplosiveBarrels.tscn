@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8fru1b3j2o7u"]
+[gd_scene load_steps=9 format=3 uid="uid://b8fru1b3j2o7u"]
 
 [ext_resource type="Script" uid="uid://de1aby544h5wc" path="res://Traps/ExplosiveBarrels.cs" id="1_x40ju"]
 [ext_resource type="PackedScene" uid="uid://cteu6b2ramyy1" path="res://Traps/explosion.tscn" id="2_mevvb"]
 [ext_resource type="PackedScene" uid="uid://c732t0tetfw2b" path="res://Traps/Interaction/interactionArea.tscn" id="3_slv6r"]
 [ext_resource type="PackedScene" uid="uid://clkltvnpb48c2" path="res://art/Pirates/barrel.glb" id="4_h5ssn"]
 [ext_resource type="Script" uid="uid://j7uqbjb1jgyk" path="res://Traps/DamageArea.cs" id="5_mevvb"]
+[ext_resource type="Texture2D" uid="uid://b7ebin364rhf2" path="res://art/Pictures/circle.png" id="6_slv6r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_up2tb"]
 
@@ -49,3 +50,10 @@ script = ExtResource("5_mevvb")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_slv6r")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+layers = 4
+modulate = Color(0.729006, 0.725748, 0, 1)
+axis = 1
+texture = ExtResource("6_slv6r")

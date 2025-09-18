@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cfo7j11et57my"]
+[gd_scene load_steps=16 format=3 uid="uid://cfo7j11et57my"]
 
 [ext_resource type="PackedScene" uid="uid://c4l4dgchg6d64" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bx2svmuu5fx3m" path="res://builtAssets/FirstHouse.tscn" id="2_0xm2m"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dgegdw41t4wvv" path="res://Traps/siegeBalista.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://b8fru1b3j2o7u" path="res://Traps/ExplosiveBarrels.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://bf3dcbdktggoc" path="res://Characters/SkeletonAxe.tscn" id="9_kek77"]
+[ext_resource type="Script" uid="uid://dfqxpqwwfl2jv" path="res://MiniMapCamera.cs" id="10_4c57u"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_lquwl"]
 vertices = PackedVector3Array(-59, 0.488, -2, -11.25, 0.488, -1.75, -11.25, 0.488, -3.25, -10.5, 0.488, -4, -8, 0.488, -59, -59, 0.488, -59, -8, 0.488, -4, -4.75, 0.488, -3.25, -4.75, 0.488, -2, -3.5, 0.488, -2, -1, 0.488, -2.5, -0.25, 0.488, -3.25, -2.75, 0.488, -1.25, -2.75, 0.488, 0.5, -1, 0.488, 0.5, -5.5, 0.488, -4, 1.25, 0.488, -3.25, 1.25, 0.488, -59, 3.25, 0.488, -2.5, 3.25, 0.488, -1, 59, 0.488, -1.25, 2.5, 0.488, -3.25, 59, 0.488, -59, -59, 0.488, 2.25, -11.25, 0.488, 2, -9, 4.488, 2, -7, 4.488, 2, -6.75, 4.488, 1, -6.75, 4.488, -2, -9, 4.488, -2, -8.75, 0.488, 1.75, -7.5, 0.488, 1.75, -7.5, 0.488, 1, -7, 0.488, 0.75, -7.5, 0.488, -1.75, -8.75, 0.488, -1.75, 3.25, 0.488, 1, 4.25, 0.488, 1.75, 59, 0.488, 3, 4.25, 0.488, 3.25, -3.5, 0.488, 3, -3.75, 0.488, 2.25, -4.75, 0.488, 2.25, -4.75, 0.488, 3.25, -4.25, 0.488, 3.75, -2.25, 0.488, 8.5, -2.25, 0.488, 7.25, -3.5, 0.488, 7.25, -6, 0.488, 7.5, -6.75, 0.488, 8.25, -2.25, 0.488, 3, -2.25, 0.488, 1.75, -2.75, 0.488, 1.25, -1, 0.488, 1, -1.5, 0.488, 9.25, -8.25, 0.488, 8.25, -8.25, 0.488, 59, -0.25, 0.488, 59, -6, 0.488, 4.25, -4.25, 0.488, 6.5, 0, 0.488, 9.25, -10.25, 0.488, 6, -10.25, 0.488, 4.25, -11.25, 0.488, 3.5, -59, 0.488, 6.25, -0.25, 4.488, 3, -0.25, 4.488, 7.25, 2, 4.488, 7.25, 2, 4.488, 3, 4.25, 0.488, 7, 59, 0.488, 7.25, 1.75, 0.488, 3.25, 0.5, 0.488, 3.25, 0, 0.488, 4.5, 0.5, 0.488, 6.75, 1.75, 0.488, 6.75, -10.25, 0.488, 7.5, -9.5, 0.488, 8.25, -59, 0.488, 59, 3.5, 0.488, 9.25, 2, 0.488, 9.25, 2.25, 0.488, 59, 4.25, 0.488, 8.5, 59, 0.488, 59)
@@ -23,6 +24,19 @@ albedo_color = Color(0.352941, 0.298039, 0.501961, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xowi"]
 size = Vector3(120, 0, 90)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4c57u"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.473976, 0.473976, 0.473976, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.184314)
+shadow_size = 16
 
 [node name="Main" type="Node"]
 
@@ -41,6 +55,7 @@ navigation_mesh = SubResource("NavigationMesh_lquwl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 0, 0, 0)
+layers = 5
 material_override = SubResource("StandardMaterial3D_lquwl")
 mesh = SubResource("PlaneMesh_lquwl")
 skeleton = NodePath("../Ground")
@@ -76,3 +91,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 
 [node name="SkeletonAxe" parent="." instance=ExtResource("9_kek77")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -6)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00165, 1.00189)
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer/PanelContainer"]
+custom_minimum_size = Vector2(320, 180)
+layout_direction = 1
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/PanelContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(320, 180)
+render_target_update_mode = 4
+
+[node name="MiniMapCamera" type="Camera3D" parent="MarginContainer/PanelContainer/SubViewportContainer/SubViewport" node_paths=PackedStringArray("_Target")]
+transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 35, 0)
+script = ExtResource("10_4c57u")
+_Target = NodePath("../../../../../Player")

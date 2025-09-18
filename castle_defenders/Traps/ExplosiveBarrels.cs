@@ -8,12 +8,14 @@ public partial class ExplosiveBarrels : Node3D
 	public Explosion _Explosion;
 	public DamageArea _DamageArea;
 	private const int _Damage = 100;
+	private Sprite3D _Sprite;
 
 	public override void _Ready()
 	{
 		_InteractionArea = GetNode<InteractionArea>("%InteractionArea");
 		_Explosion = GetNode<Explosion>("%Explosion");
 		_DamageArea = GetNode<DamageArea>("%DamageArea");
+		_Sprite = GetNode<Sprite3D>("Sprite3D");
 		_InteractionArea.interact = OnInteract;
 	}
 	
@@ -36,6 +38,7 @@ public partial class ExplosiveBarrels : Node3D
 		await ToSignal(GetTree().CreateTimer(3), "timeout");
 		_Explosion.Explode();
 		RemoveBarrels();
+		_Sprite.QueueFree();
 		// The ExplosiveBarrels are using Player and Mobs layer
 		// So all overlapping bodies should be able to take damage
 		_DamageArea.CheckOverlappingBodies(_Damage);
