@@ -1,15 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://cfo7j11et57my"]
+[gd_scene load_steps=20 format=3 uid="uid://cfo7j11et57my"]
 
+[ext_resource type="Script" uid="uid://dtdgd5863jubv" path="res://Game.cs" id="1_dg77c"]
 [ext_resource type="PackedScene" uid="uid://c4l4dgchg6d64" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bx2svmuu5fx3m" path="res://builtAssets/FirstHouse.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dyps24aneq1lp" path="res://builtAssets/SmallStoneHouse.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dvis8ujb17t35" path="res://chest.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://d0ys4dh5sk46x" path="res://SkeletonMelee.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://dy41pp0pot0or" path="res://Traps/Interaction/InteractionManager.tscn" id="6_7mycd"]
-[ext_resource type="PackedScene" uid="uid://dgegdw41t4wvv" path="res://Traps/siegeBalista.tscn" id="7_272bh"]
-[ext_resource type="PackedScene" uid="uid://b8fru1b3j2o7u" path="res://Traps/ExplosiveBarrels.tscn" id="8_5vw27"]
-[ext_resource type="PackedScene" uid="uid://bf3dcbdktggoc" path="res://Characters/SkeletonAxe.tscn" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://dy41pp0pot0or" path="res://Characters/Traps/Interaction/InteractionManager.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dgegdw41t4wvv" path="res://Characters/Traps/siegeBalista.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://b8fru1b3j2o7u" path="res://Characters/Traps/ExplosiveBarrels.tscn" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://dfqxpqwwfl2jv" path="res://MiniMapCamera.cs" id="10_4c57u"]
+[ext_resource type="Script" uid="uid://cdilmrgtxu2ns" path="res://HealthBar.cs" id="11_efxa6"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_lquwl"]
 vertices = PackedVector3Array(-59, 0.488, -2, -11.25, 0.488, -1.75, -11.25, 0.488, -3.25, -10.5, 0.488, -4, -8, 0.488, -59, -59, 0.488, -59, -8, 0.488, -4, -4.75, 0.488, -3.25, -4.75, 0.488, -2, -3.5, 0.488, -2, -1, 0.488, -2.5, -0.25, 0.488, -3.25, -2.75, 0.488, -1.25, -2.75, 0.488, 0.5, -1, 0.488, 0.5, -5.5, 0.488, -4, 1.25, 0.488, -3.25, 1.25, 0.488, -59, 3.25, 0.488, -2.5, 3.25, 0.488, -1, 59, 0.488, -1.25, 2.5, 0.488, -3.25, 59, 0.488, -59, -59, 0.488, 2.25, -11.25, 0.488, 2, -9, 4.488, 2, -7, 4.488, 2, -6.75, 4.488, 1, -6.75, 4.488, -2, -9, 4.488, -2, -8.75, 0.488, 1.75, -7.5, 0.488, 1.75, -7.5, 0.488, 1, -7, 0.488, 0.75, -7.5, 0.488, -1.75, -8.75, 0.488, -1.75, 3.25, 0.488, 1, 4.25, 0.488, 1.75, 59, 0.488, 3, 4.25, 0.488, 3.25, -3.5, 0.488, 3, -3.75, 0.488, 2.25, -4.75, 0.488, 2.25, -4.75, 0.488, 3.25, -4.25, 0.488, 3.75, -2.25, 0.488, 8.5, -2.25, 0.488, 7.25, -3.5, 0.488, 7.25, -6, 0.488, 7.5, -6.75, 0.488, 8.25, -2.25, 0.488, 3, -2.25, 0.488, 1.75, -2.75, 0.488, 1.25, -1, 0.488, 1, -1.5, 0.488, 9.25, -8.25, 0.488, 8.25, -8.25, 0.488, 59, -0.25, 0.488, 59, -6, 0.488, 4.25, -4.25, 0.488, 6.5, 0, 0.488, 9.25, -10.25, 0.488, 6, -10.25, 0.488, 4.25, -11.25, 0.488, 3.5, -59, 0.488, 6.25, -0.25, 4.488, 3, -0.25, 4.488, 7.25, 2, 4.488, 7.25, 2, 4.488, 3, 4.25, 0.488, 7, 59, 0.488, 7.25, 1.75, 0.488, 3.25, 0.5, 0.488, 3.25, 0, 0.488, 4.5, 0.5, 0.488, 6.75, 1.75, 0.488, 6.75, -10.25, 0.488, 7.5, -9.5, 0.488, 8.25, -59, 0.488, 59, 3.5, 0.488, 9.25, 2, 0.488, 9.25, 2.25, 0.488, 59, 4.25, 0.488, 8.5, 59, 0.488, 59)
@@ -38,7 +38,25 @@ corner_radius_bottom_left = 8
 shadow_color = Color(0, 0, 0, 0.184314)
 shadow_size = 16
 
-[node name="Main" type="Node"]
+[sub_resource type="Gradient" id="Gradient_efxa6"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.887175, 0.213256, 0.253008, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dg77c"]
+gradient = SubResource("Gradient_efxa6")
+
+[sub_resource type="Gradient" id="Gradient_ycdy4"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.213404, 0.695343, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w48qg"]
+gradient = SubResource("Gradient_ycdy4")
+
+[node name="Main" type="Node" node_paths=PackedStringArray("_Enemies", "_Chest", "_Player")]
+script = ExtResource("1_dg77c")
+_Enemies = NodePath("Enemies")
+_Chest = NodePath("Chest")
+_Player = NodePath("Player")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.5, 0.866026, 0, -0.866026, -0.5, 0, 17, 0)
@@ -46,9 +64,6 @@ shadow_enabled = true
 
 [node name="Chest" parent="." instance=ExtResource("4_1bvp3")]
 transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -1.73256, 1.30303, 10)
-
-[node name="Skeleton" parent="." instance=ExtResource("5_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.67538, 0.589692, -7.12025)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_lquwl")
@@ -89,9 +104,6 @@ transform = Transform3D(-0.980606, 0.138985, 0.138188, 0.140331, 0.990105, 3.379
 [node name="ExplosiveBarrels" parent="." instance=ExtResource("8_5vw27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 
-[node name="SkeletonAxe" parent="." instance=ExtResource("9_kek77")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -6)
-
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,3 +135,28 @@ render_target_update_mode = 4
 transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 35, 0)
 script = ExtResource("10_4c57u")
 _Target = NodePath("../../../../../Player")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("_Player")]
+offset_left = 48.0
+offset_top = 505.0
+offset_right = 272.0
+offset_bottom = 545.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = SubResource("GradientTexture2D_dg77c")
+texture_progress = SubResource("GradientTexture2D_w48qg")
+script = ExtResource("11_efxa6")
+_Player = NodePath("../../Player")
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="SpawnPoint1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.0938544, -16)
+
+[node name="SpawnPoint2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, 8)

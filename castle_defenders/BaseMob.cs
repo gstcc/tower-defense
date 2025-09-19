@@ -4,7 +4,8 @@ using System;
 public abstract partial class BaseMob : CharacterBody3D
 {
 	protected float _Speed = 5.0f;
-	protected int _Health = 20;
+	public int _Health = 20;
+	public int _MaxHealth = 20;
 	protected int _Damage = 2;
 	protected float _SeeRange = 10f;
 	protected float _AttackRange = 1.0f;
@@ -16,6 +17,10 @@ public abstract partial class BaseMob : CharacterBody3D
 	protected bool _Dead;
 	[Signal]
 	public delegate void AttackedEventHandler(Node target);
+	[Signal]
+	public delegate void HealthChangedEventHandler(Node target);
+	[Signal]
+	public delegate void DiedEventHandler(Node target);
 
 	public override void _Ready()
 	{
@@ -54,7 +59,8 @@ public abstract partial class BaseMob : CharacterBody3D
 	public async void Attack(Player player)
 	{
 		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
-		//player.TakeDamage(10);
+		GD.Print("Attacked player");
+		//player.TakeDamage(10);;
 		if (TargetInRange() && CanAttack()) {
 			EmitSignal(SignalName.Attacked, _Damage);
 		}
@@ -65,6 +71,7 @@ public abstract partial class BaseMob : CharacterBody3D
 		GD.Print($"{Name} died!");
 		_Dead=true;
 		_AnimTree.Set("parameters/conditions/Die", true);
+		EmitSignal(SignalName.Died, this);
 		
 		//Save bodies for 1 minute then despawn.
 		await ToSignal(GetTree().CreateTimer(60), "timeout");
@@ -82,6 +89,7 @@ public abstract partial class BaseMob : CharacterBody3D
 		_Health -= damage;
 		_AnimTree.Set("parameters/conditions/Hit", true);
 		_AnimTree.Set("parameters/conditions/Attack", false);
+		EmitSignal(SignalName.HealthChanged);
 		var playback = (AnimationNodeStateMachinePlayback)_AnimTree.Get("parameters/playback");
 		playback.Travel("Hit");
 

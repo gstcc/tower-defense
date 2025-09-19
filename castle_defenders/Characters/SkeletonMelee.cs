@@ -5,7 +5,6 @@ public partial class SkeletonMelee : BaseMob
 {
 	private SkeletonMinion _Skin;
 
-	// Variables for gravity
 	private Vector3 velocity;	
 	private const float RotationSpeed = 12.0f; 
 	private AnimationNodeStateMachinePlayback  _StateMachine;
@@ -13,9 +12,10 @@ public partial class SkeletonMelee : BaseMob
 	public override void _Ready()
 	{
 		// Set specific values for this enemy type
-		_Speed = 2;
-		_Health = 100;
-		_Damage = 10;
+		_Speed = 1;
+		_Health = 200;
+		_MaxHealth = 200;
+		_Damage = 40;
 
 		_Skin = GetNode<SkeletonMinion>("%SkeletonMinion");
 		_NavAgent = GetNode<NavigationAgent3D>("%NavigationAgent3D");
@@ -46,7 +46,7 @@ public partial class SkeletonMelee : BaseMob
 				velocity.Z = toTarget.Z;
 				if (!IsOnFloor()) // Check if the mob is in the air
 				{
-					velocity.Y += GetGravity().Y * (float)delta;
+					velocity += GetGravity() * (float)delta;
 				}
 				else
 				{
@@ -59,6 +59,7 @@ public partial class SkeletonMelee : BaseMob
 				_Skin.GlobalRotation = skinRotation;
 				hasAttacked = false;
 				_AnimTree.Set("parameters/conditions/Attack", TargetInRange());
+				_AnimTree.Set("parameters/conditions/Hit", false);
 				MoveAndSlide(); 
 				break;
 			case "Attack":

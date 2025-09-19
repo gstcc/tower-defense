@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dy41pp0pot0or"]
 
-[ext_resource type="Script" uid="uid://cafkl8femt7iy" path="res://Traps/Interaction/InteractionManager.cs" id="1_abjqo"]
+[ext_resource type="Script" uid="uid://cafkl8femt7iy" path="res://Characters/Traps/Interaction/InteractionManager.cs" id="1_abjqo"]
 
 [sub_resource type="FontVariation" id="FontVariation_2lwle"]
 

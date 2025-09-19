@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=4 uid="uid://dgegdw41t4wvv"]
 
-[ext_resource type="PackedScene" uid="uid://12s6w8rmjld" path="res://Traps/siege-ballista.glb" id="1_omodc"]
-[ext_resource type="Script" uid="uid://cikr8lg308nlb" path="res://Traps/SiegeBalista.cs" id="2_nw77a"]
-[ext_resource type="Texture2D" uid="uid://bdt8ym5km1idx" path="res://Traps/Textures/colormap.png" id="3_jg65a"]
-[ext_resource type="Script" uid="uid://cbqp55as5apkq" path="res://Traps/BallistaArrow.cs" id="3_wi0pm"]
-[ext_resource type="PackedScene" uid="uid://c732t0tetfw2b" path="res://Traps/Interaction/interactionArea.tscn" id="3_wy8yk"]
+[ext_resource type="PackedScene" uid="uid://12s6w8rmjld" path="res://Characters/Traps/siege-ballista.glb" id="1_omodc"]
+[ext_resource type="Script" uid="uid://cikr8lg308nlb" path="res://Characters/Traps/SiegeBalista.cs" id="2_nw77a"]
+[ext_resource type="Texture2D" uid="uid://bdt8ym5km1idx" path="res://Characters/Traps/Textures/colormap.png" id="3_jg65a"]
+[ext_resource type="Script" uid="uid://cbqp55as5apkq" path="res://Characters/Traps/BallistaArrow.cs" id="3_wi0pm"]
+[ext_resource type="PackedScene" uid="uid://c732t0tetfw2b" path="res://Characters/Traps/Interaction/interactionArea.tscn" id="3_wy8yk"]
 [ext_resource type="Texture2D" uid="uid://b7ebin364rhf2" path="res://art/Pictures/circle.png" id="6_6lwpn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qna3r"]

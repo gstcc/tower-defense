@@ -1,10 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://bf3dcbdktggoc"]
+[gd_scene load_steps=10 format=3 uid="uid://bf3dcbdktggoc"]
 
 [ext_resource type="Script" uid="uid://n23seb6aiycu" path="res://Characters/SkeletonAxe.cs" id="1_5jlfk"]
-[ext_resource type="PackedScene" uid="uid://n0ia2uxu0vtk" path="res://SkeletonWarrior.tscn" id="2_03qcl"]
+[ext_resource type="PackedScene" uid="uid://n0ia2uxu0vtk" path="res://Characters/SkeletonWarrior.tscn" id="2_03qcl"]
 [ext_resource type="Texture2D" uid="uid://b7ebin364rhf2" path="res://art/Pictures/circle.png" id="3_osxdw"]
+[ext_resource type="Script" uid="uid://doxxxgm4k1i77" path="res://MobHealthBar.cs" id="4_qqopv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_osxdw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7cl05"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqopv"]
+bg_color = Color(0.891037, 0, 0.0293925, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg7m8"]
+bg_color = Color(0, 0.727019, 0.135765, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qqopv"]
+viewport_path = NodePath("SubViewport")
 
 [node name="SkeletonAxe" type="CharacterBody3D"]
 collision_layer = 5
@@ -23,8 +43,37 @@ shape = SubResource("CapsuleShape3D_osxdw")
 unique_name_in_owner = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 3, 0)
 layers = 4
 modulate = Color(0.875558, 0, 0.0964573, 1)
 axis = 1
 texture = ExtResource("3_osxdw")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(200, 23)
+
+[node name="Panel" type="Panel" parent="SubViewport"]
+offset_right = 200.0
+offset_bottom = 23.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7cl05")
+
+[node name="HealthBar" type="ProgressBar" parent="SubViewport/Panel" node_paths=PackedStringArray("_Mob")]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_qqopv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lg7m8")
+value = 100.0
+script = ExtResource("4_qqopv")
+_Mob = NodePath("../../..")
+
+[node name="HealthBar" type="Sprite3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 2.36059, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_qqopv")
