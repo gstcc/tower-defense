@@ -8,22 +8,26 @@ public partial class Player : CharacterBody3D
 	private const float JumpVelocity = 1.5f;
 	private const float MouseSensitivity = 0.25f;
 	private const float RotationSpeed = 12.0f; 
-	private const int Damage = 20;
+	private const int Damage = 50;
+	public int _Health = 200;
+	public int _MaxHealth = 200;
 	private Vector2 CameraInputDirection;
 	private Vector3 _LastMovementDirection;
 	private Node3D _CameraPivot;
 	private Camera3D _Camera;
 	private Area3D _HitBox;
 	private Knight _Skin;
-	private BaseMob _Enemy;
+	private Node3D _Enemies;
 	private AnimationNodeStateMachinePlayback  _StateMachine;
 	protected AnimationTree _AnimTree;
 	private bool isAttacking = false;
 	private float attackTimer = 0.0f;
 	private const float ATTACK_DURATION = 0.5f;
-	//private bool _IsBlocking = false;
+	[Signal]
+	public delegate void HealthChangedEventHandler(Node target);
+	[Signal]
+	public delegate void DiedEventHandler(Node target);
 	
-	// https://www.youtube.com/watch?v=JlgZtOFMdfc 24.10
 	public override void _UnhandledInput(InputEvent ev) 
 	{
 		// Add check for MouseModeCaptured
@@ -42,18 +46,40 @@ public partial class Player : CharacterBody3D
 		_HitBox = GetNode<Area3D>("%HitBox");
 		_AnimTree = GetNode<AnimationTree>("Knight/AnimationTree");
 		_StateMachine = (AnimationNodeStateMachinePlayback)_AnimTree.Get("parameters/playback");
-		_Enemy = GetNode<BaseMob>("/root/Main/Skeleton");
-		_Enemy.Connect(BaseMob.SignalName.Attacked, new Callable(this, nameof(OnEnemyAttacked)));
+		_Enemies = GetNode<Node3D>("/root/Main/Enemies");
+		foreach (Node child in _Enemies.GetChildren())
+		{
+			//Connect all mobs and player
+			if (child is BaseMob mob)
+			{
+				mob.Connect(BaseMob.SignalName.Attacked, new Callable(this, nameof(OnEnemyAttacked)));
+			}
+		}
+		
+	}
+	
+	private void Die()
+	{
+		GD.Print("Player died");
+		_AnimTree.Set("parameters/conditions/Die", true);
+		EmitSignal(SignalName.Died);
 	}
 	
 	private void OnEnemyAttacked(int damage)
 	{
 		//Blocking
 		if (Input.IsActionPressed("right_click")) {
-			GD.Print("Blocking while attackec");
+			GD.Print("Blocking while attacked");
+			return;
 		}
 		GD.Print("Player received attack signal.");
 		GD.Print(damage);
+		_Health-=damage;
+		EmitSignal(SignalName.HealthChanged);
+		if (_Health <= 0)
+		{
+			Die();
+		}
 	}
 	
 	public void Hurt(int damage) {
@@ -89,8 +115,14 @@ public partial class Player : CharacterBody3D
 		_CameraPivot.Rotation = rotation;
 		CameraInputDirection = Vector2.Zero;
 		attackTimer -= (float)delta;
+		string state = _StateMachine.GetCurrentNode();
+		if (state == "Die")
+		{
+			return;
+		}
 		
 		Vector2 inputDir = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+		
 		if (inputDir != Vector2.Zero) {
 			_AnimTree.Set("parameters/conditions/Run", IsOnFloor());
 			_AnimTree.Set("parameters/conditions/Idle", false);
@@ -120,7 +152,7 @@ public partial class Player : CharacterBody3D
 		}
 		//Handle movement and animations
 		Vector3 velocity = Velocity;
-		string state = _StateMachine.GetCurrentNode();
+		
 		switch (state) {
 			case "Run":
 				// Apply gravity

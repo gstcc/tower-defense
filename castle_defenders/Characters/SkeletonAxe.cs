@@ -14,7 +14,8 @@ public partial class SkeletonAxe : BaseMob
 		// Set specific values for this enemy type
 		_Speed = 1;
 		_Health = 200;
-		_Damage = 20;
+		_MaxHealth = 200;
+		_Damage = 40;
 
 		_Skin = GetNode<SkeletonWarrior>("%SkeletonWarrior");
 		_NavAgent = GetNode<NavigationAgent3D>("%NavigationAgent3D");
@@ -45,7 +46,7 @@ public partial class SkeletonAxe : BaseMob
 				velocity.Z = toTarget.Z;
 				if (!IsOnFloor()) // Check if the mob is in the air
 				{
-					velocity.Y += GetGravity().Y * (float)delta;
+					velocity += GetGravity() * (float)delta;
 				}
 				else
 				{
@@ -58,6 +59,7 @@ public partial class SkeletonAxe : BaseMob
 				_Skin.GlobalRotation = skinRotation;
 				hasAttacked = false;
 				_AnimTree.Set("parameters/conditions/Attack", TargetInRange());
+				_AnimTree.Set("parameters/conditions/Hit", false);
 				MoveAndSlide(); 
 				break;
 			case "Attack":

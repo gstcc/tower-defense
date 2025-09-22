@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://cteu6b2ramyy1"]
 
-[ext_resource type="Script" uid="uid://b2a8l2id12h5t" path="res://Traps/Explosion.cs" id="1_vxas0"]
-[ext_resource type="AudioStream" uid="uid://bkxrhkmbmhacc" path="res://Traps/explosion-312361.mp3" id="2_j4sxf"]
+[ext_resource type="Script" uid="uid://b2a8l2id12h5t" path="res://Characters/Traps/Explosion.cs" id="1_vxas0"]
+[ext_resource type="AudioStream" uid="uid://bkxrhkmbmhacc" path="res://Characters/Traps/explosion-312361.mp3" id="2_j4sxf"]
 
 [sub_resource type="Curve" id="Curve_m5xho"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.741667, 1), 0.0, 0.0, 0, 0, Vector2(0.983333, 0.00979328), 0.0, 0.0, 0, 0]
