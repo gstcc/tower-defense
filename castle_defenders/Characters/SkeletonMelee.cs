@@ -12,10 +12,10 @@ public partial class SkeletonMelee : BaseMob
 	public override void _Ready()
 	{
 		// Set specific values for this enemy type
-		_Speed = 1;
-		_Health = 200;
-		_MaxHealth = 200;
-		_Damage = 40;
+		_Speed = 3;
+		_Health = 100;
+		_MaxHealth = 100;
+		_Damage = 20;
 
 		_Skin = GetNode<SkeletonMinion>("%SkeletonMinion");
 		_NavAgent = GetNode<NavigationAgent3D>("%NavigationAgent3D");

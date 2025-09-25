@@ -47,16 +47,21 @@ public partial class Player : CharacterBody3D
 		_AnimTree = GetNode<AnimationTree>("Knight/AnimationTree");
 		_StateMachine = (AnimationNodeStateMachinePlayback)_AnimTree.Get("parameters/playback");
 		_Enemies = GetNode<Node3D>("/root/Main/Enemies");
-		foreach (Node child in _Enemies.GetChildren())
-		{
-			//Connect all mobs and player
-			if (child is BaseMob mob)
-			{
-				mob.Connect(BaseMob.SignalName.Attacked, new Callable(this, nameof(OnEnemyAttacked)));
-			}
-		}
+		 CallDeferred(nameof(ConnectMobs));
 		
 	}
+	
+	private void ConnectMobs()
+{
+	foreach (Node child in _Enemies.GetChildren())
+	{
+		// Connect all mobs and player
+		if (child is BaseMob mob)
+		{
+			mob.Connect(BaseMob.SignalName.Attacked, new Callable(this, nameof(OnEnemyAttacked)));
+		}
+	}
+}
 	
 	private void Die()
 	{

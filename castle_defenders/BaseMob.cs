@@ -10,11 +10,15 @@ public abstract partial class BaseMob : CharacterBody3D
 	protected float _SeeRange = 10f;
 	protected float _AttackRange = 1.0f;
 	protected NavigationAgent3D _NavAgent;
-	protected Node3D chest;
-	protected Player _Player;
+	[Export]
+	public Node3D chest;
+	[Export]
+	public Player _Player;
 	protected AnimationTree _AnimTree;
 	protected bool hasAttacked = false;
 	protected bool _Dead;
+	[Export]
+	public CollisionShape3D _Collsion;
 	[Signal]
 	public delegate void AttackedEventHandler(Node target);
 	[Signal]
@@ -25,8 +29,8 @@ public abstract partial class BaseMob : CharacterBody3D
 	public override void _Ready()
 	{
 		//_NavAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
-		chest = GetNode<StaticBody3D>("/root/Main/Chest");
-		_Player = GetNode<Player>("/root/Main/Player");
+		//chest = GetNode<StaticBody3D>("/root/Main/Chest");
+		//_Player = GetNode<Player>("/root/Main/Player");
 		if (chest == null)
 		{
 			GD.PrintErr("Chest node not found at /root/Main/Chest");
@@ -59,9 +63,8 @@ public abstract partial class BaseMob : CharacterBody3D
 	public async void Attack(Player player)
 	{
 		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
-		GD.Print("Attacked player");
-		//player.TakeDamage(10);;
 		if (TargetInRange() && CanAttack()) {
+			GD.Print("Attacked player");
 			EmitSignal(SignalName.Attacked, _Damage);
 		}
 	}
@@ -72,7 +75,7 @@ public abstract partial class BaseMob : CharacterBody3D
 		_Dead=true;
 		_AnimTree.Set("parameters/conditions/Die", true);
 		EmitSignal(SignalName.Died, this);
-		
+		_Collsion.QueueFree();
 		//Save bodies for 1 minute then despawn.
 		await ToSignal(GetTree().CreateTimer(60), "timeout");
 		// Should killed mobs be removed to save performance?
@@ -101,14 +104,14 @@ public abstract partial class BaseMob : CharacterBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (chest == null)
+		if (chest == null && _Player == null)
 			return;
 		if (_Dead) {
 			return;
 		}
 
 		// Update target only if the chest moved (optional)
-		// MakePath();
+		MakePath();
 
 		// Get the next position on the path
 		Vector3 nextPos = _NavAgent.GetNextPathPosition();

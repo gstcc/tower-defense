@@ -63,10 +63,12 @@ public partial class Game : Node
 	}
 	
 	private void SpawnMob(PackedScene mobScene, Node3D spawnPoint)
-{
+	{
 	var mobInstance = mobScene.Instantiate();
 	if (mobInstance is BaseMob mob)
 	{
+		mob._Player = _Player;
+		mob.chest = _Chest;
 		// Generate random offset in range [-5, 5] for X and Z
 		float randomOffsetX = (float)(GD.Randf() * 10.0 - 5.0);
 		float randomOffsetZ = (float)(GD.Randf() * 10.0 - 5.0);

@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://bx2svmuu5fx3m" path="res://builtAssets/FirstHouse.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dyps24aneq1lp" path="res://builtAssets/SmallStoneHouse.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dvis8ujb17t35" path="res://chest.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://dy41pp0pot0or" path="res://Characters/Traps/Interaction/InteractionManager.tscn" id="6_7mycd"]
-[ext_resource type="PackedScene" uid="uid://dgegdw41t4wvv" path="res://Characters/Traps/siegeBalista.tscn" id="7_272bh"]
-[ext_resource type="PackedScene" uid="uid://b8fru1b3j2o7u" path="res://Characters/Traps/ExplosiveBarrels.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://dy41pp0pot0or" path="res://Traps/Interaction/InteractionManager.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dgegdw41t4wvv" path="res://Traps/siegeBalista.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://b8fru1b3j2o7u" path="res://Traps/ExplosiveBarrels.tscn" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://dfqxpqwwfl2jv" path="res://MiniMapCamera.cs" id="10_4c57u"]
 [ext_resource type="Script" uid="uid://cdilmrgtxu2ns" path="res://HealthBar.cs" id="11_efxa6"]
 
@@ -64,6 +64,8 @@ shadow_enabled = true
 
 [node name="Chest" parent="." instance=ExtResource("4_1bvp3")]
 transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -1.73256, 1.30303, 10)
+
+[node name="Enemies" type="Node3D" parent="."]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_lquwl")
@@ -152,8 +154,6 @@ texture_under = SubResource("GradientTexture2D_dg77c")
 texture_progress = SubResource("GradientTexture2D_w48qg")
 script = ExtResource("11_efxa6")
 _Player = NodePath("../../Player")
-
-[node name="Enemies" type="Node3D" parent="."]
 
 [node name="SpawnPoint1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.0938544, -16)
