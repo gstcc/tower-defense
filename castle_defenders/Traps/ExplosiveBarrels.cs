@@ -9,10 +9,13 @@ public partial class ExplosiveBarrels : Node3D
 	public DamageArea _DamageArea;
 	private const int _Damage = 100;
 	private Sprite3D _Sprite;
+	[Export]
+	public InteractionManager _interactionManager;
 
 	public override void _Ready()
 	{
 		_InteractionArea = GetNode<InteractionArea>("%InteractionArea");
+		_InteractionArea._interactionManager = _interactionManager;
 		_Explosion = GetNode<Explosion>("%Explosion");
 		_DamageArea = GetNode<DamageArea>("%DamageArea");
 		_Sprite = GetNode<Sprite3D>("Sprite3D");

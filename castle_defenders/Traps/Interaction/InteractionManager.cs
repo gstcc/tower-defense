@@ -4,7 +4,7 @@ using System.Collections.Generic; // Needed for List<>
 
 public partial class InteractionManager : Node3D
 {
-	protected Player _Player;
+	[Export] public Player _Player;
 	protected Label3D _Label;
 	protected const string _BaseText = "[E] to";
 	protected bool _CanInteract = true;
@@ -17,7 +17,6 @@ public partial class InteractionManager : Node3D
 
 	public override void _Ready()
 	{
-		_Player = GetNode<Player>("/root/Main/Player");
 		_Label = GetNode<Label3D>("%Label3D");
 	}
 	

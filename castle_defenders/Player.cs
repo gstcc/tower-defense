@@ -17,7 +17,7 @@ public partial class Player : CharacterBody3D
 	private Camera3D _Camera;
 	private Area3D _HitBox;
 	private Knight _Skin;
-	private Node3D _Enemies;
+	[Export] public Node3D _Enemies;
 	private AnimationNodeStateMachinePlayback  _StateMachine;
 	protected AnimationTree _AnimTree;
 	private bool isAttacking = false;
@@ -46,22 +46,21 @@ public partial class Player : CharacterBody3D
 		_HitBox = GetNode<Area3D>("%HitBox");
 		_AnimTree = GetNode<AnimationTree>("Knight/AnimationTree");
 		_StateMachine = (AnimationNodeStateMachinePlayback)_AnimTree.Get("parameters/playback");
-		_Enemies = GetNode<Node3D>("/root/Main/Enemies");
 		 CallDeferred(nameof(ConnectMobs));
 		
 	}
 	
 	private void ConnectMobs()
-{
-	foreach (Node child in _Enemies.GetChildren())
 	{
-		// Connect all mobs and player
-		if (child is BaseMob mob)
+		foreach (Node child in _Enemies.GetChildren())
 		{
-			mob.Connect(BaseMob.SignalName.Attacked, new Callable(this, nameof(OnEnemyAttacked)));
+			// Connect all mobs and player
+			if (child is BaseMob mob)
+			{
+				mob.Connect(BaseMob.SignalName.Attacked, new Callable(this, nameof(OnEnemyAttacked)));
+			}
 		}
 	}
-}
 	
 	private void Die()
 	{
@@ -125,8 +124,11 @@ public partial class Player : CharacterBody3D
 		{
 			return;
 		}
+		GD.Print("AAAAAAAAAAAAA");
+		GD.Print(IsOnFloor());
 		
 		Vector2 inputDir = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+		GD.Print(inputDir);
 		
 		if (inputDir != Vector2.Zero) {
 			_AnimTree.Set("parameters/conditions/Run", IsOnFloor());
@@ -158,6 +160,8 @@ public partial class Player : CharacterBody3D
 		//Handle movement and animations
 		Vector3 velocity = Velocity;
 		
+		GD.Print("state");
+		GD.Print(state);
 		switch (state) {
 			case "Run":
 				// Apply gravity
@@ -232,7 +236,8 @@ public partial class Player : CharacterBody3D
 				}
 				break;
 			default:
-				_AnimTree.Set("parameters/conditions/Idle", true);
+				_AnimTree.Set("parameters/conditions/Idle", IsOnFloor());
+				_AnimTree.Set("parameters/conditions/Fall", !IsOnFloor());
 				break;
 		}
 		Velocity = velocity;

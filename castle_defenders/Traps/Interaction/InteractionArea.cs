@@ -7,12 +7,11 @@ public partial class InteractionArea : Area3D
 {
 	[Export]
 	public string _ActionName = "explode barrels";
-	private InteractionManager _interactionManager;
+	public InteractionManager _interactionManager;
 
 	public override void _Ready()
 	{
-		_interactionManager = GetNode<InteractionManager>("/root/Main/InteractionManager");
-		_interactionManager.SetOneTimeInteract(true);
+		//_interactionManager.SetOneTimeInteract(true);
 	}
 	
 	public Func<Task> interact;

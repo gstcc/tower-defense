@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://cfo7j11et57my"]
 
-[ext_resource type="Script" uid="uid://dtdgd5863jubv" path="res://Game.cs" id="1_dg77c"]
+[ext_resource type="Script" uid="uid://dfs88np8m8imn" path="res://GameTest.cs" id="1_4c57u"]
 [ext_resource type="PackedScene" uid="uid://c4l4dgchg6d64" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bx2svmuu5fx3m" path="res://builtAssets/FirstHouse.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dyps24aneq1lp" path="res://builtAssets/SmallStoneHouse.tscn" id="2_h2yge"]
@@ -23,7 +23,7 @@ albedo_color = Color(0.352941, 0.298039, 0.501961, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_lquwl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xowi"]
-size = Vector3(120, 0, 90)
+size = Vector3(120.072, 0, 90)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4c57u"]
 content_margin_left = 8.0
@@ -52,11 +52,13 @@ colors = PackedColorArray(0.213404, 0.695343, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_w48qg"]
 gradient = SubResource("Gradient_ycdy4")
 
-[node name="Main" type="Node" node_paths=PackedStringArray("_Enemies", "_Chest", "_Player")]
-script = ExtResource("1_dg77c")
+[node name="Main" type="Node" node_paths=PackedStringArray("SpawnPoint2", "_Enemies", "_Chest", "_Player", "SpawnPoint1")]
+script = ExtResource("1_4c57u")
+SpawnPoint2 = NodePath("SpawnPoint2")
 _Enemies = NodePath("Enemies")
 _Chest = NodePath("Chest")
 _Player = NodePath("Player")
+SpawnPoint1 = NodePath("SpawnPoint1")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.5, 0.866026, 0, -0.866026, -0.5, 0, 17, 0)
@@ -86,25 +88,29 @@ transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -0.032
 [node name="SmallStoneHouse" parent="NavigationRegion3D" instance=ExtResource("2_h2yge")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.03229, 0.0347552, 6.00734)
 
-[node name="Ground" type="StaticBody3D" parent="NavigationRegion3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
-shape = SubResource("BoxShape3D_4xowi")
-
 [node name="FirstHouse" parent="NavigationRegion3D" instance=ExtResource("2_0xm2m")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7, 0, 0)
 
-[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6.82051)
+[node name="Ground" type="StaticBody3D" parent="NavigationRegion3D"]
 
-[node name="InteractionManager" parent="." instance=ExtResource("6_7mycd")]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0410213, 0, -14.9177)
+shape = SubResource("BoxShape3D_4xowi")
 
-[node name="SiegeBallista" parent="." instance=ExtResource("7_272bh")]
+[node name="Player" parent="." node_paths=PackedStringArray("_Enemies") instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.38281, -6.82051)
+_Enemies = NodePath("../Enemies")
+
+[node name="InteractionManager" parent="." node_paths=PackedStringArray("_Player") instance=ExtResource("6_7mycd")]
+_Player = NodePath("../Player")
+
+[node name="SiegeBallista" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("7_272bh")]
 transform = Transform3D(-0.980606, 0.138985, 0.138188, 0.140331, 0.990105, 3.37905e-09, -0.136821, 0.0193921, -0.990406, 10.8534, -0.0765432, -7.01342)
+_interactionManager = NodePath("../InteractionManager")
 
-[node name="ExplosiveBarrels" parent="." instance=ExtResource("8_5vw27")]
+[node name="ExplosiveBarrels" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("8_5vw27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+_interactionManager = NodePath("../InteractionManager")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
