@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cfo7j11et57my"]
+[gd_scene load_steps=22 format=3 uid="uid://cfo7j11et57my"]
 
 [ext_resource type="Script" uid="uid://dfs88np8m8imn" path="res://GameTest.cs" id="1_4c57u"]
 [ext_resource type="PackedScene" uid="uid://c4l4dgchg6d64" path="res://player.tscn" id="1_ig7tw"]
@@ -52,6 +52,14 @@ colors = PackedColorArray(0.213404, 0.695343, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_w48qg"]
 gradient = SubResource("Gradient_ycdy4")
+
+[sub_resource type="Environment" id="Environment_efxa6"]
+ambient_light_source = 3
+ambient_light_color = Color(0.598019, 0.457842, 0.450081, 1)
+ambient_light_sky_contribution = 0.3
+ambient_light_energy = 0.47
+fog_enabled = true
+volumetric_fog_emission_energy = 0.5
 
 [node name="Main" type="Node" node_paths=PackedStringArray("SpawnPoint2", "_Enemies", "_Chest", "_Player", "SpawnPoint1")]
 script = ExtResource("1_4c57u")
@@ -171,3 +179,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, 8)
 [node name="ShoppingStand" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("11_dg77c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.14238, 0, -6.83099)
 _interactionManager = NodePath("../InteractionManager")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_efxa6")

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 InteractionManager="*res://Traps/Interaction/InteractionManager.tscn"
 CoinManager="*res://Economy/CoinManager.cs"
+PlayerModifier="*res://Modifiers/PlayerModifier.cs"
 
 [dotnet]
 

@@ -8,7 +8,7 @@ public partial class Player : CharacterBody3D
 	private const float JumpVelocity = 1.5f;
 	private const float MouseSensitivity = 0.25f;
 	private const float RotationSpeed = 12.0f; 
-	private const int Damage = 50;
+	private int Damage = 50;
 	public int _Health = 200;
 	public int _MaxHealth = 200;
 	private Vector2 CameraInputDirection;
@@ -46,8 +46,15 @@ public partial class Player : CharacterBody3D
 		_HitBox = GetNode<Area3D>("%HitBox");
 		_AnimTree = GetNode<AnimationTree>("Knight/AnimationTree");
 		_StateMachine = (AnimationNodeStateMachinePlayback)_AnimTree.Get("parameters/playback");
+		ApplyModifiers();
 		 CallDeferred(nameof(ConnectMobs));
-		
+	}
+	
+	private void ApplyModifiers()
+	{
+		_Health = (int)(_Health * PlayerModifier.HealthModifier);
+		_MaxHealth = (int)(_MaxHealth * PlayerModifier.HealthModifier);
+		Damage = (int)(Damage * PlayerModifier.DamageModifier); 
 	}
 	
 	private void ConnectMobs()
