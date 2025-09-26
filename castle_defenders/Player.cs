@@ -124,11 +124,8 @@ public partial class Player : CharacterBody3D
 		{
 			return;
 		}
-		GD.Print("AAAAAAAAAAAAA");
-		GD.Print(IsOnFloor());
 		
 		Vector2 inputDir = Input.GetVector("move_left", "move_right", "move_up", "move_down");
-		GD.Print(inputDir);
 		
 		if (inputDir != Vector2.Zero) {
 			_AnimTree.Set("parameters/conditions/Run", IsOnFloor());
@@ -159,9 +156,6 @@ public partial class Player : CharacterBody3D
 		}
 		//Handle movement and animations
 		Vector3 velocity = Velocity;
-		
-		GD.Print("state");
-		GD.Print(state);
 		switch (state) {
 			case "Run":
 				// Apply gravity

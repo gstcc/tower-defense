@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="CastleDefenders"
-run/main_scene="uid://cbye5kv0yyew7"
+run/main_scene="uid://cfo7j11et57my"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 InteractionManager="*res://Traps/Interaction/InteractionManager.tscn"
+CoinManager="*res://Economy/CoinManager.cs"
 
 [dotnet]
 
