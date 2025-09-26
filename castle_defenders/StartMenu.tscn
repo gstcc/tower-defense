@@ -1,39 +1,35 @@
-[gd_scene load_steps=127 format=4 uid="uid://2k12th426dud"]
+[gd_scene load_steps=117 format=4 uid="uid://2k12th426dud"]
 
 [ext_resource type="Script" uid="uid://dqnmnsdvahbw4" path="res://StartMenu.cs" id="1_d3352"]
-[ext_resource type="PackedScene" uid="uid://bqd11xpxxe148" path="res://art/Nature/flower_yellowB.glb" id="2_xuc80"]
-[ext_resource type="PackedScene" uid="uid://bj7v306wje8ww" path="res://art/Nature/flower_redB.glb" id="3_aa878"]
-[ext_resource type="PackedScene" uid="uid://cbh51tt78uy0u" path="res://art/Nature/flower_purpleA.glb" id="4_q1tr0"]
-[ext_resource type="PackedScene" uid="uid://bx0p82g2125hn" path="res://art/Nature/mushroom_red.glb" id="5_f6et0"]
-[ext_resource type="PackedScene" uid="uid://dfdib61llwbs1" path="res://art/Nature/tree_default_dark.glb" id="6_7oljx"]
-[ext_resource type="PackedScene" uid="uid://4ivlqe1634ko" path="res://art/Nature/tree_pineDefaultA.glb" id="7_7ei3k"]
-[ext_resource type="PackedScene" uid="uid://x4u8mvjnwcij" path="res://art/Nature/tree_pineSmallB.glb" id="8_5jysj"]
-[ext_resource type="PackedScene" uid="uid://cn0xxecrc42x8" path="res://art/Nature/tree_small_fall.glb" id="9_wrs3v"]
-[ext_resource type="PackedScene" uid="uid://cfaaqb3c4tyfg" path="res://art/Nature/tree_tall_dark.glb" id="10_8o8mh"]
-[ext_resource type="PackedScene" uid="uid://iqbygsemieu6" path="res://art/Nature/tree_tall.glb" id="11_i0cvb"]
-[ext_resource type="PackedScene" uid="uid://v8sog16rcu4g" path="res://art/Nature/tree_thin_fall.glb" id="12_x5aj2"]
 [ext_resource type="Texture2D" uid="uid://dcmajpb6wuulo" path="res://addons/kaykit_character_pack_skeletons/Characters/gltf/Skeleton_Minion_skeleton_texture.png" id="13_qmsds"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yoqr7"]
-bg_color = Color(0.203922, 0.411765, 0.913725, 1)
+bg_color = Color(0.769576, 0.0304118, 0.0158931, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2y40"]
-albedo_color = Color(0.192157, 0.388235, 0.529412, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufv5y"]
+albedo_color = Color(0.470588, 1, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_025cx"]
-material = SubResource("StandardMaterial3D_q2y40")
+material = SubResource("StandardMaterial3D_ufv5y")
 size = Vector3(100, 100, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vuo0u"]
-albedo_color = Color(0.44111, 0.87664, 0.519633, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ufv5y"]
+sky_top_color = Color(0.244853, 0.433057, 0.401376, 1)
+sky_horizon_color = Color(0.439216, 0.0392157, 0.87451, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_4is8b"]
-material = SubResource("StandardMaterial3D_vuo0u")
-size = Vector3(100, 1, 50)
+[sub_resource type="Sky" id="Sky_0d5ky"]
+sky_material = SubResource("ProceduralSkyMaterial_ufv5y")
+
+[sub_resource type="Environment" id="Environment_3wf2c"]
+background_mode = 2
+background_energy_multiplier = 2.74
+sky = SubResource("Sky_0d5ky")
+ambient_light_color = Color(0.0936841, 0.194631, 0.371684, 1)
+glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54rgw"]
 resource_name = "skeleton"
@@ -69994,8 +69990,10 @@ _data = {
 script = ExtResource("1_d3352")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Node2D"]
-offset_right = 1400.0
-offset_bottom = 900.0
+offset_left = 8.0
+offset_top = -9.0
+offset_right = 1408.0
+offset_bottom = 891.0
 
 [node name="SubViewport" type="SubViewport" parent="Node2D/SubViewportContainer"]
 handle_input_locally = false
@@ -70003,69 +70001,37 @@ size = Vector2i(1180, 700)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Node2D/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+transform = Transform3D(1, 0, 0, 0, 0.5, -0.866025, 0, 0.866025, 0.5, 0, -4, 0)
 
 [node name="Button" type="Button" parent="."]
-offset_left = 449.0
-offset_top = 299.0
-offset_right = 721.0
-offset_bottom = 392.0
+offset_left = 458.0
+offset_top = 201.0
+offset_right = 730.0
+offset_bottom = 294.0
 theme_override_font_sizes/font_size = 34
 theme_override_styles/normal = SubResource("StyleBoxFlat_yoqr7")
 text = "Start Game"
 
 [node name="Node3D" type="Node3D" parent="."]
 
-[node name="flower_yellowB2" parent="Node3D" instance=ExtResource("2_xuc80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
+visible = false
 mesh = SubResource("BoxMesh_025cx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)
+transform = Transform3D(0.219369, 0.975642, 0, -0.975642, 0.219369, 0, 0, 0, 1, -52.8021, 28.9488, 21)
+sky_mode = 2
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-mesh = SubResource("BoxMesh_4is8b")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D"]
+environment = SubResource("Environment_3wf2c")
 
-[node name="flower_redB2" parent="Node3D" instance=ExtResource("3_aa878")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+[node name="Skeleton_Minion" type="Node3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, -5)
 
-[node name="flower_purpleA2" parent="Node3D" instance=ExtResource("4_q1tr0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+[node name="Rig" type="Node3D" parent="Node3D/Skeleton_Minion"]
 
-[node name="mushroom_red2" parent="Node3D" instance=ExtResource("5_f6et0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -5)
-
-[node name="tree_default_dark2" parent="Node3D" instance=ExtResource("6_7oljx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -6)
-
-[node name="tree_pineDefaultA2" parent="Node3D" instance=ExtResource("7_7ei3k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3)
-
-[node name="tree_pineSmallB2" parent="Node3D" instance=ExtResource("8_5jysj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
-
-[node name="tree_small_fall2" parent="Node3D" instance=ExtResource("9_wrs3v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -11)
-
-[node name="tree_tall_dark2" parent="Node3D" instance=ExtResource("10_8o8mh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
-
-[node name="tree_tall2" parent="Node3D" instance=ExtResource("11_i0cvb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
-
-[node name="tree_thin_fall2" parent="Node3D" instance=ExtResource("12_x5aj2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -5)
-
-[node name="Skeleton_Minion" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
-
-[node name="Rig" type="Node3D" parent="Skeleton_Minion"]
-
-[node name="Skeleton3D" type="Skeleton3D" parent="Skeleton_Minion/Rig"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Node3D/Skeleton_Minion/Rig"]
 bones/0/name = "root"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 0, 0)
@@ -70354,43 +70320,43 @@ bones/40/position = Vector3(-0.449451, 0.993535, 0.114208)
 bones/40/rotation = Quaternion(-0.355935, 0.392346, 0.606177, -0.593232)
 bones/40/scale = Vector3(1, 1, 1)
 
-[node name="Skeleton_Minion_ArmLeft" type="MeshInstance3D" parent="Skeleton_Minion/Rig/Skeleton3D"]
+[node name="Skeleton_Minion_ArmLeft" type="MeshInstance3D" parent="Node3D/Skeleton_Minion/Rig/Skeleton3D"]
 mesh = SubResource("ArrayMesh_x5vxq")
 skin = SubResource("Skin_5sxch")
 
-[node name="Skeleton_Minion_ArmRight" type="MeshInstance3D" parent="Skeleton_Minion/Rig/Skeleton3D"]
+[node name="Skeleton_Minion_ArmRight" type="MeshInstance3D" parent="Node3D/Skeleton_Minion/Rig/Skeleton3D"]
 mesh = SubResource("ArrayMesh_x4n8m")
 skin = SubResource("Skin_5sxch")
 
-[node name="Skeleton_Minion_Body" type="MeshInstance3D" parent="Skeleton_Minion/Rig/Skeleton3D"]
+[node name="Skeleton_Minion_Body" type="MeshInstance3D" parent="Node3D/Skeleton_Minion/Rig/Skeleton3D"]
 mesh = SubResource("ArrayMesh_4k4p6")
 skin = SubResource("Skin_5sxch")
 
-[node name="Skeleton_Minion_Cloak" type="MeshInstance3D" parent="Skeleton_Minion/Rig/Skeleton3D"]
+[node name="Skeleton_Minion_Cloak" type="MeshInstance3D" parent="Node3D/Skeleton_Minion/Rig/Skeleton3D"]
 mesh = SubResource("ArrayMesh_x3qv8")
 skin = SubResource("Skin_5sxch")
 
-[node name="Skeleton_Minion_Eyes" type="MeshInstance3D" parent="Skeleton_Minion/Rig/Skeleton3D"]
+[node name="Skeleton_Minion_Eyes" type="MeshInstance3D" parent="Node3D/Skeleton_Minion/Rig/Skeleton3D"]
 mesh = SubResource("ArrayMesh_0hb30")
 skin = SubResource("Skin_5sxch")
 
-[node name="Skeleton_Minion_Head" type="MeshInstance3D" parent="Skeleton_Minion/Rig/Skeleton3D"]
+[node name="Skeleton_Minion_Head" type="MeshInstance3D" parent="Node3D/Skeleton_Minion/Rig/Skeleton3D"]
 mesh = SubResource("ArrayMesh_s1uof")
 skin = SubResource("Skin_5sxch")
 
-[node name="Skeleton_Minion_Jaw" type="MeshInstance3D" parent="Skeleton_Minion/Rig/Skeleton3D"]
+[node name="Skeleton_Minion_Jaw" type="MeshInstance3D" parent="Node3D/Skeleton_Minion/Rig/Skeleton3D"]
 mesh = SubResource("ArrayMesh_rih7o")
 skin = SubResource("Skin_5sxch")
 
-[node name="Skeleton_Minion_LegLeft" type="MeshInstance3D" parent="Skeleton_Minion/Rig/Skeleton3D"]
+[node name="Skeleton_Minion_LegLeft" type="MeshInstance3D" parent="Node3D/Skeleton_Minion/Rig/Skeleton3D"]
 mesh = SubResource("ArrayMesh_st0tk")
 skin = SubResource("Skin_5sxch")
 
-[node name="Skeleton_Minion_LegRight" type="MeshInstance3D" parent="Skeleton_Minion/Rig/Skeleton3D"]
+[node name="Skeleton_Minion_LegRight" type="MeshInstance3D" parent="Node3D/Skeleton_Minion/Rig/Skeleton3D"]
 mesh = SubResource("ArrayMesh_cpdik")
 skin = SubResource("Skin_5sxch")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Skeleton_Minion"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D/Skeleton_Minion"]
 libraries = {
 &"": SubResource("AnimationLibrary_wy8uc")
 }
