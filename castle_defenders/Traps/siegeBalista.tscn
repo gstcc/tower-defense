@@ -94,5 +94,5 @@ texture = ExtResource("6_6lwpn")
 [connection signal="area_entered" from="siege-ballista/BallistaArrow" to="siege-ballista/BallistaArrow" method="_OnBodyEntered"]
 [connection signal="body_entered" from="siege-ballista/BallistaArrow" to="." method="_OnBodyEntered"]
 [connection signal="body_entered" from="siege-ballista/BallistaArrow" to="siege-ballista/BallistaArrow" method="_OnBodyExited"]
-[connection signal="body_exited" from="siege-ballista/BallistaArrow" to="siege-ballista/BallistaArrow" method="_OnBodyExited"]
 [connection signal="body_exited" from="siege-ballista/BallistaArrow" to="siege-ballista/BallistaArrow" method="_OnBodyEntered"]
+[connection signal="body_exited" from="siege-ballista/BallistaArrow" to="siege-ballista/BallistaArrow" method="_OnBodyExited"]
