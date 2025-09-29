@@ -38,19 +38,19 @@ corner_radius_bottom_left = 8
 shadow_color = Color(0, 0, 0, 0.184314)
 shadow_size = 16
 
-[sub_resource type="Gradient" id="Gradient_efxa6"]
+[sub_resource type="Gradient" id="Gradient_4c57u"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(0.887175, 0.213256, 0.253008, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dg77c"]
-gradient = SubResource("Gradient_efxa6")
+gradient = SubResource("Gradient_4c57u")
 
-[sub_resource type="Gradient" id="Gradient_ycdy4"]
+[sub_resource type="Gradient" id="Gradient_efxa6"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(0.213404, 0.695343, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_w48qg"]
-gradient = SubResource("Gradient_ycdy4")
+gradient = SubResource("Gradient_efxa6")
 
 [node name="Main" type="Node" node_paths=PackedStringArray("SpawnPoint2", "_Enemies", "_Chest", "_Player", "SpawnPoint1")]
 script = ExtResource("1_4c57u")
@@ -112,7 +112,7 @@ _interactionManager = NodePath("../InteractionManager")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 _interactionManager = NodePath("../InteractionManager")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="LevelMap" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -122,31 +122,31 @@ scale = Vector2(1.00165, 1.00189)
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="LevelMap"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer/PanelContainer"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="LevelMap/PanelContainer"]
 custom_minimum_size = Vector2(320, 180)
 layout_direction = 1
 layout_mode = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="MarginContainer/PanelContainer/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="LevelMap/PanelContainer/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(320, 180)
 render_target_update_mode = 4
 
-[node name="MiniMapCamera" type="Camera3D" parent="MarginContainer/PanelContainer/SubViewportContainer/SubViewport" node_paths=PackedStringArray("_Target")]
+[node name="MiniMapCamera" type="Camera3D" parent="LevelMap/PanelContainer/SubViewportContainer/SubViewport" node_paths=PackedStringArray("_Target")]
 transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 35, 0)
 script = ExtResource("10_4c57u")
 _Target = NodePath("../../../../../Player")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer_ProgressBar" type="CanvasLayer" parent="."]
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("_Player")]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer_ProgressBar" node_paths=PackedStringArray("_Player")]
 offset_left = 48.0
 offset_top = 505.0
 offset_right = 272.0
