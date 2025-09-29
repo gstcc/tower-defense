@@ -18,6 +18,7 @@ public partial class ShoppingStand : Node3D
 	}
 	
 	public async Task OnInteract() {
+		
 		_ShopMenu.OnPlayerInteractsWithShop();
 	}
 }
