@@ -12,7 +12,6 @@ public partial class DamageArea : Area3D
 		{
 			if (body is PhysicsBody3D physicsBody)
 			{
-				GD.Print(body);
 				if (physicsBody.HasMethod("Hurt"))
 				{
 					physicsBody.Call("Hurt", damage);

@@ -64,7 +64,6 @@ public abstract partial class BaseMob : CharacterBody3D
 	{
 		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
 		if (TargetInRange() && CanAttack()) {
-			GD.Print("Attacked player");
 			EmitSignal(SignalName.Attacked, _Damage);
 		}
 	}
@@ -88,7 +87,6 @@ public abstract partial class BaseMob : CharacterBody3D
 		if (_Dead) {
 			return;
 		}
-		GD.Print("Hurt");
 		_Health -= damage;
 		_AnimTree.Set("parameters/conditions/Hit", true);
 		_AnimTree.Set("parameters/conditions/Attack", false);

@@ -22,8 +22,6 @@ public partial class SkeletonMelee : BaseMob
 		_AnimTree = GetNode<AnimationTree>("SkeletonMinion/AnimationTree");
 		_StateMachine = (AnimationNodeStateMachinePlayback)_AnimTree.Get("parameters/playback");
 		base._Ready();
-
-		GD.Print("SkeletonMelee ready.");
 	}
 	
 	protected override bool CanAttack() {

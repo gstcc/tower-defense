@@ -39,7 +39,6 @@ public abstract partial class Projectile : Area3D
 	public virtual bool _WillCollide() {return false;}
 	
 	public virtual void Fire() {
-		GD.Print("Fired");
 		_Direction = GlobalTransform.Basis.X;
 		_velocity = _Direction;
 		_velocity.Y = 7.0f;

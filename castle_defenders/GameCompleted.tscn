@@ -1,59 +1,59 @@
-[gd_scene load_steps=19 format=3 uid="uid://c0typwdw0lb0h"]
+[gd_scene load_steps=18 format=3 uid="uid://canm4xinhwmpn"]
 
-[ext_resource type="Script" uid="uid://bpiyve1e4qh6j" path="res://SuccededLevel.cs" id="1_lhe30"]
-[ext_resource type="FontFile" uid="uid://bg3cxvqmeh8ms" path="res://art/Fonts/Roshey.otf" id="1_negbp"]
-[ext_resource type="Texture2D" uid="uid://dqo5ig1i02ac2" path="res://art/Star.png" id="2_lhe30"]
+[ext_resource type="Script" uid="uid://bpiyve1e4qh6j" path="res://SuccededLevel.cs" id="1_nhwm4"]
+[ext_resource type="FontFile" uid="uid://bg3cxvqmeh8ms" path="res://art/Fonts/Roshey.otf" id="2_3vqy3"]
+[ext_resource type="Texture2D" uid="uid://dqo5ig1i02ac2" path="res://art/Star.png" id="3_fsvsc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ssa85"]
-atlas = ExtResource("2_lhe30")
+atlas = ExtResource("3_fsvsc")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pj3ri"]
-atlas = ExtResource("2_lhe30")
+atlas = ExtResource("3_fsvsc")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fdq23"]
-atlas = ExtResource("2_lhe30")
+atlas = ExtResource("3_fsvsc")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vfab4"]
-atlas = ExtResource("2_lhe30")
+atlas = ExtResource("3_fsvsc")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vqsku"]
-atlas = ExtResource("2_lhe30")
+atlas = ExtResource("3_fsvsc")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xg535"]
-atlas = ExtResource("2_lhe30")
+atlas = ExtResource("3_fsvsc")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iuiwe"]
-atlas = ExtResource("2_lhe30")
+atlas = ExtResource("3_fsvsc")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pe7xb"]
-atlas = ExtResource("2_lhe30")
+atlas = ExtResource("3_fsvsc")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2eiw"]
-atlas = ExtResource("2_lhe30")
+atlas = ExtResource("3_fsvsc")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8okre"]
-atlas = ExtResource("2_lhe30")
+atlas = ExtResource("3_fsvsc")
 region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_575qy"]
-atlas = ExtResource("2_lhe30")
+atlas = ExtResource("3_fsvsc")
 region = Rect2(320, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ncsp2"]
-atlas = ExtResource("2_lhe30")
+atlas = ExtResource("3_fsvsc")
 region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4knpk"]
-atlas = ExtResource("2_lhe30")
+atlas = ExtResource("3_fsvsc")
 region = Rect2(384, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gkcs1"]
@@ -103,15 +103,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhe30"]
-bg_color = Color(0, 0.317647, 0.117647, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
 [node name="SuccededLevel" type="Node2D"]
-script = ExtResource("1_lhe30")
+script = ExtResource("1_nhwm4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1151.0
@@ -133,9 +126,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0, 0.317589, 0.117385, 1)
-theme_override_fonts/font = ExtResource("1_negbp")
+theme_override_fonts/font = ExtResource("2_3vqy3")
 theme_override_font_sizes/font_size = 100
-text = "Level Succeded"
+text = "Game Completed"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect"]
 position = Vector2(915, 315)
@@ -150,42 +143,3 @@ scale = Vector2(2.875, 2.71094)
 sprite_frames = SubResource("SpriteFrames_gkcs1")
 autoplay = "default"
 frame_progress = 0.643371
-
-[node name="NextLevel" type="Button" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 118.5
-offset_top = 102.5
-offset_right = 283.5
-offset_bottom = 157.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_negbp")
-theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxFlat_lhe30")
-text = "Next Level"
-
-[node name="TryAgain" type="Button" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -286.5
-offset_top = 102.5
-offset_right = -121.5
-offset_bottom = 157.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_negbp")
-theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxFlat_lhe30")
-text = "Retry Level"
-
-[connection signal="pressed" from="ColorRect/NextLevel" to="." method="_OnNextLevelPressed"]
-[connection signal="pressed" from="ColorRect/TryAgain" to="." method="_OnTryAgainPressed"]

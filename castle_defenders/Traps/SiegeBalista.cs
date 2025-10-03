@@ -18,7 +18,6 @@ public partial class SiegeBalista : Node3D
 	}
 	
 	public async Task OnInteract() {
-		GD.Print("Interacting");
 		_Projectile.Fire();
 	}
 }

@@ -1,15 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://cfo7j11et57my"]
+[gd_scene load_steps=20 format=3 uid="uid://c53hr10cerdpt"]
 
-[ext_resource type="Script" uid="uid://dfs88np8m8imn" path="res://GameTest.cs" id="1_4c57u"]
-[ext_resource type="PackedScene" uid="uid://c4l4dgchg6d64" path="res://player.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://bx2svmuu5fx3m" path="res://builtAssets/FirstHouse.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://dyps24aneq1lp" path="res://builtAssets/SmallStoneHouse.tscn" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://dvis8ujb17t35" path="res://chest.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://dy41pp0pot0or" path="res://Traps/Interaction/InteractionManager.tscn" id="6_7mycd"]
-[ext_resource type="PackedScene" uid="uid://dgegdw41t4wvv" path="res://Traps/siegeBalista.tscn" id="7_272bh"]
-[ext_resource type="PackedScene" uid="uid://b8fru1b3j2o7u" path="res://Traps/ExplosiveBarrels.tscn" id="8_5vw27"]
-[ext_resource type="Script" uid="uid://dfqxpqwwfl2jv" path="res://MiniMapCamera.cs" id="10_4c57u"]
-[ext_resource type="Script" uid="uid://cdilmrgtxu2ns" path="res://HealthBar.cs" id="11_efxa6"]
+[ext_resource type="Script" uid="uid://dfs88np8m8imn" path="res://GameTest.cs" id="1_1bjei"]
+[ext_resource type="PackedScene" uid="uid://dvis8ujb17t35" path="res://chest.tscn" id="2_5g1s2"]
+[ext_resource type="PackedScene" uid="uid://dyps24aneq1lp" path="res://builtAssets/SmallStoneHouse.tscn" id="3_aiv1b"]
+[ext_resource type="PackedScene" uid="uid://bx2svmuu5fx3m" path="res://builtAssets/FirstHouse.tscn" id="4_wapi5"]
+[ext_resource type="PackedScene" uid="uid://c4l4dgchg6d64" path="res://player.tscn" id="5_a2cb0"]
+[ext_resource type="PackedScene" uid="uid://dy41pp0pot0or" path="res://Traps/Interaction/InteractionManager.tscn" id="6_3gjqj"]
+[ext_resource type="PackedScene" uid="uid://dgegdw41t4wvv" path="res://Traps/siegeBalista.tscn" id="7_g56ap"]
+[ext_resource type="PackedScene" uid="uid://b8fru1b3j2o7u" path="res://Traps/ExplosiveBarrels.tscn" id="8_na6ls"]
+[ext_resource type="Script" uid="uid://dfqxpqwwfl2jv" path="res://MiniMapCamera.cs" id="9_fjxbk"]
+[ext_resource type="Script" uid="uid://cdilmrgtxu2ns" path="res://HealthBar.cs" id="10_3jhf0"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_lquwl"]
 vertices = PackedVector3Array(-59, 0.488, -2, -11.25, 0.488, -1.75, -11.25, 0.488, -3.25, -10.5, 0.488, -4, -8, 0.488, -59, -59, 0.488, -59, -8, 0.488, -4, -4.75, 0.488, -3.25, -4.75, 0.488, -2, -3.5, 0.488, -2, -1, 0.488, -2.5, -0.25, 0.488, -3.25, -2.75, 0.488, -1.25, -2.75, 0.488, 0.5, -1, 0.488, 0.5, -5.5, 0.488, -4, 1.25, 0.488, -3.25, 1.25, 0.488, -59, 3.25, 0.488, -2.5, 3.25, 0.488, -1, 59, 0.488, -1.25, 2.5, 0.488, -3.25, 59, 0.488, -59, -59, 0.488, 2.25, -11.25, 0.488, 2, -9, 4.488, 2, -7, 4.488, 2, -6.75, 4.488, 1, -6.75, 4.488, -2, -9, 4.488, -2, -8.75, 0.488, 1.75, -7.5, 0.488, 1.75, -7.5, 0.488, 1, -7, 0.488, 0.75, -7.5, 0.488, -1.75, -8.75, 0.488, -1.75, 3.25, 0.488, 1, 4.25, 0.488, 1.75, 59, 0.488, 3, 4.25, 0.488, 3.25, -3.5, 0.488, 3, -3.75, 0.488, 2.25, -4.75, 0.488, 2.25, -4.75, 0.488, 3.25, -4.25, 0.488, 3.75, -2.25, 0.488, 8.5, -2.25, 0.488, 7.25, -3.5, 0.488, 7.25, -6, 0.488, 7.5, -6.75, 0.488, 8.25, -2.25, 0.488, 3, -2.25, 0.488, 1.75, -2.75, 0.488, 1.25, -1, 0.488, 1, -1.5, 0.488, 9.25, -8.25, 0.488, 8.25, -8.25, 0.488, 59, -0.25, 0.488, 59, -6, 0.488, 4.25, -4.25, 0.488, 6.5, 0, 0.488, 9.25, -10.25, 0.488, 6, -10.25, 0.488, 4.25, -11.25, 0.488, 3.5, -59, 0.488, 6.25, -0.25, 4.488, 3, -0.25, 4.488, 7.25, 2, 4.488, 7.25, 2, 4.488, 3, 4.25, 0.488, 7, 59, 0.488, 7.25, 1.75, 0.488, 3.25, 0.5, 0.488, 3.25, 0, 0.488, 4.5, 0.5, 0.488, 6.75, 1.75, 0.488, 6.75, -10.25, 0.488, 7.5, -9.5, 0.488, 8.25, -59, 0.488, 59, 3.5, 0.488, 9.25, 2, 0.488, 9.25, 2.25, 0.488, 59, 4.25, 0.488, 8.5, 59, 0.488, 59)
@@ -53,7 +53,7 @@ colors = PackedColorArray(0.213404, 0.695343, 0, 1)
 gradient = SubResource("Gradient_efxa6")
 
 [node name="Main" type="Node" node_paths=PackedStringArray("SpawnPoint2", "_Enemies", "_Chest", "_Player", "SpawnPoint1")]
-script = ExtResource("1_4c57u")
+script = ExtResource("1_1bjei")
 SpawnPoint2 = NodePath("SpawnPoint2")
 _Enemies = NodePath("Enemies")
 _Chest = NodePath("Chest")
@@ -64,7 +64,7 @@ SpawnPoint1 = NodePath("SpawnPoint1")
 transform = Transform3D(1, 0, 0, 0, -0.5, 0.866026, 0, -0.866026, -0.5, 0, 17, 0)
 shadow_enabled = true
 
-[node name="Chest" parent="." instance=ExtResource("4_1bvp3")]
+[node name="Chest" parent="." instance=ExtResource("2_5g1s2")]
 transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -1.73256, 1.30303, 10)
 
 [node name="Enemies" type="Node3D" parent="."]
@@ -79,16 +79,16 @@ material_override = SubResource("StandardMaterial3D_lquwl")
 mesh = SubResource("PlaneMesh_lquwl")
 skeleton = NodePath("../Ground")
 
-[node name="SmallStoneHouse2" parent="NavigationRegion3D" instance=ExtResource("2_h2yge")]
+[node name="SmallStoneHouse2" parent="NavigationRegion3D" instance=ExtResource("3_aiv1b")]
 transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, 2, 0, -1)
 
-[node name="FirstHouse2" parent="NavigationRegion3D" instance=ExtResource("2_0xm2m")]
+[node name="FirstHouse2" parent="NavigationRegion3D" instance=ExtResource("4_wapi5")]
 transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -0.032, 0, 5.007)
 
-[node name="SmallStoneHouse" parent="NavigationRegion3D" instance=ExtResource("2_h2yge")]
+[node name="SmallStoneHouse" parent="NavigationRegion3D" instance=ExtResource("3_aiv1b")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.03229, 0.0347552, 6.00734)
 
-[node name="FirstHouse" parent="NavigationRegion3D" instance=ExtResource("2_0xm2m")]
+[node name="FirstHouse" parent="NavigationRegion3D" instance=ExtResource("4_wapi5")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7, 0, 0)
 
 [node name="Ground" type="StaticBody3D" parent="NavigationRegion3D"]
@@ -97,18 +97,18 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0410213, 0, -14.9177)
 shape = SubResource("BoxShape3D_4xowi")
 
-[node name="Player" parent="." node_paths=PackedStringArray("_Enemies") instance=ExtResource("1_ig7tw")]
+[node name="Player" parent="." node_paths=PackedStringArray("_Enemies") instance=ExtResource("5_a2cb0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.38281, -6.82051)
 _Enemies = NodePath("../Enemies")
 
-[node name="InteractionManager" parent="." node_paths=PackedStringArray("_Player") instance=ExtResource("6_7mycd")]
+[node name="InteractionManager" parent="." node_paths=PackedStringArray("_Player") instance=ExtResource("6_3gjqj")]
 _Player = NodePath("../Player")
 
-[node name="SiegeBallista" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("7_272bh")]
+[node name="SiegeBallista" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("7_g56ap")]
 transform = Transform3D(-0.980606, 0.138985, 0.138188, 0.140331, 0.990105, 3.37905e-09, -0.136821, 0.0193921, -0.990406, 10.8534, -0.0765432, -7.01342)
 _interactionManager = NodePath("../InteractionManager")
 
-[node name="ExplosiveBarrels" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("8_5vw27")]
+[node name="ExplosiveBarrels" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("8_na6ls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 _interactionManager = NodePath("../InteractionManager")
 
@@ -141,7 +141,7 @@ render_target_update_mode = 4
 
 [node name="MiniMapCamera" type="Camera3D" parent="LevelMap/PanelContainer/SubViewportContainer/SubViewport" node_paths=PackedStringArray("_Target")]
 transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 35, 0)
-script = ExtResource("10_4c57u")
+script = ExtResource("9_fjxbk")
 _Target = NodePath("../../../../../Player")
 
 [node name="CanvasLayer_ProgressBar" type="CanvasLayer" parent="."]
@@ -158,118 +158,11 @@ stretch_margin_right = 4
 stretch_margin_bottom = 4
 texture_under = SubResource("GradientTexture2D_dg77c")
 texture_progress = SubResource("GradientTexture2D_w48qg")
-script = ExtResource("11_efxa6")
+script = ExtResource("10_3jhf0")
 _Player = NodePath("../../Player")
 
 [node name="SpawnPoint1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.0938544, -16)
 
 [node name="SpawnPoint2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, 8)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SpawnPoint2"]
-transform = Transform3D(1, 0, 0, 0, -0.5, 0.866026, 0, -0.866026, -0.5, 0, 17, 0)
-shadow_enabled = true
-
-[node name="Chest" parent="SpawnPoint2" instance=ExtResource("4_1bvp3")]
-transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -1.73256, 1.30303, 10)
-
-[node name="Enemies" type="Node3D" parent="SpawnPoint2"]
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="SpawnPoint2"]
-navigation_mesh = SubResource("NavigationMesh_lquwl")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SpawnPoint2/NavigationRegion3D"]
-transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 0, 0, 0)
-layers = 5
-material_override = SubResource("StandardMaterial3D_lquwl")
-mesh = SubResource("PlaneMesh_lquwl")
-skeleton = NodePath("../Ground")
-
-[node name="SmallStoneHouse2" parent="SpawnPoint2/NavigationRegion3D" instance=ExtResource("2_h2yge")]
-transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, 2, 0, -1)
-
-[node name="FirstHouse2" parent="SpawnPoint2/NavigationRegion3D" instance=ExtResource("2_0xm2m")]
-transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -0.032, 0, 5.007)
-
-[node name="SmallStoneHouse" parent="SpawnPoint2/NavigationRegion3D" instance=ExtResource("2_h2yge")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.03229, 0.0347552, 6.00734)
-
-[node name="FirstHouse" parent="SpawnPoint2/NavigationRegion3D" instance=ExtResource("2_0xm2m")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7, 0, 0)
-
-[node name="Ground" type="StaticBody3D" parent="SpawnPoint2/NavigationRegion3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPoint2/NavigationRegion3D/Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0410213, 0, -14.9177)
-shape = SubResource("BoxShape3D_4xowi")
-
-[node name="Player" parent="SpawnPoint2" node_paths=PackedStringArray("_Enemies") instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.38281, -6.82051)
-_Enemies = NodePath("../../Enemies")
-
-[node name="InteractionManager" parent="SpawnPoint2" node_paths=PackedStringArray("_Player") instance=ExtResource("6_7mycd")]
-_Player = NodePath("../../Player")
-
-[node name="SiegeBallista" parent="SpawnPoint2" node_paths=PackedStringArray("_interactionManager") instance=ExtResource("7_272bh")]
-transform = Transform3D(-0.980606, 0.138985, 0.138188, 0.140331, 0.990105, 3.37905e-09, -0.136821, 0.0193921, -0.990406, 10.8534, -0.0765432, -7.01342)
-_interactionManager = NodePath("../../InteractionManager")
-
-[node name="ExplosiveBarrels" parent="SpawnPoint2" node_paths=PackedStringArray("_interactionManager") instance=ExtResource("8_5vw27")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
-_interactionManager = NodePath("../../InteractionManager")
-
-[node name="LevelMap" type="MarginContainer" parent="SpawnPoint2"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.00165, 1.00189)
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="PanelContainer" type="PanelContainer" parent="SpawnPoint2/LevelMap"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="SpawnPoint2/LevelMap/PanelContainer"]
-custom_minimum_size = Vector2(320, 180)
-layout_direction = 1
-layout_mode = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="SpawnPoint2/LevelMap/PanelContainer/SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(320, 180)
-render_target_update_mode = 4
-
-[node name="MiniMapCamera" type="Camera3D" parent="SpawnPoint2/LevelMap/PanelContainer/SubViewportContainer/SubViewport" node_paths=PackedStringArray("_Target")]
-transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 35, 0)
-script = ExtResource("10_4c57u")
-_Target = NodePath("../../../../../../Player")
-
-[node name="CanvasLayer_ProgressBar" type="CanvasLayer" parent="SpawnPoint2"]
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="SpawnPoint2/CanvasLayer_ProgressBar" node_paths=PackedStringArray("_Player")]
-offset_left = 48.0
-offset_top = 505.0
-offset_right = 272.0
-offset_bottom = 545.0
-nine_patch_stretch = true
-stretch_margin_left = 4
-stretch_margin_top = 4
-stretch_margin_right = 4
-stretch_margin_bottom = 4
-texture_under = SubResource("GradientTexture2D_dg77c")
-texture_progress = SubResource("GradientTexture2D_w48qg")
-script = ExtResource("11_efxa6")
-_Player = NodePath("../../../Player")
-
-[node name="SpawnPoint1" type="Node3D" parent="SpawnPoint2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.0938544, -16)
-
-[node name="SpawnPoint2" type="Node3D" parent="SpawnPoint2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, 8)

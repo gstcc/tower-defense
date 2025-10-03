@@ -7,7 +7,6 @@ public partial class BallistaArrow : Projectile
 	{
 		_Speed = 20;
 		_Direction = GlobalTransform.Basis.X;
-		GD.Print(_Direction);
 		_Damage = 100;
 		base._Ready();
 	}
@@ -25,11 +24,9 @@ public partial class BallistaArrow : Projectile
 				}
 				return false;
 			} else if (collider is Player player) {
-				GD.Print("Collided with player");
 				return false;
 			}
 			ray.QueueFree();
-			GD.Print(collider);
 			return true;
 		}
 		return false;

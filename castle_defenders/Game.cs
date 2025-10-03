@@ -86,8 +86,8 @@ public partial class Game : Node
 		
 	private void OnPlayerDied()
 	{
-		GD.Print("Player died AAAAAAAAAAAAAA");
 		_State = GameState.LOST;
+		gameFailed();
 	}
 	
 	private void OnMobDied(BaseMob mob)
@@ -98,6 +98,17 @@ public partial class Game : Node
 		{
 			_State = GameState.WON;
 			GD.Print("Player won");
+			gamesucceded();
 		}
+	}
+	
+	private void gameFailed(){
+		GD.Print("level failed");
+		GetTree().ChangeSceneToFile("res://FailedLevel.tscn");
+	}
+	
+	private void gamesucceded(){
+		GD.Print("level succeded");
+		GetTree().ChangeSceneToFile("res://SuccededLevel.tscn");
 	}
 }

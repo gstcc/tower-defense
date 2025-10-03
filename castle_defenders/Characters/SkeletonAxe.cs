@@ -22,8 +22,6 @@ public partial class SkeletonAxe : BaseMob
 		_AnimTree = GetNode<AnimationTree>("SkeletonWarrior/AnimationTree");
 		_StateMachine = (AnimationNodeStateMachinePlayback)_AnimTree.Get("parameters/playback");
 		base._Ready();
-
-		GD.Print("SkeletonAxe ready.");
 	}
 	
 	protected override bool CanAttack() {

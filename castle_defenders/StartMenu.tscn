@@ -102104,24 +102104,4 @@ theme_override_fonts/font = ExtResource("2_7htnq")
 theme_override_font_sizes/font_size = 64
 text = "Castle defender"
 
-[node name="Button2" type="Button" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 489.0
-offset_top = -639.0
-offset_right = 565.0
-offset_bottom = -594.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("2_7htnq")
-theme_override_font_sizes/font_size = 42
-theme_override_styles/normal = SubResource("StyleBoxFlat_yoqr7")
-text = "Quit"
-
 [connection signal="pressed" from="Button" to="Node2D" method="_OnButtonPressed"]
-[connection signal="pressed" from="Button2" to="Node2D" method="_OnButtonQuitPressed"]
