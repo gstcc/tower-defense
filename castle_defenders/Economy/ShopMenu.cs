@@ -8,7 +8,7 @@ public partial class ShopMenu : CanvasLayer
 	private bool isShopOpen = false;
 	[Export] public Label _Coins;
 	private List<string> Rarities = ["Basic", "Rare", "Exotic"];
-	private List<string> RuneTypes = ["Health", "Damage", "Arrow"];
+	private List<string> RuneTypes = ["Health", "Damage", "Speed"];
 	private List<ColorRect> BasicNodes = new List<ColorRect>();
 	private List<ColorRect> RareNodes = new List<ColorRect>();
 	private List<ColorRect> ExoticNodes = new List<ColorRect>();
@@ -53,8 +53,7 @@ public partial class ShopMenu : CanvasLayer
 	private void AddRunes()
 	{
 		//int runeCount = Mathf.Min(BasicNodes.Count, RareNodes.Count, ExoticNodes.Count, RuneTypes.Count);
-		int runeCount = 2;
-		for (int i = 0; i < runeCount; i++)
+		for (int i = 0; i < RuneTypes.Count; i++)
 		{
 			string runeType = RuneTypes[i];
 

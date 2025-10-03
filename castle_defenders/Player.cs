@@ -3,12 +3,14 @@ using System;
 
 public partial class Player : CharacterBody3D
 {
-	private const float Speed = 3.0f;
+	private float Speed = 3.0f;
+	private float _BaseSpeed = 3.0f;
 	private const float Acceleration = 0.5f;
 	private const float JumpVelocity = 1.5f;
 	private const float MouseSensitivity = 0.25f;
 	private const float RotationSpeed = 12.0f; 
 	private int Damage = 50;
+	private const int _BaseDamage = 50;
 	public int _Health = 200;
 	public int _MaxHealth = 200;
 	private Vector2 CameraInputDirection;
@@ -57,7 +59,9 @@ public partial class Player : CharacterBody3D
 	{
 		_Health = (int)(_Health * PlayerModifier.HealthModifier);
 		_MaxHealth = (int)(_MaxHealth * PlayerModifier.HealthModifier);
-		Damage = (int)(Damage * PlayerModifier.DamageModifier); 
+		Damage = (int)(_BaseDamage * PlayerModifier.DamageModifier); 
+		Speed = (_BaseSpeed * PlayerModifier.SpeedModifier);
+		
 	}
 	
 	private void ConnectMobs()

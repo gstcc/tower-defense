@@ -15,6 +15,7 @@ public partial class Game : Node
 	[Export] private Node3D _Enemies;
 	[Export] private Chest _Chest;
 	[Export] private Player _Player;
+	[Export] public Label _Coins;
 	private GameState _State = GameState.IN_PROGRESS;
 	private List<BaseMob> _AliveEnemies = new();
 	[Export] public Node3D SpawnPoint1;
@@ -37,6 +38,7 @@ public partial class Game : Node
 			}
 		}
 		_Player.Connect(Player.SignalName.Died, new Callable(this, nameof(OnPlayerDied)));	
+		CoinManager.Instance.Connect(nameof(CoinManager.CoinsChanged), new Callable(this, nameof(UpdateCoinTotal)));
 	}
 	
 	protected virtual void SpawnMobs()
@@ -46,8 +48,12 @@ public partial class Game : Node
 		{
 			SpawnMob(_axeScene, SpawnPoint1);
 		}
-
 		
+	}
+	
+	private void UpdateCoinTotal()
+	{
+		_Coins.Text = $"{CoinManager._TotalCoins}";
 	}
 	
 	protected void SpawnMob(PackedScene mobScene, Node3D spawnPoint)
@@ -99,5 +105,6 @@ public partial class Game : Node
 			_State = GameState.WON;
 			GD.Print("Player won");
 		}
+		//UpdateCoinTotal();
 	}
 }

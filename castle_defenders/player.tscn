@@ -36,6 +36,7 @@ unique_name_in_owner = true
 transform = Transform3D(-1, 0, 8.74228e-08, 2.26267e-08, 0.965926, 0.258819, -8.44439e-08, 0.258819, -0.965926, 0, 1, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+collision_mask = 7
 shape = SubResource("SphereShape3D_onrkg")
 spring_length = 3.0
 

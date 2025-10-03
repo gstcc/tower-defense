@@ -5,14 +5,22 @@ public partial class CoinManager : Node
 {
 	// Make the _TotalCoins field static
 	public static int _TotalCoins = 0;
+	[Signal]
+	public delegate void CoinsChangedEventHandler();
+	
+	public static CoinManager Instance { get; private set; }
 
-	// Optionally, add a static method to manipulate coins
+	public override void _Ready()
+	{
+		Instance = this;
+	}
+
 	public static void AddCoin()
 	{
 		_TotalCoins += 1;
+		Instance?.EmitSignal(nameof(CoinsChanged));
 	}
 
-	// You can also create methods to get the coin count if needed
 	public static int GetCoinCount()
 	{
 		return _TotalCoins;
@@ -20,9 +28,9 @@ public partial class CoinManager : Node
 	
 	public static bool RemoveCoins(int withdraw)
 	{
-		// We can only remove coins as long as it doesn't go into negative
 		if (_TotalCoins >= withdraw) {
 			_TotalCoins -= withdraw;
+			Instance?.EmitSignal(nameof(CoinsChanged));
 			return true;	
 		}
 		return false;

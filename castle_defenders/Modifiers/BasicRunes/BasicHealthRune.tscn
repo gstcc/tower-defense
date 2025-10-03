@@ -32,3 +32,10 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(32, 32)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_5qovv")
+
+[node name="Label" type="Label" parent="Button"]
+offset_left = 40.0
+offset_top = 38.0
+offset_right = 80.0
+offset_bottom = 61.0
+text = "5"

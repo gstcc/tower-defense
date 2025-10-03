@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://riow3haybigx" path="res://Economy/ShoppingStand.cs" id="1_l1p64"]
 [ext_resource type="PackedScene" uid="uid://c732t0tetfw2b" path="res://Traps/Interaction/interactionArea.tscn" id="1_ucld4"]
-[ext_resource type="Texture2D" uid="uid://cbklx8xmdrfq3" path="res://art/Town/Textures/colormap.png" id="3_scrx3"]
+[ext_resource type="Texture2D" uid="uid://dmmgcrn582otm" path="res://art/Town/Textures/colormap.png" id="3_scrx3"]
 [ext_resource type="PackedScene" uid="uid://dafskvpuvmh1c" path="res://Economy/ShopMenu.tscn" id="4_n5kdd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ucld4"]

@@ -74,8 +74,8 @@ public abstract partial class BaseMob : CharacterBody3D
 		GD.Print($"{Name} died!");
 		_Dead=true;
 		_AnimTree.Set("parameters/conditions/Die", true);
-		EmitSignal(SignalName.Died, this);
 		CoinManager.AddCoin();
+		EmitSignal(SignalName.Died, this);
 		GD.Print(CoinManager.GetCoinCount());
 		_Collsion.QueueFree();
 		//Save bodies for 1 minute then despawn.
