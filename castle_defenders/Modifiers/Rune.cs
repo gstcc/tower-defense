@@ -11,6 +11,7 @@ public abstract partial class Rune : Node2D
 	[Export] public Button button; 
 	[Signal]
 	public delegate void RuneClickedEventHandler(Rune rune);
+	[Export] public int _Cost;
 	
 	public override void _Ready()
 	{

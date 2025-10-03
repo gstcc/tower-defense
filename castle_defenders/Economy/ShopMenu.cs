@@ -97,9 +97,16 @@ public partial class ShopMenu : CanvasLayer
 			GD.Print("Player already owns this rune.");
 			return;
 		}
+		
+		if (rune._Cost > CoinManager.GetCoinCount()) {
+			GD.Print("Player does not have enough coins");
+			return;
+		}
 
 		// Remove from shop UI
 		rune.GetParent()?.RemoveChild(rune);
+		CoinManager.RemoveCoins(rune._Cost);
+		UpdateCoinTotal();
 		
 		var callable = new Callable(this, nameof(RunePressed));
 		if (rune.IsConnected(Rune.SignalName.RuneClicked, callable))

@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dvaqfj8cq0xaj" path="res://Economy/Inventory.cs" id="1_3o0vi"]
 
-[node name="Inventory" type="CanvasLayer"]
+[node name="Inventory" type="CanvasLayer" node_paths=PackedStringArray("_Coins")]
 layer = 2
 script = ExtResource("1_3o0vi")
+_Coins = NodePath("Panel/Coins")
 
 [node name="Panel" type="Panel" parent="."]
 z_index = 10

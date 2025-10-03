@@ -4,7 +4,8 @@ using System;
 public partial class Inventory : CanvasLayer
 {
 	private bool _IsShopOpen = false;
-	 public static Inventory Instance;
+	public static Inventory Instance;
+	[Export] public Label _Coins;
 
 	public override void _Input(InputEvent ev)
 	{
@@ -49,6 +50,7 @@ public partial class Inventory : CanvasLayer
 				activeRune2.GetParent().RemoveChild(activeRune2);
 			activeRune2Node.AddChild(activeRune2);
 		}
+		UpdateCoinTotal();
 
 		var panel = GetNode<Control>("Panel");
 
@@ -89,6 +91,11 @@ public partial class Inventory : CanvasLayer
 				GD.PrintErr($"Missing slot node: {slotName}");
 			}
 		}
+	}
+	
+	public void UpdateCoinTotal()
+	{
+		_Coins.Text = $"Coins: {CoinManager._TotalCoins}";
 	}
 
 
