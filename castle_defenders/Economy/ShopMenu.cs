@@ -5,9 +5,6 @@ using System.Collections.Generic;
 
 public partial class ShopMenu : CanvasLayer
 {
-	// Reference to the CanvasLayer that holds the shop UI
-
-	// This will be used to hide or show the shop UI
 	private bool isShopOpen = false;
 	[Export] public Label _Coins;
 	private List<string> Rarities = ["Basic", "Rare", "Exotic"];
@@ -16,7 +13,7 @@ public partial class ShopMenu : CanvasLayer
 	private List<ColorRect> RareNodes = new List<ColorRect>();
 	private List<ColorRect> ExoticNodes = new List<ColorRect>();
 	private Dictionary<ColorRect, Rune> runeMap = new Dictionary<ColorRect, Rune>();
-	//private Dictionary<string, string> shopMap = new Dictionary<string, string>();
+	private List<Rune> Runes = new List<Rune>();
 
 	public override void _Ready()
 	{
@@ -26,9 +23,6 @@ public partial class ShopMenu : CanvasLayer
 		GD.Print("Shop Menu Initialized. Shop initially hidden.");
 		AddShopWindows();
 		AddRunes();
-		//PackedScene runeScene = (PackedScene)GD.Load("res://Modifiers/BasicRunes/BasicHealthRune.tscn");
-		//BasicHealthRune runeInstance = (BasicHealthRune)runeScene.Instantiate();
-		//_Basic1.AddChild(runeInstance);
 	}
 	
 	private void AddShopWindows()
@@ -78,6 +72,8 @@ public partial class ShopMenu : CanvasLayer
 			if (runeScene != null)
 			{
 				Rune runeInstance = runeScene.Instantiate<Rune>();
+				Runes.Add(runeInstance);
+				runeInstance.Connect(Rune.SignalName.RuneClicked, new Callable(this, nameof(RunePressed)));
 				slot.AddChild(runeInstance);
 			}
 			else
@@ -88,6 +84,38 @@ public partial class ShopMenu : CanvasLayer
 		else
 		{
 			GD.Print($"Rune scene not found at path: {path} (Skipping)");
+		}
+	}
+	
+	private void RunePressed(Rune rune)
+	{
+		GD.Print($"Rune clicked: {rune.Name}");
+
+		// Prevent adding duplicates
+		if (InventoryManager.OwnRune(rune))
+		{
+			GD.Print("Player already owns this rune.");
+			return;
+		}
+
+		// Remove from shop UI
+		rune.GetParent()?.RemoveChild(rune);
+		
+		var callable = new Callable(this, nameof(RunePressed));
+		if (rune.IsConnected(Rune.SignalName.RuneClicked, callable))
+		{
+			rune.Disconnect(Rune.SignalName.RuneClicked, callable);
+			GD.Print("Disconnected RuneClicked signal from ShopMenu.");
+		}
+
+		// Add to InventoryManager
+		if (InventoryManager.AddRune(rune))
+		{
+			GD.Print($"Rune added to inventory: {rune.Name}");
+		}
+		else
+		{
+			GD.Print("Failed to add rune to inventory.");
 		}
 	}
 

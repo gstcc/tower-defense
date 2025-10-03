@@ -47,10 +47,13 @@ public partial class Player : CharacterBody3D
 		_AnimTree = GetNode<AnimationTree>("Knight/AnimationTree");
 		_StateMachine = (AnimationNodeStateMachinePlayback)_AnimTree.Get("parameters/playback");
 		ApplyModifiers();
+		PlayerModifier.Instance.Connect(nameof(PlayerModifier.ModifiersChanged), new Callable(this, nameof(ApplyModifiers)));
+		//PlayerModifier.Instance.Connect(PlayerModifier.Instance.ModifiersChanged, new Callable(this, nameof(ApplyModifiers)));
 		 CallDeferred(nameof(ConnectMobs));
+		Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
 	
-	private void ApplyModifiers()
+	public void ApplyModifiers()
 	{
 		_Health = (int)(_Health * PlayerModifier.HealthModifier);
 		_MaxHealth = (int)(_MaxHealth * PlayerModifier.HealthModifier);
@@ -100,7 +103,7 @@ public partial class Player : CharacterBody3D
 	public override void _Input(InputEvent ev) 
 	{
 		if (ev.IsActionPressed("left_click")) {
-			Input.MouseMode = Input.MouseModeEnum.Captured;
+			
 		}
 	}
 	

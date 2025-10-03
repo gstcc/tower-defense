@@ -8,6 +8,23 @@ public abstract partial class Rune : Node2D
 	[Export] public float _magicProtectionModifier = 1.0f;
 	[Export] public float _arrowProtectionModifier = 1.0f;
 	[Export] public float _speedModifier = 1.0f;
+	[Export] public Button button; 
+	[Signal]
+	public delegate void RuneClickedEventHandler(Rune rune);
+	
+	public override void _Ready()
+	{
+		if (button != null)
+		{
+			button.Pressed += OnButtonPressed;
+		}
+	}
+	
+	protected void OnButtonPressed()
+	{
+		EmitSignal(SignalName.RuneClicked, this);
+	}
+	
 	
 	public virtual void Apply()
 	{

@@ -9,34 +9,81 @@ public partial class PlayerModifier : Node
 	private static float _arrowProtectionModifier = 1.0f;
 	private static float _speedModifier = 1.0f;
 
-	// Property with getter and setter for each modifier
+	// Signal (instance signal, not static)
+	[Signal]
+	public delegate void ModifiersChangedEventHandler();
+
+	// Singleton instance (set this on _Ready)
+	public static PlayerModifier Instance { get; private set; }
+
+	public override void _Ready()
+	{
+		Instance = this;
+	}
+
+	// Properties with notification on change
 	public static float HealthModifier
 	{
 		get => _healthModifier;
-		set => _healthModifier = value;
+		set
+		{
+			if (Math.Abs(_healthModifier - value) > 0.0001f)
+			{
+				_healthModifier = value;
+				Instance?.EmitSignal(nameof(ModifiersChanged));
+			}
+		}
 	}
 
 	public static float DamageModifier
 	{
 		get => _damageModifier;
-		set => _damageModifier = value;
+		set
+		{
+			if (Math.Abs(_damageModifier - value) > 0.0001f)
+			{
+				_damageModifier = value;
+				Instance?.EmitSignal(nameof(ModifiersChanged));
+			}
+		}
 	}
 
 	public static float MagicProtectionModifier
 	{
 		get => _magicProtectionModifier;
-		set => _magicProtectionModifier = value;
+		set
+		{
+			if (Math.Abs(_magicProtectionModifier - value) > 0.0001f)
+			{
+				_magicProtectionModifier = value;
+				Instance?.EmitSignal(nameof(ModifiersChanged));
+			}
+		}
 	}
 
 	public static float ArrowProtectionModifier
 	{
 		get => _arrowProtectionModifier;
-		set => _arrowProtectionModifier = value;
+		set
+		{
+			if (Math.Abs(_arrowProtectionModifier - value) > 0.0001f)
+			{
+				_arrowProtectionModifier = value;
+				Instance?.EmitSignal(nameof(ModifiersChanged));
+			}
+		}
 	}
 
 	public static float SpeedModifier
 	{
 		get => _speedModifier;
-		set => _speedModifier = value;
+		set
+		{
+			if (Math.Abs(_speedModifier - value) > 0.0001f)
+			{
+				_speedModifier = value;
+				Instance?.EmitSignal(nameof(ModifiersChanged));
+			}
+		}
 	}
 }
