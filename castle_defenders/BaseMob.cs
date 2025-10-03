@@ -22,6 +22,8 @@ public abstract partial class BaseMob : CharacterBody3D
 	[Signal]
 	public delegate void AttackedEventHandler(Node target);
 	[Signal]
+	public delegate void AttackedChestEventHandler(Node target);
+	[Signal]
 	public delegate void HealthChangedEventHandler(Node target);
 	[Signal]
 	public delegate void DiedEventHandler(Node target);
@@ -53,7 +55,7 @@ public abstract partial class BaseMob : CharacterBody3D
 	}
 	
 	public bool TargetInRange() {
-		return GlobalPosition.DistanceTo(_Player.GlobalPosition) < _AttackRange;
+		return GlobalPosition.DistanceTo(_NavAgent.TargetPosition) < _AttackRange;
 	}
 	
 	protected virtual bool CanAttack() {
@@ -64,7 +66,11 @@ public abstract partial class BaseMob : CharacterBody3D
 	{
 		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
 		if (TargetInRange() && CanAttack()) {
-			EmitSignal(SignalName.Attacked, _Damage);
+			if(_NavAgent.TargetPosition == _Player.GlobalPosition){
+				EmitSignal(SignalName.Attacked, _Damage);
+			}else {
+				EmitSignal(SignalName.AttackedChest, _Damage);
+			}
 		}
 	}
 	

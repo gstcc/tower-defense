@@ -37,6 +37,7 @@ public partial class Game : Node
 			}
 		}
 		_Player.Connect(Player.SignalName.Died, new Callable(this, nameof(OnPlayerDied)));	
+		_Chest.Connect(Chest.SignalName.Died, new Callable(this, nameof(OnChestDied)));	
 	}
 	
 	protected virtual void SpawnMobs()
@@ -85,6 +86,12 @@ public partial class Game : Node
 
 		
 	private void OnPlayerDied()
+	{
+		_State = GameState.LOST;
+		gameFailed();
+	}
+	
+	private void OnChestDied()
 	{
 		_State = GameState.LOST;
 		gameFailed();

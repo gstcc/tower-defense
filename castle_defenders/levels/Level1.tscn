@@ -64,8 +64,9 @@ SpawnPoint1 = NodePath("SpawnPoint1")
 transform = Transform3D(1, 0, 0, 0, -0.5, 0.866026, 0, -0.866026, -0.5, 0, 17, 0)
 shadow_enabled = true
 
-[node name="Chest" parent="." instance=ExtResource("2_5g1s2")]
-transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, -1.73256, 1.30303, 10)
+[node name="Chest" parent="." node_paths=PackedStringArray("_Enemies") instance=ExtResource("2_5g1s2")]
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, -1.733, 0, 10)
+_Enemies = NodePath("../Enemies")
 
 [node name="Enemies" type="Node3D" parent="."]
 
