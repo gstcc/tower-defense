@@ -36,6 +36,7 @@ _subresources={
 "materials": {
 "colormap": {
 "use_external/enabled": true,
+"use_external/fallback_path": "",
 "use_external/path": "res://art/Dungeon/Textures/colormap.tres"
 }
 }

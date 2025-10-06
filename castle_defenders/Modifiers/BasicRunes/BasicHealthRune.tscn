@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://colvymql8uuus"]
+
+[ext_resource type="Script" uid="uid://b02f1oq24t86a" path="res://Modifiers/BasicRunes/BasicHealthRune.cs" id="1_q81da"]
+[ext_resource type="Texture2D" uid="uid://27r307nvfn1n" path="res://art/Megapack/Assets/RPG_Items.png" id="2_ni0fs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qovv"]
+atlas = ExtResource("2_ni0fs")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5qovv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qovv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BasicHealthRune" type="Node2D"]
+script = ExtResource("1_q81da")
+_healthModifier = 1.2
+_Cost = 5
+
+[node name="Button" type="Button" parent="."]
+offset_right = 64.0
+offset_bottom = 64.0
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Button"]
+position = Vector2(32, 32)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5qovv")
+
+[node name="Label" type="Label" parent="Button"]
+offset_left = 40.0
+offset_top = 38.0
+offset_right = 80.0
+offset_bottom = 61.0
+text = "5"

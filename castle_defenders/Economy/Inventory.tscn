@@ -1,0 +1,214 @@
+[gd_scene load_steps=2 format=3 uid="uid://d08okxs8bd58k"]
+
+[ext_resource type="Script" uid="uid://dvaqfj8cq0xaj" path="res://Economy/Inventory.cs" id="1_3o0vi"]
+
+[node name="Inventory" type="CanvasLayer" node_paths=PackedStringArray("_Coins")]
+layer = 2
+script = ExtResource("1_3o0vi")
+_Coins = NodePath("Panel/Coins")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = 10
+offset_left = 256.0
+offset_top = 200.0
+offset_right = 832.0
+offset_bottom = 512.0
+
+[node name="Slot3" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 64.0
+offset_right = 400.0
+offset_bottom = 128.0
+color = Color(0.0797745, 0.168068, 0.258086, 1)
+
+[node name="Slot4" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 64.0
+offset_right = 480.0
+offset_bottom = 128.0
+color = Color(0.0797745, 0.168068, 0.258086, 1)
+
+[node name="Slot8" type="ColorRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 336.0
+offset_top = 144.0
+offset_right = 400.0
+offset_bottom = 208.0
+color = Color(0.0797745, 0.168068, 0.258086, 1)
+
+[node name="Slot1" type="ColorRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 176.0
+offset_top = 64.0
+offset_right = 240.0
+offset_bottom = 128.0
+color = Color(0.0797745, 0.168068, 0.258086, 1)
+
+[node name="Slot5" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 64.0
+offset_right = 560.0
+offset_bottom = 128.0
+color = Color(0.0797745, 0.168068, 0.258086, 1)
+
+[node name="Slot2" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 64.0
+offset_right = 320.0
+offset_bottom = 128.0
+color = Color(0.0797745, 0.168068, 0.258086, 1)
+
+[node name="Slot13" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 224.0
+offset_right = 400.0
+offset_bottom = 288.0
+color = Color(0.0797745, 0.168068, 0.258086, 1)
+
+[node name="Slot14" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 224.0
+offset_right = 480.0
+offset_bottom = 288.0
+color = Color(0.0797745, 0.168068, 0.258086, 1)
+
+[node name="Slot11" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 224.0
+offset_right = 240.0
+offset_bottom = 288.0
+color = Color(0.0797745, 0.168068, 0.258086, 1)
+
+[node name="Slot15" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 224.0
+offset_right = 560.0
+offset_bottom = 288.0
+color = Color(0.0797745, 0.168068, 0.258086, 1)
+
+[node name="Slot12" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 224.0
+offset_right = 320.0
+offset_bottom = 288.0
+color = Color(0.0797745, 0.168068, 0.258086, 1)
+
+[node name="Slot9" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 144.0
+offset_right = 480.0
+offset_bottom = 208.0
+color = Color(0.0797745, 0.168068, 0.258086, 1)
+
+[node name="Slot6" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 144.0
+offset_right = 240.0
+offset_bottom = 208.0
+color = Color(0.0797745, 0.168068, 0.258086, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Slot10" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 144.0
+offset_right = 560.0
+offset_bottom = 208.0
+color = Color(0.0797745, 0.168068, 0.258086, 1)
+
+[node name="Slot7" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 144.0
+offset_right = 320.0
+offset_bottom = 208.0
+color = Color(0.0797745, 0.168068, 0.258086, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Inventory" type="ColorRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0286458
+anchor_top = 0.0332031
+anchor_right = 0.108507
+anchor_bottom = 0.232422
+offset_left = -0.5
+offset_top = 55.9063
+offset_right = 97.5
+offset_bottom = 217.344
+color = Color(0.127899, 0.207928, 0.207156, 1)
+
+[node name="ActiveRune1" type="ColorRect" parent="Panel/Inventory"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.527778
+anchor_top = -0.105263
+anchor_right = -0.527778
+anchor_bottom = -0.105263
+offset_left = 116.0
+offset_top = 69.3684
+offset_right = 180.0
+offset_bottom = 133.368
+color = Color(0.0797745, 0.168068, 0.258086, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ActiveRune2" type="ColorRect" parent="Panel/Inventory"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.8125
+anchor_top = 0.166119
+anchor_right = -1.8125
+anchor_bottom = 0.166119
+offset_left = 301.0
+offset_top = 89.1214
+offset_right = 365.0
+offset_bottom = 153.121
+color = Color(0.0797745, 0.168068, 0.258086, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Panel/Inventory"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "ActiveRunes
+"
+
+[node name="ShopLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 17.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "Inventory"
+
+[node name="Coins" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 17.0
+offset_right = 520.0
+offset_bottom = 40.0
+text = "Gold: 0"

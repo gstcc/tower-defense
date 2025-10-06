@@ -15,7 +15,7 @@ public partial class SkeletonAxe : BaseMob
 		_Speed = 1;
 		_Health = 200;
 		_MaxHealth = 200;
-		_Damage = 40;
+		_Damage = 80;
 
 		_Skin = GetNode<SkeletonWarrior>("%SkeletonWarrior");
 		_NavAgent = GetNode<NavigationAgent3D>("%NavigationAgent3D");

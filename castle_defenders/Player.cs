@@ -3,12 +3,14 @@ using System;
 
 public partial class Player : CharacterBody3D
 {
-	private const float Speed = 3.0f;
+	private float Speed = 3.0f;
+	private float _BaseSpeed = 3.0f;
 	private const float Acceleration = 0.5f;
 	private const float JumpVelocity = 1.5f;
 	private const float MouseSensitivity = 0.25f;
 	private const float RotationSpeed = 12.0f; 
-	private const int Damage = 50;
+	private int Damage = 50;
+	private const int _BaseDamage = 50;
 	public int _Health = 200;
 	public int _MaxHealth = 200;
 	private Vector2 CameraInputDirection;
@@ -46,7 +48,19 @@ public partial class Player : CharacterBody3D
 		_HitBox = GetNode<Area3D>("%HitBox");
 		_AnimTree = GetNode<AnimationTree>("Knight/AnimationTree");
 		_StateMachine = (AnimationNodeStateMachinePlayback)_AnimTree.Get("parameters/playback");
+		ApplyModifiers();
+		PlayerModifier.Instance.Connect(nameof(PlayerModifier.ModifiersChanged), new Callable(this, nameof(ApplyModifiers)));
+		//PlayerModifier.Instance.Connect(PlayerModifier.Instance.ModifiersChanged, new Callable(this, nameof(ApplyModifiers)));
 		 CallDeferred(nameof(ConnectMobs));
+		Input.MouseMode = Input.MouseModeEnum.Captured;
+	}
+	
+	public void ApplyModifiers()
+	{
+		_Health = (int)(_Health * PlayerModifier.HealthModifier);
+		_MaxHealth = (int)(_MaxHealth * PlayerModifier.HealthModifier);
+		Damage = (int)(_BaseDamage * PlayerModifier.DamageModifier); 
+		Speed = (_BaseSpeed * PlayerModifier.SpeedModifier);
 		
 	}
 	
@@ -89,7 +103,7 @@ public partial class Player : CharacterBody3D
 	public override void _Input(InputEvent ev) 
 	{
 		if (ev.IsActionPressed("left_click")) {
-			Input.MouseMode = Input.MouseModeEnum.Captured;
+			
 		}
 	}
 	
