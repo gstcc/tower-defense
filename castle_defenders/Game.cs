@@ -21,6 +21,7 @@ public partial class Game : Node
 	[Export] public Node3D SpawnPoint1;
 	protected PackedScene _axeScene = (PackedScene)GD.Load("res://Characters/SkeletonAxe.tscn");
 	protected PackedScene _meleeScene = (PackedScene)GD.Load("res://Characters/SkeletonMelee.tscn");
+	protected PackedScene _chestMobScene = (PackedScene)GD.Load("res://Characters/SkeletonChestRunner.tscn");
 	protected List<int> _SpawnAmount;
 		
 	

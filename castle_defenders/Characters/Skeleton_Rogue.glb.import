@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cglu4d5mgs60h"
-path="res://.godot/imported/Skeleton_Rogue.glb-94f8eb823a142423b93cb6b7d39bbc1a.scn"
+path="res://.godot/imported/Skeleton_Rogue.glb-aa45a18c246451e4fd2bb8e3b8636739.scn"
 
 [deps]
 
-source_file="res://addons/kaykit_character_pack_skeletons/Characters/gltf/Skeleton_Rogue.glb"
-dest_files=["res://.godot/imported/Skeleton_Rogue.glb-94f8eb823a142423b93cb6b7d39bbc1a.scn"]
+source_file="res://Characters/Skeleton_Rogue.glb"
+dest_files=["res://.godot/imported/Skeleton_Rogue.glb-aa45a18c246451e4fd2bb8e3b8636739.scn"]
 
 [params]
 
