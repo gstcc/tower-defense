@@ -405,7 +405,7 @@ animations = [{
 script = ExtResource("1_6bl32")
 _healthModifier = 2.0
 button = NodePath("Button")
-_Cost = 5
+_Cost = 20
 
 [node name="Button" type="Button" parent="."]
 offset_right = 64.0

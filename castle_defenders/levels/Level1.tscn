@@ -237,6 +237,7 @@ offset_right = 1135.0
 offset_bottom = 57.0
 
 [node name="Coins" type="Label" parent="CanvasLayer_ProgressBar/Panel"]
+layout_mode = 0
 offset_left = 19.0
 offset_top = 14.0
 offset_right = 59.0

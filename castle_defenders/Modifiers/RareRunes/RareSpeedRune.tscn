@@ -403,7 +403,7 @@ animations = [{
 
 [node name="RareSpeedRune" type="Node2D" node_paths=PackedStringArray("button")]
 script = ExtResource("1_prvx4")
-_speedModifier = 1.1
+_speedModifier = 1.2
 button = NodePath("Button")
 _Cost = 12
 

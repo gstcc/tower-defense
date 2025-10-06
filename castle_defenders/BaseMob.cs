@@ -68,7 +68,7 @@ public abstract partial class BaseMob : CharacterBody3D
 		if (TargetInRange() && CanAttack()) {
 			if(_NavAgent.TargetPosition == _Player.GlobalPosition){
 				EmitSignal(SignalName.Attacked, _Damage);
-			}else {
+			}else if (_NavAgent.TargetPosition == chest.GlobalPosition) {
 				EmitSignal(SignalName.AttackedChest, _Damage);
 			}
 		}
