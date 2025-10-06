@@ -19,6 +19,9 @@ config/icon="res://icon.svg"
 
 InteractionManager="*res://Traps/Interaction/InteractionManager.tscn"
 GameModifier="*res://GameModifier.cs"
+CoinManager="*res://Economy/CoinManager.cs"
+InventoryManager="*res://Economy/InventoryManager.cs"
+PlayerModifier="*res://Modifiers/PlayerModifier.cs"
 
 [display]
 

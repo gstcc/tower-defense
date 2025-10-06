@@ -1,8 +1,8 @@
 [gd_resource type="MeshLibrary" load_steps=309 format=4 uid="uid://x8dpbnl30etr"]
 
-[ext_resource type="Texture2D" uid="uid://cbklx8xmdrfq3" path="res://art/Town/Textures/colormap.png" id="1_ax6ke"]
-[ext_resource type="Texture2D" uid="uid://bb3kq17mk5wpj" path="res://art/Dungeon/Textures/colormap.png" id="2_q6kke"]
-[ext_resource type="Texture2D" uid="uid://dkt4v3uqwos1c" path="res://art/Pirates/Textures/colormap.png" id="3_qro64"]
+[ext_resource type="Texture2D" uid="uid://dmmgcrn582otm" path="res://art/Town/Textures/colormap.png" id="1_ax6ke"]
+[ext_resource type="Texture2D" uid="uid://dc1m23005lm1p" path="res://art/Dungeon/Textures/colormap.png" id="2_q6kke"]
+[ext_resource type="Texture2D" uid="uid://b5kbvun0xjtig" path="res://art/Pirates/Textures/colormap.png" id="3_qro64"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvsu8"]
 resource_name = "colormap"

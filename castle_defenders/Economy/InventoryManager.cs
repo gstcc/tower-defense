@@ -27,6 +27,7 @@ public partial class InventoryManager : Node
 	
 	public static void RuneClicked(Rune rune)
 	{
+		GD.Print("Rune clicked");
 		if (rune == _ActiveRune1)
 		{
 			_ActiveRune1.Remove();

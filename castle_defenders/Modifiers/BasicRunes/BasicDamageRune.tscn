@@ -432,6 +432,7 @@ offset_right = 64.0
 offset_bottom = 64.0
 
 [node name="Label" type="Label" parent="Button"]
+layout_mode = 0
 offset_left = 40.0
 offset_top = 38.0
 offset_right = 80.0
