@@ -21,5 +21,9 @@ public partial class GameTest : Game
 		{
 			SpawnMob(_meleeScene, SpawnPoint2);
 		}
+		for (int i = 0; i < _SpawnAmount[1]; i++)
+		{
+			SpawnMob(_chestMobScene, SpawnPoint2);
+		}
 	}
 }
