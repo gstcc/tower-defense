@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ba2ie5ayoxv2f"]
+[gd_scene load_steps=29 format=3 uid="uid://ba2ie5ayoxv2f"]
 
 [ext_resource type="Script" uid="uid://dfs88np8m8imn" path="res://GameTest.cs" id="1_3453u"]
 [ext_resource type="PackedScene" uid="uid://dvis8ujb17t35" path="res://chest.tscn" id="2_46pvi"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bqykwljadqrg5" path="res://Economy/coin_spin-Sheet.png" id="11_xcmrh"]
 [ext_resource type="PackedScene" uid="uid://1enu8nigukir" path="res://Economy/ShoppingStand.tscn" id="12_28og2"]
 [ext_resource type="PackedScene" uid="uid://d08okxs8bd58k" path="res://Economy/Inventory.tscn" id="13_605o7"]
+[ext_resource type="PackedScene" uid="uid://brro3xtrtmmo1" path="res://builtAssets/SmallWoodHouse.tscn" id="13_xcmrh"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_lquwl"]
 vertices = PackedVector3Array(-59, 0.488, -2, -11.25, 0.488, -1.75, -11.25, 0.488, -3.25, -10.5, 0.488, -4, -8, 0.488, -59, -59, 0.488, -59, -8, 0.488, -4, -4.75, 0.488, -3.25, -4.75, 0.488, -2, -3.5, 0.488, -2, -1, 0.488, -2.5, -0.25, 0.488, -3.25, -2.75, 0.488, -1.25, -2.75, 0.488, 0.5, -1, 0.488, 0.5, -5.5, 0.488, -4, 1.25, 0.488, -3.25, 1.25, 0.488, -59, 3.25, 0.488, -2.5, 3.25, 0.488, -1, 59, 0.488, -1.25, 2.5, 0.488, -3.25, 59, 0.488, -59, -59, 0.488, 2.25, -11.25, 0.488, 2, -9, 4.488, 2, -7, 4.488, 2, -6.75, 4.488, 1, -6.75, 4.488, -2, -9, 4.488, -2, -8.75, 0.488, 1.75, -7.5, 0.488, 1.75, -7.5, 0.488, 1, -7, 0.488, 0.75, -7.5, 0.488, -1.75, -8.75, 0.488, -1.75, 3.25, 0.488, 1, 4.25, 0.488, 1.75, 59, 0.488, 3, 4.25, 0.488, 3.25, -3.5, 0.488, 3, -3.75, 0.488, 2.25, -4.75, 0.488, 2.25, -4.75, 0.488, 3.25, -4.25, 0.488, 3.75, -2.25, 0.488, 8.5, -2.25, 0.488, 7.25, -3.5, 0.488, 7.25, -6, 0.488, 7.5, -6.75, 0.488, 8.25, -2.25, 0.488, 3, -2.25, 0.488, 1.75, -2.75, 0.488, 1.25, -1, 0.488, 1, -1.5, 0.488, 9.25, -8.25, 0.488, 8.25, -8.25, 0.488, 59, -0.25, 0.488, 59, -6, 0.488, 4.25, -4.25, 0.488, 6.5, 0, 0.488, 9.25, -10.25, 0.488, 6, -10.25, 0.488, 4.25, -11.25, 0.488, 3.5, -59, 0.488, 6.25, -0.25, 4.488, 3, -0.25, 4.488, 7.25, 2, 4.488, 7.25, 2, 4.488, 3, 4.25, 0.488, 7, 59, 0.488, 7.25, 1.75, 0.488, 3.25, 0.5, 0.488, 3.25, 0, 0.488, 4.5, 0.5, 0.488, 6.75, 1.75, 0.488, 6.75, -10.25, 0.488, 7.5, -9.5, 0.488, 8.25, -59, 0.488, 59, 3.5, 0.488, 9.25, 2, 0.488, 9.25, 2.25, 0.488, 59, 4.25, 0.488, 8.5, 59, 0.488, 59)
@@ -184,7 +185,7 @@ size = Vector2i(320, 180)
 render_target_update_mode = 4
 
 [node name="MiniMapCamera" type="Camera3D" parent="LevelMap/PanelContainer/SubViewportContainer/SubViewport" node_paths=PackedStringArray("_Target")]
-transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 35, 0)
+transform = Transform3D(-0.999873, 8.81075e-08, 0.0159167, 0.0159167, 4.23144e-08, 0.999873, 8.74228e-08, 1, -4.37114e-08, 0, 35, 0)
 script = ExtResource("9_q0xi3")
 _Target = NodePath("../../../../../Player")
 
@@ -235,5 +236,52 @@ _interactionManager = NodePath("../InteractionManager")
 
 [node name="Inventory" parent="." instance=ExtResource("13_605o7")]
 
-[node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.704823, 0)
+[node name="SmallWoodHouse2" parent="." instance=ExtResource("13_xcmrh")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 15, 0, -13)
+
+[node name="SmallWoodHouse3" parent="." instance=ExtResource("13_xcmrh")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 15, 0, -4)
+
+[node name="SmallWoodHouse4" parent="." instance=ExtResource("13_xcmrh")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5, 0, -14)
+
+[node name="SmallWoodHouse5" parent="." instance=ExtResource("13_xcmrh")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 2, 0, -8)
+
+[node name="SmallWoodHouse6" parent="." instance=ExtResource("13_xcmrh")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 9, 0, 2)
+
+[node name="SmallWoodHouse7" parent="." instance=ExtResource("13_xcmrh")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -18, 0, 14)
+
+[node name="SmallWoodHouse8" parent="." instance=ExtResource("13_xcmrh")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6, 0, 8)
+
+[node name="SmallWoodHouse9" parent="." instance=ExtResource("13_xcmrh")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4, 0, -2)
+
+[node name="SmallWoodHouse10" parent="." instance=ExtResource("13_xcmrh")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 0, 0, 14)
+
+[node name="SmallWoodHouse" parent="." instance=ExtResource("13_xcmrh")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -9, 0, 14)
+
+[node name="SmallWoodHouse11" parent="." instance=ExtResource("13_xcmrh")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -16, 0, -2)
+
+[node name="SmallWoodHouse12" parent="." instance=ExtResource("13_xcmrh")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -16, 0, -11)
+
+[node name="SmallWoodHouse13" parent="." instance=ExtResource("13_xcmrh")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -24, 0, -10)
+
+[node name="SmallWoodHouse14" parent="." instance=ExtResource("13_xcmrh")]
+
+[node name="SmallWoodHouse15" parent="." instance=ExtResource("13_xcmrh")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -24, 0, 8)
+
+[node name="SmallWoodHouse16" parent="." instance=ExtResource("13_xcmrh")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -10, 0, 1)
+
+[node name="SmallWoodHouse17" parent="." instance=ExtResource("13_xcmrh")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -24, 0, -1)
