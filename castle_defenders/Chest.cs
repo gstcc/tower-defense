@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Chest : StaticBody3D
 {
@@ -10,6 +11,7 @@ public partial class Chest : StaticBody3D
 	public delegate void DiedEventHandler(Node target);
 	public int _Health = 100;
 	public int _MaxHealth = 100;
+	private HashSet<BaseMob> _ConnectedMobs = new();
 	
 	public override void _Ready()
 	{
@@ -17,14 +19,15 @@ public partial class Chest : StaticBody3D
 		
 	}
 	
-	private void ConnectMobs()
+	public void ConnectMobs()
 	{
 		foreach (Node child in _Enemies.GetChildren())
 		{
 			// Connect all mobs and player
-			if (child is BaseMob mob)
+			if (child is BaseMob mob && !_ConnectedMobs.Contains(mob))
 			{
 				mob.Connect(BaseMob.SignalName.AttackedChest, new Callable(this, nameof(OnEnemyAttacked)));
+				_ConnectedMobs.Add(mob);
 			}
 		}
 	}

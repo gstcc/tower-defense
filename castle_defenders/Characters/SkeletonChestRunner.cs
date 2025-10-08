@@ -13,7 +13,7 @@ public partial class SkeletonChestRunner : BaseMob
 	public override void _Ready()
 	{
 		// Set specific values for this enemy type
-		_Speed = 5;
+		_Speed = 3;
 		_Health = 30;
 		_MaxHealth = 30;
 		_Damage = 5;
@@ -64,7 +64,7 @@ public partial class SkeletonChestRunner : BaseMob
 				}
 				else
 				{
-					velocity.Y = 0;
+					velocity.Y = toTarget.Y;
 				}
 				//Velocity = velocity.Normalized() * _Speed;
 				if (_NavAgent.AvoidanceEnabled) {

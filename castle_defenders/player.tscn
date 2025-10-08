@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://vu1bmd1o7de3" path="res://knight.tscn" id="3_i3pqv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
+size = Vector3(1, 0.565979, 0.768555)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 
@@ -26,7 +27,7 @@ unique_name_in_owner = true
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Knight/HitBox"]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 0.9, 0, 0.53868, 0.536483)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.374953, 0.626264)
 shape = SubResource("BoxShape3D_onrkg")
 
 [node name="RayCast3D" type="RayCast3D" parent="Knight"]
@@ -34,8 +35,8 @@ transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0.1
 target_position = Vector3(0, -0.4, 0)
 
 [node name="RayCast3D2" type="RayCast3D" parent="Knight"]
-transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0.6, 0)
-target_position = Vector3(0, -0.3, 0)
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0.7, 0)
+target_position = Vector3(0, -0.4, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 0.6, 0, 0, 0, 0.7, 0, 0.648043, 0.007)

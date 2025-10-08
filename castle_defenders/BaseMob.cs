@@ -17,6 +17,8 @@ public abstract partial class BaseMob : CharacterBody3D
 	protected AnimationTree _AnimTree;
 	protected bool hasAttacked = false;
 	protected bool _Dead;
+	[Export] protected Sprite3D _HealthBar;
+	[Export] protected Sprite3D _NavSprite;
 	[Export]
 	public CollisionShape3D _Collsion;
 	[Signal]
@@ -58,6 +60,11 @@ public abstract partial class BaseMob : CharacterBody3D
 		return GlobalPosition.DistanceTo(_NavAgent.TargetPosition) < _AttackRange;
 	}
 	
+	public virtual void VeloctityComputedCallback(Vector3 safeVelocity)
+	{
+		Velocity = safeVelocity;
+	}
+	
 	protected virtual bool CanAttack() {
 		return true;
 	}
@@ -83,6 +90,9 @@ public abstract partial class BaseMob : CharacterBody3D
 		EmitSignal(SignalName.Died, this);
 		GD.Print(CoinManager.GetCoinCount());
 		_Collsion.QueueFree();
+		_HealthBar.QueueFree();
+		_NavSprite.QueueFree();
+		_NavAgent.AvoidanceLayers = 0;
 		//Save bodies for 1 minute then despawn.
 		await ToSignal(GetTree().CreateTimer(60), "timeout");
 		// Should killed mobs be removed to save performance?

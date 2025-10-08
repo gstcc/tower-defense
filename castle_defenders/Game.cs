@@ -1,6 +1,9 @@
 using Godot;
 using System;
 using System.Collections.Generic; // Needed for List<>
+using System.Threading.Tasks;
+using System.Linq;
+
 
 
 enum GameState: ushort
@@ -13,8 +16,8 @@ enum GameState: ushort
 public partial class Game : Node
 {
 	[Export] private Node3D _Enemies;
-	[Export] private Chest _Chest;
-	[Export] private Player _Player;
+	[Export] protected Chest _Chest;
+	[Export] protected Player _Player;
 	[Export] public Label _Coins;
 	private GameState _State = GameState.IN_PROGRESS;
 	private List<BaseMob> _AliveEnemies = new();
@@ -23,24 +26,35 @@ public partial class Game : Node
 	protected PackedScene _meleeScene = (PackedScene)GD.Load("res://Characters/SkeletonMelee.tscn");
 	protected PackedScene _chestMobScene = (PackedScene)GD.Load("res://Characters/SkeletonChestRunner.tscn");
 	protected List<int> _SpawnAmount;
+	[Export] public int TotalWaves = 3;
+	[Export] public float TimeBetweenWaves = 3.0f;
+	private int _NrOfMobs;
+	private HashSet<BaseMob> _ConnectedMobs = new();
 		
 	
 	public override void _Ready()
 	{
-		SpawnMobs();
+		//SpawnMobs();
+		SpawnMobsInWaves();
+		_NrOfMobs = _SpawnAmount.Sum();
+		_Player.Connect(Player.SignalName.Died, new Callable(this, nameof(OnPlayerDied)));	
+		_Chest.Connect(Chest.SignalName.Died, new Callable(this, nameof(OnChestDied)));	
+		CoinManager.Instance.Connect(nameof(CoinManager.CoinsChanged), new Callable(this, nameof(UpdateCoinTotal)));
+	}
+	
+	protected void ConnectMobs()
+	{
 		foreach (Node child in _Enemies.GetChildren())
 		{
 			// Since each mob takes time to despawn we can't 
 			// check if _Enemies has no children
-			if (child is BaseMob mob)
+			if (child is BaseMob mob && !_ConnectedMobs.Contains(mob))
 			{
 				_AliveEnemies.Add(mob);
+				_ConnectedMobs.Add(mob);
 				mob.Connect(BaseMob.SignalName.Died, new Callable(this, nameof(OnMobDied)));
 			}
 		}
-		_Player.Connect(Player.SignalName.Died, new Callable(this, nameof(OnPlayerDied)));	
-		_Chest.Connect(Chest.SignalName.Died, new Callable(this, nameof(OnChestDied)));	
-		CoinManager.Instance.Connect(nameof(CoinManager.CoinsChanged), new Callable(this, nameof(UpdateCoinTotal)));
 	}
 	
 	protected virtual void SpawnMobs()
@@ -50,6 +64,11 @@ public partial class Game : Node
 		{
 			SpawnMob(_axeScene, SpawnPoint1);
 		}
+		
+	}
+	
+	protected virtual async Task SpawnMobsInWaves()
+	{
 		
 	}
 	
@@ -108,7 +127,8 @@ public partial class Game : Node
 	{
 		GD.Print("Mob died");
 		_AliveEnemies.Remove(mob);
-		if (_AliveEnemies.Count <= 0)
+		--_NrOfMobs;
+		if (_AliveEnemies.Count <= 0 && _NrOfMobs <= 0)
 		{
 			_State = GameState.WON;
 			GD.Print("Player won");

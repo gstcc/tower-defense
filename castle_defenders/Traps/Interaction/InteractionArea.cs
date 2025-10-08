@@ -11,7 +11,13 @@ public partial class InteractionArea : Area3D
 
 	public override void _Ready()
 	{
-		//_interactionManager.SetOneTimeInteract(true);
+		//CallDeferred();
+		CallDeferred(nameof(SetInteract));
+	}
+	
+	private void SetInteract()
+	{
+		_interactionManager.SetOneTimeInteract(true);
 	}
 	
 	public Func<Task> interact;

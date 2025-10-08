@@ -3,8 +3,8 @@ using System;
 
 public partial class Player : CharacterBody3D
 {
-	private float Speed = 3.0f;
-	private float _BaseSpeed = 3.0f;
+	private float Speed = 2.0f;
+	private float _BaseSpeed = 2.0f;
 	private const float Acceleration = 0.5f;
 	private const float JumpVelocity = 1.5f;
 	private const float MouseSensitivity = 0.25f;

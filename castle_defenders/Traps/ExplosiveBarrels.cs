@@ -37,7 +37,7 @@ public partial class ExplosiveBarrels : Node3D
 	
 	public async Task OnInteract() {
 		// 3 Seconds before barrels explode so player can run away
-		await ToSignal(GetTree().CreateTimer(3), "timeout");
+		await ToSignal(GetTree().CreateTimer(2), "timeout");
 		_Explosion.Explode();
 		RemoveBarrels();
 		_Sprite.QueueFree();

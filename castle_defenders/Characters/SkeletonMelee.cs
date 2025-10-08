@@ -12,7 +12,7 @@ public partial class SkeletonMelee : BaseMob
 	public override void _Ready()
 	{
 		// Set specific values for this enemy type
-		_Speed = 3;
+		_Speed = 2;
 		_Health = 100;
 		_MaxHealth = 100;
 		_Damage = 20;
@@ -39,7 +39,8 @@ public partial class SkeletonMelee : BaseMob
 				// Compute desired direction from navigation
 				MakePath();
 				Vector3 nextPathPosition = _NavAgent.GetNextPathPosition();
-				Vector3 toTarget = nextPathPosition - GlobalPosition;
+				//Vector3 toTarget = nextPathPosition - GlobalPosition;
+				Vector3 toTarget = GlobalPosition.DirectionTo(nextPathPosition) * _Speed;
 				velocity.X = toTarget.X;
 				velocity.Z = toTarget.Z;
 				if (!IsOnFloor()) // Check if the mob is in the air
@@ -50,7 +51,12 @@ public partial class SkeletonMelee : BaseMob
 				{
 					velocity.Y = 0;
 				}
-				Velocity = velocity.Normalized() * _Speed;
+				//Velocity = velocity.Normalized() * _Speed;
+				if (_NavAgent.AvoidanceEnabled) {
+					_NavAgent.SetVelocity(velocity);	
+				} else {
+					VeloctityComputedCallback(velocity);
+				}
 				float targetAngle = (-Vector3.Forward).SignedAngleTo(Velocity, Vector3.Up);
 				Vector3 skinRotation = _Skin.GlobalRotation;
 				skinRotation.Y = Mathf.LerpAngle(skinRotation.Y, targetAngle, (float)(RotationSpeed*delta));
