@@ -418,6 +418,7 @@ offset_left = 19.0
 offset_top = 14.0
 offset_right = 59.0
 offset_bottom = 37.0
+text = "0"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer_ProgressBar/Panel"]
 position = Vector2(108, 26)

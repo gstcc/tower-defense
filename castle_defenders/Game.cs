@@ -139,11 +139,13 @@ public partial class Game : Node
 	
 	private void gameFailed(){
 		GD.Print("level failed");
+		CoinManager.ResetCoinCounterAfterDeath();
 		GetTree().ChangeSceneToFile("res://FailedLevel.tscn");
 	}
 	
 	private void gamesucceded(){
 		GD.Print("level succeded");
+		CoinManager.NextLevelStarted();
 		GetTree().ChangeSceneToFile("res://SuccededLevel.tscn");
 	}
 }
