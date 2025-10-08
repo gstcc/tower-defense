@@ -49,7 +49,7 @@ public partial class SkeletonMelee : BaseMob
 				}
 				else
 				{
-					velocity.Y = 0;
+					velocity.Y = toTarget.Y;
 				}
 				//Velocity = velocity.Normalized() * _Speed;
 				if (_NavAgent.AvoidanceEnabled) {

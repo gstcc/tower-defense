@@ -48,7 +48,7 @@ public partial class SkeletonAxe : BaseMob
 				}
 				else
 				{
-					velocity.Y = 0;
+					velocity.Y = toTarget.Y;
 				}
 				Velocity = velocity.Normalized() * _Speed;
 				float targetAngle = (-Vector3.Forward).SignedAngleTo(Velocity, Vector3.Up);
