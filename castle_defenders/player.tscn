@@ -10,10 +10,12 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_onrkg"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("Ray_Low", "Ray_High")]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_4flbx")
+Ray_Low = NodePath("Knight/RayCast3D")
+Ray_High = NodePath("Knight/RayCast3D2")
 
 [node name="Knight" parent="." instance=ExtResource("3_i3pqv")]
 unique_name_in_owner = true
@@ -27,8 +29,16 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 0.9, 0, 0.53868, 0.536483)
 shape = SubResource("BoxShape3D_onrkg")
 
+[node name="RayCast3D" type="RayCast3D" parent="Knight"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0.1, 0)
+target_position = Vector3(0, -0.4, 0)
+
+[node name="RayCast3D2" type="RayCast3D" parent="Knight"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0.6, 0)
+target_position = Vector3(0, -0.3, 0)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.7, 0, 0, 0, 0.6, 0, 0, 0, 0.7, 0, 0.6, 0.007)
+transform = Transform3D(0.7, 0, 0, 0, 0.6, 0, 0, 0, 0.7, 0, 0.648043, 0.007)
 shape = SubResource("CapsuleShape3D_onrkg")
 
 [node name="CameraPivot" type="Node3D" parent="."]

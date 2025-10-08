@@ -25,6 +25,8 @@ public partial class Player : CharacterBody3D
 	private bool isAttacking = false;
 	private float attackTimer = 0.0f;
 	private const float ATTACK_DURATION = 0.5f;
+	[Export] public RayCast3D Ray_Low;
+	[Export] public RayCast3D Ray_High;
 	[Signal]
 	public delegate void HealthChangedEventHandler(Node target);
 	[Signal]
@@ -194,7 +196,15 @@ public partial class Player : CharacterBody3D
 				}
 
 				Velocity = velocity;
+				Vector3 snapVector = Vector3.Down * 0.3f; // Tune this (0.2–0.5) depending on floor irregularities
+
+				//MoveAndSlideWithSnap(Velocity, snapVector, Vector3.Up, true);
 				MoveAndSlide();
+				if (Ray_Low.IsColliding() && !Ray_High.IsColliding())
+				{
+					// We're facing a step we can climb
+					Position += new Vector3(0, 0.3f, 0); // Move up by step height (tweak as needed)
+				}
 				if (moveDirection.Length() > 0.2f) {
 					_LastMovementDirection = moveDirection;
 				}
@@ -202,6 +212,8 @@ public partial class Player : CharacterBody3D
 				Vector3 skinRotation = _Skin.GlobalRotation;
 				skinRotation.Y = Mathf.LerpAngle(skinRotation.Y, targetAngle, (float)(RotationSpeed*delta));
 				_Skin.GlobalRotation = skinRotation;
+				//Ray_Low.GlobalRotation = skinRotation;
+				//Ray_High.GlobalRotation = skinRotation;
 				break;
 			case "Attack":
 				if (attackTimer <= 0f) {
