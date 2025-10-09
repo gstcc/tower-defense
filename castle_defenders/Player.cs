@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Player : CharacterBody3D
 {
@@ -31,6 +32,7 @@ public partial class Player : CharacterBody3D
 	public delegate void HealthChangedEventHandler(Node target);
 	[Signal]
 	public delegate void DiedEventHandler(Node target);
+	private HashSet<BaseMob> _ConnectedMobs = new();
 	
 	public override void _UnhandledInput(InputEvent ev) 
 	{
@@ -66,14 +68,15 @@ public partial class Player : CharacterBody3D
 		
 	}
 	
-	private void ConnectMobs()
+	public void ConnectMobs()
 	{
 		foreach (Node child in _Enemies.GetChildren())
 		{
 			// Connect all mobs and player
-			if (child is BaseMob mob)
+			if (child is BaseMob mob && !_ConnectedMobs.Contains(mob))
 			{
 				mob.Connect(BaseMob.SignalName.Attacked, new Callable(this, nameof(OnEnemyAttacked)));
+				_ConnectedMobs.Add(mob);
 			}
 		}
 	}

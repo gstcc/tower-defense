@@ -18,7 +18,7 @@ public partial class ShoppingStand : Node3D
 	}
 	
 	public async Task OnInteract() {
-		
+		_interactionManager.SetOneTimeInteract(false);
 		_ShopMenu.OnPlayerInteractsWithShop();
 	}
 }

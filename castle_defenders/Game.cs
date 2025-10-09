@@ -20,7 +20,7 @@ public partial class Game : Node
 	[Export] protected Player _Player;
 	[Export] public Label _Coins;
 	private GameState _State = GameState.IN_PROGRESS;
-	private List<BaseMob> _AliveEnemies = new();
+	protected List<BaseMob> _AliveEnemies = new();
 	[Export] public Node3D SpawnPoint1;
 	protected PackedScene _axeScene = (PackedScene)GD.Load("res://Characters/SkeletonAxe.tscn");
 	protected PackedScene _meleeScene = (PackedScene)GD.Load("res://Characters/SkeletonMelee.tscn");
@@ -39,6 +39,7 @@ public partial class Game : Node
 		_NrOfMobs = _SpawnAmount.Sum();
 		_Player.Connect(Player.SignalName.Died, new Callable(this, nameof(OnPlayerDied)));	
 		_Chest.Connect(Chest.SignalName.Died, new Callable(this, nameof(OnChestDied)));	
+		UpdateCoinTotal();
 		CoinManager.Instance.Connect(nameof(CoinManager.CoinsChanged), new Callable(this, nameof(UpdateCoinTotal)));
 	}
 	
@@ -143,8 +144,9 @@ public partial class Game : Node
 		GetTree().ChangeSceneToFile("res://FailedLevel.tscn");
 	}
 	
-	private void gamesucceded(){
+	private async void gamesucceded(){
 		GD.Print("level succeded");
+		await ToSignal(GetTree().CreateTimer(5), "timeout");
 		CoinManager.NextLevelStarted();
 		GetTree().ChangeSceneToFile("res://SuccededLevel.tscn");
 	}

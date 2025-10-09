@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c53hr10cerdpt"]
+[gd_scene load_steps=40 format=3 uid="uid://c53hr10cerdpt"]
 
 [ext_resource type="Script" uid="uid://cvn6hqxn5jbjv" path="res://levels/Level1.cs" id="1_j4pg1"]
 [ext_resource type="PackedScene" uid="uid://dvis8ujb17t35" path="res://chest.tscn" id="2_5g1s2"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://cdilmrgtxu2ns" path="res://HealthBar.cs" id="10_3jhf0"]
 [ext_resource type="Texture2D" uid="uid://bqykwljadqrg5" path="res://Economy/coin_spin-Sheet.png" id="11_nn0v1"]
 [ext_resource type="PackedScene" uid="uid://1enu8nigukir" path="res://Economy/ShoppingStand.tscn" id="12_kdcll"]
+[ext_resource type="FontFile" uid="uid://bg3cxvqmeh8ms" path="res://art/Fonts/Roshey.otf" id="13_1bxb8"]
+[ext_resource type="Script" uid="uid://b6aoixys53psl" path="res://levels/TutorialText.cs" id="13_j4mar"]
 [ext_resource type="PackedScene" uid="uid://d08okxs8bd58k" path="res://Economy/Inventory.tscn" id="13_j4pg1"]
 [ext_resource type="Script" uid="uid://18qflwb7m47n" path="res://levels/Beacon.cs" id="15_rv5to"]
 
@@ -121,10 +123,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="FontVariation" id="FontVariation_rv5to"]
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_rv5to"]
 top_radius = 0.0
 bottom_radius = 0.3
-height = 1.0
+height = 0.4
 
 [sub_resource type="FogMaterial" id="FogMaterial_nu2w0"]
 
@@ -195,15 +199,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.165, 0, 9.145)
 _Enemies = NodePath("../Enemies")
 
 [node name="InteractionManager" parent="." node_paths=PackedStringArray("_Player") instance=ExtResource("6_3gjqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5287, -18.7848, 0)
 _Player = NodePath("../Player")
 
 [node name="SiegeBallista" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("7_g56ap")]
-transform = Transform3D(0.312838, -0.0443396, 0.948771, 0.140331, 0.990105, 3.06855e-09, -0.939383, 0.133142, 0.315964, -4.75804, -0.0765432, 5.47877)
+transform = Transform3D(0.562012, -0.0796559, 0.823285, 0.140331, 0.990105, 6.1371e-09, -0.815138, 0.115532, 0.567629, -4.75804, -0.0765432, 5.47877)
 _interactionManager = NodePath("../InteractionManager")
 
 [node name="ExplosiveBarrels" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("8_na6ls")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55974, 0, 0.829948)
-_interactionManager = NodePath("../InteractionManager")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93402, 0, 0.829948)
+_interactionManager = NodePath("InteractionManager")
+
+[node name="InteractionManager" parent="ExplosiveBarrels" node_paths=PackedStringArray("_Player") instance=ExtResource("6_3gjqj")]
+_Player = NodePath("../../Player")
 
 [node name="LevelMap" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -255,10 +263,10 @@ script = ExtResource("10_3jhf0")
 _Player = NodePath("../../Player")
 
 [node name="Panel" type="Panel" parent="CanvasLayer_ProgressBar"]
-offset_left = 1007.0
-offset_top = 6.0
-offset_right = 1135.0
-offset_bottom = 57.0
+offset_left = 1049.0
+offset_top = 7.0
+offset_right = 1138.0
+offset_bottom = 58.0
 
 [node name="Coins" type="Label" parent="CanvasLayer_ProgressBar/Panel"]
 layout_mode = 0
@@ -266,18 +274,38 @@ offset_left = 19.0
 offset_top = 14.0
 offset_right = 59.0
 offset_bottom = 37.0
+text = "0"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer_ProgressBar/Panel"]
-position = Vector2(108, 26)
+position = Vector2(60, 24)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_audcl")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer_ProgressBar" node_paths=PackedStringArray("_Level")]
+offset_left = 415.0
+offset_top = 33.0
+offset_right = 673.0
+offset_bottom = 211.0
+theme_override_fonts/normal_font = ExtResource("13_1bxb8")
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/mono_font_size = 30
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+scroll_active = false
+script = ExtResource("13_j4mar")
+_Level = NodePath("../..")
 
 [node name="SpawnPoint1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.78238, 0.0938544, -8.29055)
 
 [node name="ShoppingStand" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("12_kdcll")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.79843, 0.0699043, -2.45122)
-_interactionManager = NodePath("../InteractionManager")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.56671, 0.0699043, 8.85676)
+_interactionManager = NodePath("InteractionManager2")
+
+[node name="InteractionManager2" parent="ShoppingStand" node_paths=PackedStringArray("_Player") instance=ExtResource("6_3gjqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0954, -18.8547, -8.85676)
+_Player = NodePath("../../Player")
 
 [node name="Inventory" parent="." instance=ExtResource("13_j4pg1")]
 
@@ -286,20 +314,108 @@ script = ExtResource("15_rv5to")
 _Mesh = NodePath("MeshInstance3D")
 _Light = NodePath("MeshInstance3D/SpotLight3D")
 
+[node name="Label3D" type="Label3D" parent="Beacon"]
+unique_name_in_owner = true
+transform = Transform3D(0.45, 0, 0, 0, -1.5, 6.79481e-08, 0, -2.26494e-07, -0.45, -1.77463, 1.16167, 9.98584)
+billboard = 1
+text = "Protect the chest"
+font = SubResource("FontVariation_rv5to")
+width = 1000.0
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Beacon"]
-transform = Transform3D(0.3, 0, 0, 0, -1, 2.62268e-08, 0, -8.74228e-08, -0.3, 2.93689, 2.052, 9.23477)
+transform = Transform3D(0.45, 0, 0, 0, -1.5, 6.79481e-08, 0, -2.26494e-07, -0.45, -1.77463, 1.16167, 9.98584)
 gi_mode = 2
 mesh = SubResource("CylinderMesh_rv5to")
 surface_material_override/0 = SubResource("StandardMaterial3D_rv5to")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Beacon/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, -0.0658211, 0.997831, 0, -0.997831, -0.0658211, 0, 2.25096, -0.0096035)
+transform = Transform3D(2.22222, 0, 0, 0, -9.71364e-08, -0.666667, 0, 2.22222, -3.23788e-07, 0, -1.35408, -0.0096035)
+layers = 7
 light_color = Color(0.475747, 0.435979, 0, 1)
 light_energy = 16.0
 light_indirect_energy = 16.0
 light_volumetric_fog_energy = 16.0
-light_size = 0.475
-light_specular = 0.735
-spot_range = 3.0
-spot_angle = 5.0
-spot_angle_attenuation = 0.287175
+light_size = 0.202
+light_bake_mode = 1
+spot_range = 4.0
+spot_attenuation = -4.0
+spot_angle = 10.0
+spot_angle_attenuation = 0.901252
+
+[node name="Beacon2" type="Node3D" parent="." node_paths=PackedStringArray("_Mesh", "_Light")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71063, 0, -4.92842)
+script = ExtResource("15_rv5to")
+_Mesh = NodePath("MeshInstance3D")
+_Light = NodePath("MeshInstance3D/SpotLight3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Beacon2"]
+transform = Transform3D(0.45, 0, 0, 0, -1.5, 6.79481e-08, 0, -2.26494e-07, -0.45, -1.77463, 1.16167, 9.98584)
+gi_mode = 2
+mesh = SubResource("CylinderMesh_rv5to")
+surface_material_override/0 = SubResource("StandardMaterial3D_rv5to")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Beacon2/MeshInstance3D"]
+transform = Transform3D(2.22222, 0, 0, 0, -9.71364e-08, -0.666667, 0, 2.22222, -3.23788e-07, 0, -1.35408, -0.0096035)
+layers = 7
+light_color = Color(0.475747, 0.435979, 0, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+light_size = 0.202
+light_bake_mode = 1
+spot_range = 4.0
+spot_attenuation = -4.0
+spot_angle = 10.0
+spot_angle_attenuation = 0.901252
+
+[node name="Beacon4" type="Node3D" parent="." node_paths=PackedStringArray("_Mesh", "_Light")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.89833, 0, -1.24501)
+script = ExtResource("15_rv5to")
+_Mesh = NodePath("MeshInstance3D")
+_Light = NodePath("MeshInstance3D/SpotLight3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Beacon4"]
+transform = Transform3D(0.45, 0, 0, 0, -1.5, 6.79481e-08, 0, -2.26494e-07, -0.45, -1.77463, 1.16167, 9.98584)
+gi_mode = 2
+mesh = SubResource("CylinderMesh_rv5to")
+surface_material_override/0 = SubResource("StandardMaterial3D_rv5to")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Beacon4/MeshInstance3D"]
+transform = Transform3D(2.22222, 0, 0, 0, -9.71364e-08, -0.666667, 0, 2.22222, -3.23788e-07, 0, -1.35408, -0.0096035)
+layers = 7
+light_color = Color(0.475747, 0.435979, 0, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+light_size = 0.202
+light_bake_mode = 1
+spot_range = 4.0
+spot_attenuation = -4.0
+spot_angle = 10.0
+spot_angle_attenuation = 0.901252
+
+[node name="Beacon3" type="Node3D" parent="." node_paths=PackedStringArray("_Mesh", "_Light")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206491, 0, -9.12293)
+script = ExtResource("15_rv5to")
+_Mesh = NodePath("MeshInstance3D")
+_Light = NodePath("MeshInstance3D/SpotLight3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Beacon3"]
+transform = Transform3D(0.45, 0, 0, 0, -1.5, 6.79481e-08, 0, -2.26494e-07, -0.45, -1.77463, 1.16167, 9.98584)
+gi_mode = 2
+mesh = SubResource("CylinderMesh_rv5to")
+surface_material_override/0 = SubResource("StandardMaterial3D_rv5to")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Beacon3/MeshInstance3D"]
+transform = Transform3D(2.22222, 0, 0, 0, -9.71364e-08, -0.666667, 0, 2.22222, -3.23788e-07, 0, -1.35408, -0.0096035)
+layers = 7
+light_color = Color(0.475747, 0.435979, 0, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+light_size = 0.202
+light_bake_mode = 1
+spot_range = 4.0
+spot_attenuation = -4.0
+spot_angle = 10.0
+spot_angle_attenuation = 0.901252

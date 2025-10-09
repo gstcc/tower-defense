@@ -46,6 +46,7 @@ public partial class GameTest : Game
 				//Added new mobs, need to connect their signals aswell
 				ConnectMobs();
 				_Chest.ConnectMobs();
+				_Player.ConnectMobs();
 				if (wave < TotalWaves - 1)
 				{
 					await ToSignal(GetTree().CreateTimer(TimeBetweenWaves), "timeout");

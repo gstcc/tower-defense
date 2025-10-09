@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public partial class Level1 : Game
 {
 	private List<int> _SpawnPerWave = new([1, 2, 5]);
-	private bool _TutorialCompleted = false;
+	public bool _TutorialCompleted = false;
 	
 	
 	public override void _Ready()
@@ -37,9 +37,22 @@ public partial class Level1 : Game
 				//Added new mobs, need to connect their signals aswell
 				ConnectMobs();
 				_Chest.ConnectMobs();
+				_Player.ConnectMobs();
 				if (wave < TotalWaves - 1)
 				{
-					await ToSignal(GetTree().CreateTimer(TimeBetweenWaves), "timeout");
+					float elapsed = 0f;
+					float waitTime = TimeBetweenWaves;
+
+					while (elapsed < waitTime)
+					{
+						if (_AliveEnemies.Count == 0)
+							break;
+
+						await ToSignal(GetTree(), "process_frame"); // wait one frame
+						elapsed += (float)GetProcessDeltaTime();           // increment time
+					}
+
+					//StartNextWave();
 				}
 			}
 
