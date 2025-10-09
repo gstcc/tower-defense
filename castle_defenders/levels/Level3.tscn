@@ -201,6 +201,9 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -21, 0, 24)
 [node name="SmallStoneHouse2" parent="NavigationRegion3D" instance=ExtResource("3_6vscs")]
 transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, -10, 0, -10)
 
+[node name="SmallStoneHouse7" parent="NavigationRegion3D" instance=ExtResource("3_6vscs")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, -1.9565, 0, -10)
+
 [node name="SmallStoneHouse5" parent="NavigationRegion3D" instance=ExtResource("3_6vscs")]
 transform = Transform3D(-1.74845e-07, 0, 4, 0, 4, 0, -4, 0, -1.74845e-07, 11, 0, 36)
 
@@ -279,9 +282,6 @@ shape = SubResource("BoxShape3D_77jv8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.881, 0.5, 0)
 collision_layer = 7
 collision_mask = 7
-
-[node name="cliff_blockSlope_rock2" parent="NavigationRegion3D/GridMap3/Area3D2" instance=ExtResource("10_77jv8")]
-transform = Transform3D(-4.37114e-08, 0, -2, 0, 1, 0, 1, 0, -8.74228e-08, -6, 0.550503, -0.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/GridMap3/Area3D2"]
 transform = Transform3D(-7.16846e-08, 0.479948, -0.877297, 2.49639e-08, 0.877297, 0.479948, 1, 1.25041e-08, -7.48701e-08, -6.79528, 0.836008, -0.5)

@@ -9,7 +9,6 @@ public partial class FailedLevel : Node2D
 	}
 	
 	public void _OnButtonPressed() {
-		string level = GameModifier.getLevel();
-		GetTree().ChangeSceneToFile(level);
+		GetTree().ChangeSceneToFile(GameModifier.getLevel());
 	}
 }
