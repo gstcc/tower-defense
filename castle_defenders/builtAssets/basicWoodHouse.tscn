@@ -12,7 +12,7 @@
 size = Vector3(2, 1.5, 3)
 
 [node name="basicWoodHouse" type="StaticBody3D"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="wall-wood-door2" parent="." instance=ExtResource("1_wlu6r")]
 

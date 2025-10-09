@@ -12,6 +12,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_slv6r"]
 
 [node name="ExplosiveBarrels" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_x40ju")
 
 [node name="Explosion" parent="." instance=ExtResource("2_mevvb")]
@@ -22,7 +23,7 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 unique_name_in_owner = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 shape = SubResource("BoxShape3D_up2tb")
 
 [node name="barrel2" parent="." instance=ExtResource("4_h5ssn")]
@@ -52,7 +53,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_slv6r")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 layers = 4
 modulate = Color(0.729006, 0.725748, 0, 1)
 axis = 1
