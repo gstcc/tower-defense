@@ -207,6 +207,9 @@ transform = Transform3D(-1.74845e-07, 0, 4, 0, 4, 0, -4, 0, -1.74845e-07, 11, 0,
 [node name="SmallStoneHouse6" parent="NavigationRegion3D" instance=ExtResource("6_bng08")]
 transform = Transform3D(-1.74845e-07, 0, 4, 0, 4, 0, -4, 0, -1.74845e-07, 11, 0, 36)
 
+[node name="SmallStoneHouse8" parent="NavigationRegion3D" instance=ExtResource("6_bng08")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 22.5803, 0, 4.48642)
+
 [node name="SmallStoneHouse7" parent="NavigationRegion3D" instance=ExtResource("6_bng08")]
 transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, -24.1268, 0, -9.89762)
 
@@ -445,7 +448,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 3.09385, -2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3065, 2, -13.9042)
 
 [node name="SpawnPoint3" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.23704, 2, 26.0521)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2813, 4.51819, -52.408)
+
+[node name="SpawnPoint4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3188, 4.51819, -52.408)
 
 [node name="ShoppingStand" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("22_syo8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1561, 0, -5.02121)
