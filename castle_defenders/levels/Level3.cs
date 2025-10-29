@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
-public partial class GameTest : Game
+public partial class Level3 : Game
 {
 	[Export]  public Node3D SpawnPoint2;
 	[Export]  public Node3D SpawnPoint3;
@@ -10,7 +10,7 @@ public partial class GameTest : Game
 	
 	public override void _Ready()
 	{
-		_SpawnAmount = new([12, 15, 9]);
+		_SpawnAmount = new([9, 15, 9]);
 		base._Ready();
 	}
 	

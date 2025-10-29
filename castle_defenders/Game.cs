@@ -27,7 +27,7 @@ public partial class Game : Node
 	protected PackedScene _chestMobScene = (PackedScene)GD.Load("res://Characters/SkeletonChestRunner.tscn");
 	protected List<int> _SpawnAmount;
 	[Export] public int TotalWaves = 3;
-	[Export] public float TimeBetweenWaves = 3.0f;
+	[Export] public float TimeBetweenWaves = 30.0f;
 	private int _NrOfMobs;
 	private HashSet<BaseMob> _ConnectedMobs = new();
 		
@@ -80,14 +80,17 @@ public partial class Game : Node
 	
 	protected void SpawnMob(PackedScene mobScene, Node3D spawnPoint)
 	{
+	if (spawnPoint == null)
+	{
+		return;
+	}
 	var mobInstance = mobScene.Instantiate();
 	if (mobInstance is BaseMob mob)
 	{
 		mob._Player = _Player;
 		mob.chest = _Chest;
-		// Generate random offset in range [-5, 5] for X and Z
-		float randomOffsetX = (float)(GD.Randf() * 10.0 - 5.0);
-		float randomOffsetZ = (float)(GD.Randf() * 10.0 - 5.0);
+		float randomOffsetX = (float)(GD.Randf() * 2.0);
+		float randomOffsetZ = (float)(GD.Randf() * 2.0);
 
 		// Get spawn point's global transform and modify translation
 		Transform3D spawnTransform = spawnPoint.GlobalTransform;

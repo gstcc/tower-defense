@@ -343,35 +343,66 @@ _Player = NodePath("../Player")
 
 [node name="SiegeBallista" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("17_83db2")]
 transform = Transform3D(-0.990024, 0.140901, -8.74228e-08, 0.140901, 0.990024, 0, 8.65507e-08, -1.2318e-08, -1, -20, -0.0974712, -2)
-_interactionManager = NodePath("../InteractionManager")
+_interactionManager = NodePath("InteractionManager")
+
+[node name="InteractionManager" parent="SiegeBallista" node_paths=PackedStringArray("_Player") instance=ExtResource("16_hc6k0")]
+_Player = NodePath("../../Player")
 
 [node name="SiegeBallista2" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("17_83db2")]
 transform = Transform3D(-0.930318, 0.132404, 0.34202, 0.140901, 0.990024, 0, -0.338608, 0.0481911, -0.939693, -20, -0.0974712, 0)
-_interactionManager = NodePath("../InteractionManager")
+_interactionManager = NodePath("InteractionManager2")
+
+[node name="InteractionManager2" parent="SiegeBallista2" node_paths=PackedStringArray("_Player") instance=ExtResource("16_hc6k0")]
+transform = Transform3D(0.94089, 0.00841296, 0.338608, 0.00841256, 0.998803, -0.0481909, -0.338608, 0.048191, 0.939692, 0.677216, -0.0963819, 1.87938)
+_Player = NodePath("../../Player")
 
 [node name="ExplosiveBarrels" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("18_aaqdi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 1)
 _interactionManager = NodePath("../InteractionManager")
 
+[node name="InteractionManager3" parent="ExplosiveBarrels" node_paths=PackedStringArray("_Player") instance=ExtResource("16_hc6k0")]
+transform = Transform3D(-0.990024, 0.140901, -8.9407e-08, 0.140901, 0.990024, 0, 2.98023e-08, -3.72529e-09, -1, -28, -0.0974712, -3)
+_Player = NodePath("../../Player")
+
 [node name="ExplosiveBarrels2" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("18_aaqdi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -2)
-_interactionManager = NodePath("../InteractionManager")
+_interactionManager = NodePath("InteractionManager4")
+
+[node name="InteractionManager4" parent="ExplosiveBarrels2" node_paths=PackedStringArray("_Player") instance=ExtResource("16_hc6k0")]
+transform = Transform3D(-0.990024, 0.140901, -8.9407e-08, 0.140901, 0.990024, 0, 2.98023e-08, -3.72529e-09, -1, -28, -0.0974712, -2.38419e-07)
+_Player = NodePath("../../Player")
 
 [node name="ExplosiveBarrels3" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("18_aaqdi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 5)
-_interactionManager = NodePath("../InteractionManager")
+_interactionManager = NodePath("InteractionManager5")
+
+[node name="InteractionManager5" parent="ExplosiveBarrels3" node_paths=PackedStringArray("_Player") instance=ExtResource("16_hc6k0")]
+transform = Transform3D(-0.990024, 0.140901, -8.9407e-08, 0.140901, 0.990024, 0, 2.98023e-08, -3.72529e-09, -1, -37, -0.0974712, -7)
+_Player = NodePath("../../Player")
 
 [node name="ExplosiveBarrels4" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("18_aaqdi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -14)
-_interactionManager = NodePath("../InteractionManager")
+_interactionManager = NodePath("InteractionManager6")
+
+[node name="InteractionManager6" parent="ExplosiveBarrels4" node_paths=PackedStringArray("_Player") instance=ExtResource("16_hc6k0")]
+transform = Transform3D(-0.990024, 0.140901, -8.9407e-08, 0.140901, 0.990024, 0, 2.98023e-08, -3.72529e-09, -1, -37, -0.0974712, 12)
+_Player = NodePath("../../Player")
 
 [node name="ExplosiveBarrels5" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("18_aaqdi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 19)
-_interactionManager = NodePath("../InteractionManager")
+_interactionManager = NodePath("InteractionManager7")
+
+[node name="InteractionManager7" parent="ExplosiveBarrels5" node_paths=PackedStringArray("_Player") instance=ExtResource("16_hc6k0")]
+transform = Transform3D(-0.990024, 0.140901, -8.9407e-08, 0.140901, 0.990024, 0, 2.98023e-08, -3.72529e-09, -1, -31, -0.0974712, -21)
+_Player = NodePath("../../Player")
 
 [node name="ExplosiveBarrels6" parent="." node_paths=PackedStringArray("_interactionManager") instance=ExtResource("18_aaqdi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 15)
 _interactionManager = NodePath("../InteractionManager")
+
+[node name="InteractionManager8" parent="ExplosiveBarrels6" node_paths=PackedStringArray("_Player") instance=ExtResource("16_hc6k0")]
+transform = Transform3D(-0.990024, 0.140901, -8.9407e-08, 0.140901, 0.990024, 0, 2.98023e-08, -3.72529e-09, -1, -51, -0.0974712, -17)
+_Player = NodePath("../../Player")
 
 [node name="LevelMap" type="MarginContainer" parent="."]
 anchors_preset = 15

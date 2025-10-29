@@ -49,9 +49,10 @@ shadow_mesh = SubResource("ArrayMesh_0wrhn")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jg65a"]
 
-[node name="SiegeBallista" instance=ExtResource("1_omodc")]
+[node name="SiegeBallista" node_paths=PackedStringArray("_interactionManager") instance=ExtResource("1_omodc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0974712, 0)
 script = ExtResource("2_nw77a")
+_interactionManager = NodePath("")
 
 [node name="arrow" parent="siege-ballista" index="0"]
 visible = false
